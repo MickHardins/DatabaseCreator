@@ -1,6 +1,5 @@
-package com.model;
+package com.Deserializer.model;
 
-import com.j256.ormlite.field.DataType;
 import com.j256.ormlite.field.DatabaseField;
 
 import java.util.ArrayList;
@@ -16,11 +15,13 @@ public class DeserializedMTGCard
     @DatabaseField(generatedId = true)
     private Long id;
 
-
     private String layout;
     private String name;
     private ArrayList<String> names;
     private String manaCost;
+
+
+
     private float cmc;
 
 
@@ -51,7 +52,7 @@ public class DeserializedMTGCard
     private String releaseDate;
     private String reserved;
     private ArrayList<DeserializedMTGCardRuling> rulings;
-    private ArrayList<MTGCardForeignName> foreignNames;
+    private ArrayList<DeserializedMTGCardForeignName> foreignNames;
     private ArrayList<String> printings;
     private String originalText;
     private String originalType;
@@ -299,19 +300,19 @@ public class DeserializedMTGCard
         this.reserved = reserved;
     }
 
-    public ArrayList<MTGCardRulings> getRulings() {
+    public ArrayList<DeserializedMTGCardRuling> getRulings() {
         return rulings;
     }
 
-    public void setRulings(ArrayList<MTGCardRulings> rulings) {
+    public void setRulings(ArrayList<DeserializedMTGCardRuling> rulings) {
         this.rulings = rulings;
     }
 
-    public ArrayList<MTGCardForeignName> getForeignNames() {
+    public ArrayList<DeserializedMTGCardForeignName> getForeignNames() {
         return foreignNames;
     }
 
-    public void setForeignNames(ArrayList<MTGCardForeignName> foreignNames) {
+    public void setForeignNames(ArrayList<DeserializedMTGCardForeignName> foreignNames) {
         this.foreignNames = foreignNames;
     }
 
@@ -371,11 +372,11 @@ public class DeserializedMTGCard
         this.setName = setName;
     }
 
-    public MTGCardLegalities getWork_legalities() {
+    public DeserializedMTGCardLegalities getWork_legalities() {
         return work_legalities;
     }
 
-    public void setWork_legalities(MTGCardLegalities work_legalities) {
+    public void setWork_legalities(DeserializedMTGCardLegalities work_legalities) {
         this.work_legalities = work_legalities;
     }
 

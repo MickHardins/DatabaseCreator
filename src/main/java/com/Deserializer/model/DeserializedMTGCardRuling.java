@@ -1,4 +1,4 @@
-package com.model;
+package com.Deserializer.model;
 
 /**
  * Created by Mick on 19/12/2014.

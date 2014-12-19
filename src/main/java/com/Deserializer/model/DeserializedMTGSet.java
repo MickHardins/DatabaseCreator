@@ -1,4 +1,4 @@
-package com.model;
+package com.Deserializer.model;
 
 import java.util.ArrayList;
 
@@ -94,12 +94,12 @@ public class DeserializedMTGSet
         this.block = block;
     }
 
-    public ArrayList<MTGCard> getCards()
+    public ArrayList<DeserializedMTGCard> getCards()
     {
         return cards;
     }
 
-    public void setCards(ArrayList<MTGCard> cards)
+    public void setCards(ArrayList<DeserializedMTGCard> cards)
     {
         this.cards = cards;
     }

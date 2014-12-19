@@ -1,9 +1,9 @@
-package com.model;
+package com.Deserializer.model;
 
 /**
  * Created by Mick on 19/12/2014.
  */
-public class DeserializedMTGForeignName
+public class DeserializedMTGCardForeignName
 {
     private String name;
     private String language;

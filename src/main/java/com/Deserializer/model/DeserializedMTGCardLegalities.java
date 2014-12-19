@@ -1,4 +1,4 @@
-package com.model;
+package com.Deserializer.model;
 
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -31,7 +31,9 @@ public class DeserializedMTGCardLegalities
     @DatabaseField
     private String pauper;
 
-    public DeserializedMTGCardLegalities() {
+    public DeserializedMTGCardLegalities()
+    {
+
     }
 
     public long getId() {
