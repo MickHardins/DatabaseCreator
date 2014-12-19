@@ -9,6 +9,8 @@ import java.util.HashMap;
 /**
  * Created by Mick on 19/12/2014.
  */
+
+
 public class DeserializedMTGCard
 {
     @DatabaseField(generatedId = true)
@@ -48,7 +50,7 @@ public class DeserializedMTGCard
     private String life;
     private String releaseDate;
     private String reserved;
-    private ArrayList<MTGCardRulings> rulings;
+    private ArrayList<DeserializedMTGCardRuling> rulings;
     private ArrayList<MTGCardForeignName> foreignNames;
     private ArrayList<String> printings;
     private String originalText;
@@ -56,7 +58,7 @@ public class DeserializedMTGCard
     private HashMap<String, String> legalities;
     private String source;
     @DatabaseField(foreign = true)
-    private MTGCardLegalities work_legalities;
+    private DeserializedMTGCardLegalities work_legalities;
 
     // Not part of JSON, will be set later
     private String setCode;
