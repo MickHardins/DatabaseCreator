@@ -27,6 +27,8 @@ public class DeserializedMTGCard
 
     private ArrayList<String> colors;
 
+    private MTGColors work_colors;
+
 
 
     private String type;
@@ -388,18 +390,31 @@ public class DeserializedMTGCard
         this.legalities = legalities;
     }
 
+    public MTGColors getWork_colors() {
+        return work_colors;
+    }
+
+    public void setWork_colors(MTGColors work_colors) {
+        this.work_colors = work_colors;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        MTGCard mtgCard = (MTGCard) o;
+        DeserializedMTGCard that = (DeserializedMTGCard) o;
 
-        if (Float.compare(mtgCard.cmc, cmc) != 0) return false;
-        if (!name.equals(mtgCard.name)) return false;
+        if (Float.compare(that.cmc, cmc) != 0) return false;
+        if (!name.equals(that.name)) return false;
 
         return true;
     }
 
-
+    @Override
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + (cmc != +0.0f ? Float.floatToIntBits(cmc) : 0);
+        return result;
+    }
 }

@@ -3,6 +3,7 @@ package com.Deserializer;
 import com.Deserializer.model.DeserializedMTGCard;
 import com.Deserializer.model.DeserializedMTGCardLegalities;
 import com.Deserializer.model.DeserializedMTGSet;
+import com.Deserializer.model.MTGColors;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -157,5 +158,24 @@ public class CardProcessing
 
         c.setWork_legalities(updated_legalities);
 
+    }
+
+    private static void colorObjectAdder(ArrayList<DeserializedMTGSet> sets)
+    {
+        Map<Integer, MTGColors> colorsMap = new HashMap<>();
+
+        for(DeserializedMTGSet set : sets){
+
+            ArrayList<DeserializedMTGCard> cards = set.getCards();
+
+            for(DeserializedMTGCard card : cards) {
+                int colorID = MTGColors.colorID(card);
+                if(!colorsMap.containsKey(colorID)) {
+                    colorsMap.put(colorID, new MTGColors(colorID));
+                }
+                card.setWork_colors(colorsMap.get(colorID));
+            }
+
+        }
     }
 }
