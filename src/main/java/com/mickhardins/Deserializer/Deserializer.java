@@ -1,4 +1,15 @@
-package com.Deserializer;
+package com.mickhardins.Deserializer;
+
+import com.google.gson.Gson;
+import com.mickhardins.DatabaseFiller.model.MTGSet;
+import com.mickhardins.Deserializer.model.DeserializedMTGCard;
+import com.mickhardins.Deserializer.model.DeserializedMTGSet;
+
+import java.io.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 /**
  * Created by Mick on 19/12/2014.
@@ -6,42 +17,43 @@ package com.Deserializer;
 public class Deserializer
 {
 
-
-    public static void main(String[] args) throws IOException,SQLException
+    public static ArrayList<DeserializedMTGSet> deserialize(String path) throws IOException
     {
 
-        InputStream inputStream = new FileInputStream("C:/Dati/Mick/MTGAPP/AllSetsArray-x-formatted.json");
+        //"C:/Dati/Mick/MTGAPP/AllSetsArray-x-formatted.json"
+
+        InputStream inputStream = new FileInputStream(path);
         Reader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
 
-        MTGSet[] arr = gson.fromJson(reader,MTGSet[].class);
+        DeserializedMTGSet[] arr = gson.fromJson(reader,DeserializedMTGSet[].class);
 
         //converto l'array in arraylist, forse inutilmente//
-        ArrayList<MTGSet> sets = new ArrayList<MTGSet>(Arrays.asList(arr));
+        ArrayList<DeserializedMTGSet> sets = new ArrayList<DeserializedMTGSet>(Arrays.asList(arr));
 
         // Scorri ogni set //
-        for(MTGSet set_x : sets) {
+        for(DeserializedMTGSet set_x : sets) {
 
             /*ottieni tutte le carte del set*/
 
-            ArrayList<MTGCard> cards = set_x.getCards();
+            ArrayList<DeserializedMTGCard> cards = set_x.getCards();
 
             //Per ogni carta del set aggiorna i campi setCode,setName, work_legalities
-            for( MTGCard card_x : cards) {
+            for( DeserializedMTGCard card_x : cards) {
 
                 card_x.setSetName(set_x.getName());
                 card_x.setSetCode(set_x.getCode());
-                hashLegalitiesToObject(card_x);
+                CardProcessing.hashLegalitiesToObject(card_x);
                 System.out.println(card_x.getName()+" Correttamente processata" + "setName: " + card_x.getSetName());
             }
         }
         System.out.println("Finita conversione legalities da hash a oggetto");
-        pauperLegalitiesAdder(sets);
+        CardProcessing.pauperLegalitiesAdder(sets);
         System.out.println("Finita aggiunta di pauper legalities");
 
-        UpdatedSetsContainer uptodatesets = new UpdatedSetsContainer(sets);
+        return sets;
 
-
+        /*
         ConnectionSource connection = new JdbcConnectionSource("jdbc:sqlite:C:/mydatabase.db");
         Dao<MTGSet,Long> MTGSetDAO = DaoManager.createDao(connection, MTGSet.class);
         Dao<MTGCard,Long> MTGCardDAO = DaoManager.createDao(connection,MTGCard.class);
@@ -54,10 +66,14 @@ public class Deserializer
         MTGSet lea = uptodatesets.getUpdated_sets().get(0);
         MTGSetDAO.create(lea);
 
+        */
+
 
 
 
     }
+
+
 
 
 }

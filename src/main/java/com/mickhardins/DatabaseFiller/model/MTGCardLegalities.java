@@ -1,4 +1,4 @@
-package com.Deserializer.model;
+package com.mickhardins.DatabaseFiller.model;
 
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -7,16 +7,13 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 
 @DatabaseTable(tableName = "Legalities")
-public class DeserializedMTGCardLegalities
+public class MTGCardLegalities
 {
-    @DatabaseField(generatedId = true)
+    //@DatabaseField(generatedId = true)
     private Long id;
 
-    @DatabaseField()
+   // @DatabaseField()
     private String standard;
-
-
-
     private String modern;
     private String block;
     private String legacy;
@@ -28,10 +25,10 @@ public class DeserializedMTGCardLegalities
     private String singleton100;
     private String commander;
 
-    @DatabaseField
+   // @DatabaseField
     private String pauper;
 
-    public DeserializedMTGCardLegalities()
+    public MTGCardLegalities()
     {
 
     }

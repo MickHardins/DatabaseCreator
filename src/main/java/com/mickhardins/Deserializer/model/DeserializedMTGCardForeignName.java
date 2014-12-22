@@ -1,4 +1,4 @@
-package com.Deserializer.model;
+package com.mickhardins.Deserializer.model;
 
 /**
  * Created by Mick on 19/12/2014.

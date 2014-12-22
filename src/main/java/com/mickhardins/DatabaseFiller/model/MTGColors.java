@@ -1,13 +1,14 @@
-package com.Deserializer.model;
+package com.mickhardins.DatabaseFiller.model;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.mickhardins.Deserializer.model.DeserializedMTGCard;
 
 /**
  * Created by Mick on 19/12/2014.
  */
 public class MTGColors
 {
-    @DatabaseField(id = "true")
+    @DatabaseField(id = true)
     private int id;
 
     private boolean b = false;
@@ -60,7 +61,7 @@ public class MTGColors
 
     public void setB(boolean b) {
         this.b = b;
-        this.black="Black"
+        this.black="Black";
     }
 
     public boolean isU() {
@@ -69,7 +70,7 @@ public class MTGColors
 
     public void setU(boolean u) {
         this.u = u;
-        this.blue="Blue"
+        this.blue="Blue";
     }
 
     public boolean isW() {
@@ -87,7 +88,7 @@ public class MTGColors
 
     public void setR(boolean r) {
         this.r = r;
-        this.red = "Red"
+        this.red = "Red";
     }
 
     public boolean isG() {
@@ -96,6 +97,14 @@ public class MTGColors
 
     public void setG(boolean g) {
         this.g = g;
-        this.green = "Green"
+        this.green = "Green";
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -1,4 +1,4 @@
-package com.Deserializer.model;
+package com.mickhardins.Deserializer.model;
 
 import java.util.ArrayList;
 
@@ -7,10 +7,10 @@ import java.util.ArrayList;
  */
 public class DeserializedMTGSet
 {
-    @DatabaseField(generatedId = true)
+    //@DatabaseField(generatedId = true)
     private Long                    id;
 
-    @DatabaseField()
+    //@DatabaseField()
     private String					name;
 
     private String					code;
@@ -20,7 +20,7 @@ public class DeserializedMTGSet
     private String					block;
     private String					gathererCode;
 
-    @ForeignCollectionField(eager = true)
+   // @ForeignCollectionField(eager = true)
     private ArrayList<DeserializedMTGCard> cards;
 
     public DeserializedMTGSet() {

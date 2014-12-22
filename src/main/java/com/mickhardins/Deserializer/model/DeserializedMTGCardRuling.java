@@ -1,4 +1,4 @@
-package com.Deserializer.model;
+package com.mickhardins.Deserializer.model;
 
 /**
  * Created by Mick on 19/12/2014.
@@ -26,7 +26,7 @@ public class DeserializedMTGCardRuling
 
     @Override
     public String toString() {
-        return "date: "+ this.getDate() + "\n text:" +this.getText();
+        return "date: "+ this.getDate() + "\n text:" +this.getText() + "\n\n";
     }
 }
 

@@ -1,50 +1,33 @@
-package com.Deserializer.model;
-
-import com.j256.ormlite.field.DatabaseField;
-
-import java.util.ArrayList;
-import java.util.HashMap;
+package com.mickhardins.DatabaseFiller.model;
 
 /**
- * Created by Mick on 19/12/2014.
+ * Created by Mick on 21/12/2014.
  */
-
-
-public class DeserializedMTGCard
+public class MTGCard
 {
-    @DatabaseField(generatedId = true)
+
     private Long id;
 
     private String layout;
     private String name;
-    private ArrayList<String> names;
+    private String names;
     private String manaCost;
-
-
-
     private float cmc;
-
-
-    private ArrayList<String> colors;
-
-    private MTGColors work_colors;
-
-
-
+    private MTGColors colors;
     private String type;
-    private ArrayList<String> supertypes;
-    private ArrayList<String> types;
-    private ArrayList<String> subtypes;
+    private String supertypes;
+    private String types;
+    private String subtypes;
     private String rarity;
     private String text;
     private String flavor;
-    private String artist;
+    private MTGArtist artist;
     private String number;
     private String power;
     private String toughness;
     private Integer loyalty;
     private Integer multiverseid;
-    private ArrayList<String> variations;
+    private String variations;
     private String imageName;
     private String border;
     private String watermark;
@@ -52,31 +35,23 @@ public class DeserializedMTGCard
     private String hand;
     private String life;
     private String releaseDate;
-    private String reserved;
-    private ArrayList<DeserializedMTGCardRuling> rulings;
-    private ArrayList<DeserializedMTGCardForeignName> foreignNames;
-    private ArrayList<String> printings;
+    private boolean reserved;
+    private String rulings;
+
+
+
+    private MTGCardForeignNames foreignNames;
+    private String printings;
     private String originalText;
     private String originalType;
-    private HashMap<String, String> legalities;
-    private String source;
-    @DatabaseField(foreign = true)
-    private DeserializedMTGCardLegalities work_legalities;
 
-    // Not part of JSON, will be set later
+    private String source;
+
+   // @DatabaseField(foreign = true)
+    private MTGCardLegalities legalities;
+
     private String setCode;
     private String setName;
-
-    public DeserializedMTGCard() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getLayout() {
         return layout;
@@ -94,11 +69,11 @@ public class DeserializedMTGCard
         this.name = name;
     }
 
-    public ArrayList<String> getNames() {
+    public String getNames() {
         return names;
     }
 
-    public void setNames(ArrayList<String> names) {
+    public void setNames(String names) {
         this.names = names;
     }
 
@@ -118,11 +93,11 @@ public class DeserializedMTGCard
         this.cmc = cmc;
     }
 
-    public ArrayList<String> getColors() {
+    public MTGColors getColors() {
         return colors;
     }
 
-    public void setColors(ArrayList<String> colors) {
+    public void setColors(MTGColors colors) {
         this.colors = colors;
     }
 
@@ -134,27 +109,27 @@ public class DeserializedMTGCard
         this.type = type;
     }
 
-    public ArrayList<String> getSupertypes() {
+    public String getSupertypes() {
         return supertypes;
     }
 
-    public void setSupertypes(ArrayList<String> supertypes) {
+    public void setSupertypes(String supertypes) {
         this.supertypes = supertypes;
     }
 
-    public ArrayList<String> getTypes() {
+    public String getTypes() {
         return types;
     }
 
-    public void setTypes(ArrayList<String> types) {
+    public void setTypes(String types) {
         this.types = types;
     }
 
-    public ArrayList<String> getSubtypes() {
+    public String getSubtypes() {
         return subtypes;
     }
 
-    public void setSubtypes(ArrayList<String> subtypes) {
+    public void setSubtypes(String subtypes) {
         this.subtypes = subtypes;
     }
 
@@ -182,11 +157,11 @@ public class DeserializedMTGCard
         this.flavor = flavor;
     }
 
-    public String getArtist() {
+    public MTGArtist getArtist() {
         return artist;
     }
 
-    public void setArtist(String artist) {
+    public void setArtist(MTGArtist artist) {
         this.artist = artist;
     }
 
@@ -230,11 +205,11 @@ public class DeserializedMTGCard
         this.multiverseid = multiverseid;
     }
 
-    public ArrayList<String> getVariations() {
+    public String getVariations() {
         return variations;
     }
 
-    public void setVariations(ArrayList<String> variations) {
+    public void setVariations(String variations) {
         this.variations = variations;
     }
 
@@ -294,35 +269,35 @@ public class DeserializedMTGCard
         this.releaseDate = releaseDate;
     }
 
-    public String getReserved() {
+    public boolean isReserved() {
         return reserved;
     }
 
-    public void setReserved(String reserved) {
+    public void setReserved(boolean reserved) {
         this.reserved = reserved;
     }
 
-    public ArrayList<DeserializedMTGCardRuling> getRulings() {
+    public String getRulings() {
         return rulings;
     }
 
-    public void setRulings(ArrayList<DeserializedMTGCardRuling> rulings) {
+    public void setRulings(String rulings) {
         this.rulings = rulings;
     }
 
-    public ArrayList<DeserializedMTGCardForeignName> getForeignNames() {
+    public MTGCardForeignNames getForeignNames() {
         return foreignNames;
     }
 
-    public void setForeignNames(ArrayList<DeserializedMTGCardForeignName> foreignNames) {
+    public void setForeignNames(MTGCardForeignNames foreignNames) {
         this.foreignNames = foreignNames;
     }
 
-    public ArrayList<String> getPrintings() {
+    public String getPrintings() {
         return printings;
     }
 
-    public void setPrintings(ArrayList<String> printings) {
+    public void setPrintings(String printings) {
         this.printings = printings;
     }
 
@@ -342,20 +317,20 @@ public class DeserializedMTGCard
         this.originalType = originalType;
     }
 
-    public HashMap<String, String> getHashlegalities() {
-        return legalities;
-    }
-
-    public void setHashlegalities(HashMap<String, String> hashlegalities) {
-        this.legalities = hashlegalities;
-    }
-
     public String getSource() {
         return source;
     }
 
     public void setSource(String source) {
         this.source = source;
+    }
+
+    public MTGCardLegalities getLegalities() {
+        return legalities;
+    }
+
+    public void setLegalities(MTGCardLegalities legalities) {
+        this.legalities = legalities;
     }
 
     public String getSetCode() {
@@ -374,47 +349,6 @@ public class DeserializedMTGCard
         this.setName = setName;
     }
 
-    public DeserializedMTGCardLegalities getWork_legalities() {
-        return work_legalities;
-    }
-
-    public void setWork_legalities(DeserializedMTGCardLegalities work_legalities) {
-        this.work_legalities = work_legalities;
-    }
-
-    public HashMap<String, String> getLegalities() {
-        return legalities;
-    }
-
-    public void setLegalities(HashMap<String, String> legalities) {
-        this.legalities = legalities;
-    }
-
-    public MTGColors getWork_colors() {
-        return work_colors;
-    }
-
-    public void setWork_colors(MTGColors work_colors) {
-        this.work_colors = work_colors;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        DeserializedMTGCard that = (DeserializedMTGCard) o;
-
-        if (Float.compare(that.cmc, cmc) != 0) return false;
-        if (!name.equals(that.name)) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + (cmc != +0.0f ? Float.floatToIntBits(cmc) : 0);
-        return result;
-    }
 }
+
+
