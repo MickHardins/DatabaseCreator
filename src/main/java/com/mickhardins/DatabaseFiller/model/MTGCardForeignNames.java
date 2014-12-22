@@ -1,21 +1,51 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by Mick on 21/12/2014.
  */
+@DatabaseTable(tableName = "ForeignNames")
 public class MTGCardForeignNames
 {
+
+    @DatabaseField(generatedId = true)
+    private Long id;
+
     private String eng;
+
+    @DatabaseField()
     private String rus;
+
+    @DatabaseField()
     private String spa;
+
+
     private String chis;
+
+
     private String chit;
+
+
     private String ita;
+
+
     private String fra;
+
+
     private String jap;
     private String kor;
     private String por;
     private String ger;
+
+    @DatabaseField(foreign = true)
+    private MTGCard foreigncard; //required by ormlite
+
+    public MTGCardForeignNames()
+    {
+
+    }
 
     public String getEng() {
         return eng;

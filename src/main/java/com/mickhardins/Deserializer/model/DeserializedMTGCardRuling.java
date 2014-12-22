@@ -26,7 +26,7 @@ public class DeserializedMTGCardRuling
 
     @Override
     public String toString() {
-        return "date: "+ this.getDate() + "\n text:" +this.getText() + "\n\n";
+        return "date: "+ this.getDate() + "\ntext:" +this.getText() + "\n\n";
     }
 }
 

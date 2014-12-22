@@ -1,26 +1,43 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
+import com.j256.ormlite.table.DatabaseTable;
+
+import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * Created by Mick on 21/12/2014.
  */
+@DatabaseTable(tableName = "MTGSets")
 public class MTGSet
 {
-    //@DatabaseField(generatedId = true)
+    @DatabaseField(generatedId = true)
     private Long                    id;
 
-   // @DatabaseField()
+   @DatabaseField()
     private String					name;
 
+    @DatabaseField()
     private String					code;
+
+    @DatabaseField()
     private String					releaseDate;
+
+    @DatabaseField()
     private String					border;
+
+    @DatabaseField()
     private String					type;
+
+    @DatabaseField()
     private String					block;
+
+    @DatabaseField()
     private String					gathererCode;
 
-   // @ForeignCollectionField(eager = true)
+    @ForeignCollectionField()
     private Collection<MTGCard> cards;
 
     public String getName() {
@@ -83,7 +100,7 @@ public class MTGSet
         return cards;
     }
 
-    public void setCards(Collection<MTGCard> cards) {
+    public void setCards(ArrayList<MTGCard> cards) {
         this.cards = cards;
     }
 }

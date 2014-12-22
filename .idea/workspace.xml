@@ -2,10 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c4db849a-d536-4e89-a9c0-d1285cfe13e8" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/CardProcessing.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/CardProcessing.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/DatabaseFiller.class" afterPath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/DatabaseFiller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mickhardins/Deserializer/model/DeserializedMTGCardRuling.class" afterPath="$PROJECT_DIR$/target/classes/com/mickhardins/Deserializer/model/DeserializedMTGCardRuling.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mickhardins/Deserializer/Deserializer.class" afterPath="$PROJECT_DIR$/target/classes/com/mickhardins/Deserializer/Deserializer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/model/MTGCard.class" afterPath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/model/MTGCard.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.class" afterPath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/model/MTGSet.class" afterPath="$PROJECT_DIR$/target/classes/com/mickhardins/DatabaseFiller/model/MTGSet.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/DatabaseFiller.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/DatabaseFiller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCardRuling.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCardRuling.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/Deserializer.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/Deserializer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGArtist.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGArtist.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCard.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCard.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardForeignNames.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardForeignNames.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGColors.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGColors.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGSet.java" afterPath="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGSet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DatabaseCreator.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,25 +44,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Deserializer.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/Deserializer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.14964789" vertical-offset="663" max-vertical-offset="1479">
-              <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;class#Deserializer#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DatabaseFiller.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DatabaseFiller.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/DatabaseFiller.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="816">
-              <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-              <folding />
+            <state vertical-scroll-proportion="0.6778169" vertical-offset="788" max-vertical-offset="2261">
+              <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2097#3164#0" expanded="true" />
+                <element signature="e#3163#3164#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -58,9 +61,81 @@
       <file leaf-file-name="MTGSet.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGSet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="1071">
-              <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="401" max-vertical-offset="1360">
+              <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MTGCardForeignNames.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardForeignNames.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="2431">
+              <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#806#807#0" expanded="true" />
+                <element signature="e#832#833#0" expanded="true" />
+                <element signature="e#870#871#0" expanded="true" />
+                <element signature="e#900#901#0" expanded="true" />
+                <element signature="e#930#931#0" expanded="true" />
+                <element signature="e#956#957#0" expanded="true" />
+                <element signature="e#994#995#0" expanded="true" />
+                <element signature="e#1024#1025#0" expanded="true" />
+                <element signature="e#1054#1055#0" expanded="true" />
+                <element signature="e#1080#1081#0" expanded="true" />
+                <element signature="e#1118#1119#0" expanded="true" />
+                <element signature="e#1148#1149#0" expanded="true" />
+                <element signature="e#1179#1180#0" expanded="true" />
+                <element signature="e#1206#1207#0" expanded="true" />
+                <element signature="e#1246#1247#0" expanded="true" />
+                <element signature="e#1278#1279#0" expanded="true" />
+                <element signature="e#1309#1310#0" expanded="true" />
+                <element signature="e#1336#1337#0" expanded="true" />
+                <element signature="e#1376#1377#0" expanded="true" />
+                <element signature="e#1408#1409#0" expanded="true" />
+                <element signature="e#1438#1439#0" expanded="true" />
+                <element signature="e#1464#1465#0" expanded="true" />
+                <element signature="e#1502#1503#0" expanded="true" />
+                <element signature="e#1532#1533#0" expanded="true" />
+                <element signature="e#1562#1563#0" expanded="true" />
+                <element signature="e#1588#1589#0" expanded="true" />
+                <element signature="e#1626#1627#0" expanded="true" />
+                <element signature="e#1656#1657#0" expanded="true" />
+                <element signature="e#1686#1687#0" expanded="true" />
+                <element signature="e#1712#1713#0" expanded="true" />
+                <element signature="e#1750#1751#0" expanded="true" />
+                <element signature="e#1780#1781#0" expanded="true" />
+                <element signature="e#1810#1811#0" expanded="true" />
+                <element signature="e#1836#1837#0" expanded="true" />
+                <element signature="e#1874#1875#0" expanded="true" />
+                <element signature="e#1904#1905#0" expanded="true" />
+                <element signature="e#1934#1935#0" expanded="true" />
+                <element signature="e#1960#1961#0" expanded="true" />
+                <element signature="e#1998#1999#0" expanded="true" />
+                <element signature="e#2028#2029#0" expanded="true" />
+                <element signature="e#2058#2059#0" expanded="true" />
+                <element signature="e#2084#2085#0" expanded="true" />
+                <element signature="e#2122#2123#0" expanded="true" />
+                <element signature="e#2152#2153#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MTGArtist.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGArtist.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="816">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#MTGArtist#0" expanded="false" />
+                <element signature="method#equals#0;class#MTGArtist#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -68,12 +143,13 @@
       <file leaf-file-name="MTGColors.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGColors.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
-              <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1377">
+              <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
               <folding>
                 <element signature="docComment;class#MTGColors#0" expanded="false" />
-                <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
                 <element signature="method#MTGColors#0;class#MTGColors#0" expanded="false" />
+                <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
+                <element signature="method#MTGColors#1;class#MTGColors#0" expanded="false" />
                 <element signature="method#setB#0;class#MTGColors#0" expanded="false" />
                 <element signature="method#setU#0;class#MTGColors#0" expanded="false" />
                 <element signature="method#setW#0;class#MTGColors#0" expanded="false" />
@@ -84,35 +160,27 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MTGCard.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCard.java">
+      <file leaf-file-name="MTGCardLegalities.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="3570">
-              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="1598">
+              <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
               <folding>
-                <element signature="docComment;class#MTGCard#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CardProcessing.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/CardProcessing.java">
+      <file leaf-file-name="MTGCard.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1479">
-              <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="934" max-vertical-offset="4046">
+              <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
               <folding>
-                <element signature="docComment;class#CardProcessing#0" expanded="false" />
-                <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
-                <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
-                <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
-                <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
-                <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
-                <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
-                <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
-                <element signature="e#9825#9940#0" expanded="false" />
-                <element signature="method#rulingstoString#0;class#CardProcessing#0" expanded="false" />
-                <element signature="method#foreignNamesConverter#0;class#CardProcessing#0" expanded="false" />
+                <element signature="docComment;class#MTGCard#0" expanded="false" />
+                <element signature="method#MTGCard#0;class#MTGCard#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -148,19 +216,19 @@
         <option value="$PROJECT_DIR$/src/main/java/com/Deserializer/CardProcessing.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/Deserializer/model/DeserializedMTGCardForeignName.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCardForeignName.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardForeignNames.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/MTGCardLegalities.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCardRuling.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGSet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCard.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/CardProcessing.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCardRuling.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/Deserializer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardForeignNames.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGArtist.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGColors.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGSet.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/DatabaseFiller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/CardProcessing.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/Deserializer.java" />
       </list>
     </option>
   </component>
@@ -226,6 +294,8 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -374,8 +444,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -722,7 +790,8 @@
       <workItem from="1419108131263" duration="1274000" />
       <workItem from="1419118024652" duration="3168000" />
       <workItem from="1419175754995" duration="28617000" />
-      <workItem from="1419208739712" duration="2456000" />
+      <workItem from="1419208739712" duration="4479000" />
+      <workItem from="1419260886062" duration="10514000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Cards Model">
       <created>1419013720994</created>
@@ -740,7 +809,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52716000" />
+    <option name="totallyTimeSpent" value="65253000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -777,10 +846,10 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.5671141" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32885906" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24886535" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32829046" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -845,7 +914,15 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/DatabaseFiller.java</url>
+          <line>99</line>
+          <properties />
+          <option name="timeStamp" value="32" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="33" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -858,7 +935,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="146" max-vertical-offset="714">
           <caret line="29" column="8" selection-start-line="29" selection-start-column="8" selection-end-line="29" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2097#3164#0" expanded="true" />
+            <element signature="e#3163#3164#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -877,10 +958,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="510">
           <caret line="28" column="78" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="78" />
-          <folding>
-            <element signature="e#494#495#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -888,7 +966,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="1615">
           <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -897,6 +977,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="121" max-vertical-offset="1581">
           <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
           </folding>
         </state>
@@ -908,8 +989,9 @@
           <caret line="99" column="29" selection-start-line="99" selection-start-column="29" selection-end-line="99" selection-end-column="29" />
           <folding>
             <element signature="docComment;class#MTGColors#0" expanded="false" />
-            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
             <element signature="method#MTGColors#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#MTGColors#1;class#MTGColors#0" expanded="false" />
             <element signature="method#setB#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setU#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setW#0;class#MTGColors#0" expanded="false" />
@@ -925,6 +1007,7 @@
           <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
           <folding>
             <element signature="docComment;class#MTGCard#0" expanded="false" />
+            <element signature="method#MTGCard#0;class#MTGCard#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -934,12 +1017,15 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="816">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CardProcessing#0" expanded="false" />
             <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#fillingPreparator#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#setsTransporter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
             <element signature="e#9825#9940#0" expanded="false" />
@@ -954,6 +1040,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="612">
           <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="docComment;class#MTGArtist#0" expanded="false" />
             <element signature="method#equals#0;class#MTGArtist#0" expanded="false" />
           </folding>
@@ -965,7 +1052,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1207">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Deserializer#0" expanded="false" />
           </folding>
         </state>
@@ -976,12 +1063,15 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="107" max-vertical-offset="765">
           <caret line="175" column="60" selection-start-line="175" selection-start-column="60" selection-end-line="175" selection-end-column="60" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CardProcessing#0" expanded="false" />
             <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#fillingPreparator#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#setsTransporter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
             <element signature="e#9825#9940#0" expanded="false" />
@@ -1017,6 +1107,8 @@
           <folding>
             <element signature="docComment;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#DeserializedMTGCard#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="e#2101#2102#0" expanded="false" />
+            <element signature="e#2136#2137#0" expanded="false" />
             <element signature="method#setWork_foreignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#setForeignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#equals#0;class#DeserializedMTGCard#0" expanded="false" />
@@ -1031,8 +1123,9 @@
           <caret line="51" column="50" selection-start-line="51" selection-start-column="50" selection-end-line="51" selection-end-column="50" />
           <folding>
             <element signature="docComment;class#MTGColors#0" expanded="false" />
-            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
             <element signature="method#MTGColors#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#MTGColors#1;class#MTGColors#0" expanded="false" />
             <element signature="method#setB#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setU#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setW#0;class#MTGColors#0" expanded="false" />
@@ -1047,6 +1140,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="1632">
           <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
           </folding>
         </state>
@@ -1057,7 +1151,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1207">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Deserializer#0" expanded="false" />
           </folding>
         </state>
@@ -1068,12 +1162,15 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="663">
           <caret line="169" column="13" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CardProcessing#0" expanded="false" />
             <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#fillingPreparator#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#setsTransporter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
             <element signature="e#9825#9940#0" expanded="false" />
@@ -1109,6 +1206,8 @@
           <folding>
             <element signature="docComment;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#DeserializedMTGCard#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="e#2101#2102#0" expanded="false" />
+            <element signature="e#2136#2137#0" expanded="false" />
             <element signature="method#setWork_foreignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#setForeignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#equals#0;class#DeserializedMTGCard#0" expanded="false" />
@@ -1123,8 +1222,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#MTGColors#0" expanded="false" />
-            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
             <element signature="method#MTGColors#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#MTGColors#1;class#MTGColors#0" expanded="false" />
             <element signature="method#setB#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setU#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setW#0;class#MTGColors#0" expanded="false" />
@@ -1139,6 +1239,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="1632">
           <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
           </folding>
         </state>
@@ -1149,7 +1250,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1207">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Deserializer#0" expanded="false" />
           </folding>
         </state>
@@ -1160,12 +1261,15 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="102" max-vertical-offset="663">
           <caret line="169" column="13" selection-start-line="169" selection-start-column="13" selection-end-line="169" selection-end-column="13" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CardProcessing#0" expanded="false" />
             <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#fillingPreparator#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#setsTransporter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
             <element signature="e#9825#9940#0" expanded="false" />
@@ -1201,6 +1305,8 @@
           <folding>
             <element signature="docComment;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#DeserializedMTGCard#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="e#2101#2102#0" expanded="false" />
+            <element signature="e#2136#2137#0" expanded="false" />
             <element signature="method#setWork_foreignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#setForeignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#equals#0;class#DeserializedMTGCard#0" expanded="false" />
@@ -1215,8 +1321,9 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#MTGColors#0" expanded="false" />
-            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
             <element signature="method#MTGColors#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#MTGColors#1;class#MTGColors#0" expanded="false" />
             <element signature="method#setB#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setU#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setW#0;class#MTGColors#0" expanded="false" />
@@ -1231,6 +1338,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="1632">
           <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
           </folding>
         </state>
@@ -1241,7 +1349,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1207">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#Deserializer#0" expanded="false" />
           </folding>
         </state>
@@ -1252,12 +1360,15 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1445">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="docComment;class#CardProcessing#0" expanded="false" />
             <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#fillingPreparator#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#setsTransporter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
             <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
             <element signature="e#9825#9940#0" expanded="false" />
@@ -1293,6 +1404,8 @@
           <folding>
             <element signature="docComment;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#DeserializedMTGCard#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="e#2101#2102#0" expanded="false" />
+            <element signature="e#2136#2137#0" expanded="false" />
             <element signature="method#setWork_foreignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#setForeignNames#0;class#DeserializedMTGCard#0" expanded="false" />
             <element signature="method#equals#0;class#DeserializedMTGCard#0" expanded="false" />
@@ -1307,8 +1420,9 @@
           <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
           <folding>
             <element signature="docComment;class#MTGColors#0" expanded="false" />
-            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
             <element signature="method#MTGColors#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#MTGColors#1;class#MTGColors#0" expanded="false" />
             <element signature="method#setB#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setU#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setW#0;class#MTGColors#0" expanded="false" />
@@ -1323,6 +1437,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="55" max-vertical-offset="1632">
           <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
           </folding>
         </state>
@@ -1336,36 +1451,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardForeignNames.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
-          <caret line="19" column="26" selection-start-line="19" selection-start-column="26" selection-end-line="19" selection-end-column="26" />
-          <folding>
-            <element signature="docComment;class#MTGCardForeignNames#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="705" max-vertical-offset="4301">
-          <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
-          <folding>
-            <element signature="docComment;class#DeserializedMTGCard#0" expanded="false" />
-            <element signature="method#DeserializedMTGCard#0;class#DeserializedMTGCard#0" expanded="false" />
-            <element signature="method#setWork_foreignNames#0;class#DeserializedMTGCard#0" expanded="false" />
-            <element signature="method#setForeignNames#0;class#DeserializedMTGCard#0" expanded="false" />
-            <element signature="method#equals#0;class#DeserializedMTGCard#0" expanded="false" />
-            <element signature="method#hashCode#0;class#DeserializedMTGCard#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCardForeignName.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
           <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/CardProcessing.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="227" max-vertical-offset="986">
+          <caret line="189" column="91" selection-start-line="189" selection-start-column="91" selection-end-line="189" selection-end-column="91" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#CardProcessing#0" expanded="false" />
+            <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#fillingPreparator#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#setsTransporter#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
+            <element signature="e#9825#9940#0" expanded="false" />
+            <element signature="method#rulingstoString#0;class#CardProcessing#0" expanded="false" />
+            <element signature="method#foreignNamesConverter#0;class#CardProcessing#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/Deserializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="510" max-vertical-offset="1156">
+          <caret line="38" column="68" selection-start-line="38" selection-start-column="68" selection-end-line="38" selection-end-column="68" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="docComment;class#Deserializer#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="87" max-vertical-offset="1598">
+          <caret line="29" column="26" selection-start-line="29" selection-start-column="26" selection-end-line="29" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1380,54 +1515,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.072072" vertical-offset="510" max-vertical-offset="4335">
+          <caret line="75" column="35" selection-start-line="75" selection-start-column="35" selection-end-line="75" selection-end-column="35" />
+          <folding>
+            <element signature="docComment;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="method#DeserializedMTGCard#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="e#2101#2102#0" expanded="false" />
+            <element signature="e#2136#2137#0" expanded="false" />
+            <element signature="method#setWork_foreignNames#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="method#setForeignNames#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="method#equals#0;class#DeserializedMTGCard#0" expanded="false" />
+            <element signature="method#hashCode#0;class#DeserializedMTGCard#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardForeignNames.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="2431">
+          <caret line="41" column="4" selection-start-line="41" selection-start-column="4" selection-end-line="41" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#806#807#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#870#871#0" expanded="true" />
+            <element signature="e#900#901#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#956#957#0" expanded="true" />
+            <element signature="e#994#995#0" expanded="true" />
+            <element signature="e#1024#1025#0" expanded="true" />
+            <element signature="e#1054#1055#0" expanded="true" />
+            <element signature="e#1080#1081#0" expanded="true" />
+            <element signature="e#1118#1119#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1179#1180#0" expanded="true" />
+            <element signature="e#1206#1207#0" expanded="true" />
+            <element signature="e#1246#1247#0" expanded="true" />
+            <element signature="e#1278#1279#0" expanded="true" />
+            <element signature="e#1309#1310#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
+            <element signature="e#1376#1377#0" expanded="true" />
+            <element signature="e#1408#1409#0" expanded="true" />
+            <element signature="e#1438#1439#0" expanded="true" />
+            <element signature="e#1464#1465#0" expanded="true" />
+            <element signature="e#1502#1503#0" expanded="true" />
+            <element signature="e#1532#1533#0" expanded="true" />
+            <element signature="e#1562#1563#0" expanded="true" />
+            <element signature="e#1588#1589#0" expanded="true" />
+            <element signature="e#1626#1627#0" expanded="true" />
+            <element signature="e#1656#1657#0" expanded="true" />
+            <element signature="e#1686#1687#0" expanded="true" />
+            <element signature="e#1712#1713#0" expanded="true" />
+            <element signature="e#1750#1751#0" expanded="true" />
+            <element signature="e#1780#1781#0" expanded="true" />
+            <element signature="e#1810#1811#0" expanded="true" />
+            <element signature="e#1836#1837#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+            <element signature="e#1904#1905#0" expanded="true" />
+            <element signature="e#1934#1935#0" expanded="true" />
+            <element signature="e#1960#1961#0" expanded="true" />
+            <element signature="e#1998#1999#0" expanded="true" />
+            <element signature="e#2028#2029#0" expanded="true" />
+            <element signature="e#2058#2059#0" expanded="true" />
+            <element signature="e#2084#2085#0" expanded="true" />
+            <element signature="e#2122#2123#0" expanded="true" />
+            <element signature="e#2152#2153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/model/DeserializedMTGCardRuling.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
-          <caret line="28" column="78" selection-start-line="28" selection-start-column="78" selection-end-line="28" selection-end-column="78" />
-          <folding>
-            <element signature="e#494#495#0" expanded="true" />
-            <element signature="e#579#580#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGArtist.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="44" max-vertical-offset="612">
-          <caret line="13" column="33" selection-start-line="13" selection-start-column="33" selection-end-line="13" selection-end-column="33" />
-          <folding>
-            <element signature="docComment;class#MTGArtist#0" expanded="false" />
-            <element signature="method#equals#0;class#MTGArtist#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCardLegalities.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5940246" vertical-offset="121" max-vertical-offset="1581">
-          <caret line="27" column="5" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
-          <folding>
-            <element signature="method#MTGCardLegalities#0;class#MTGCardLegalities#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGSet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="80" max-vertical-offset="1615">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
+        <state vertical-scroll-proportion="0.568662" vertical-offset="0" max-vertical-offset="568">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGColors.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1139">
-          <caret line="48" column="4" selection-start-line="48" selection-start-column="4" selection-end-line="48" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1377">
+          <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
             <element signature="docComment;class#MTGColors#0" expanded="false" />
-            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
             <element signature="method#MTGColors#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#colorID#0;class#MTGColors#0" expanded="false" />
+            <element signature="method#MTGColors#1;class#MTGColors#0" expanded="false" />
             <element signature="method#setB#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setU#0;class#MTGColors#0" expanded="false" />
             <element signature="method#setW#0;class#MTGColors#0" expanded="false" />
@@ -1437,51 +1612,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGArtist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="816">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#MTGArtist#0" expanded="false" />
+            <element signature="method#equals#0;class#MTGArtist#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="401" max-vertical-offset="1360">
+          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/model/MTGCard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="675" max-vertical-offset="3604">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="934" max-vertical-offset="4046">
+          <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
           <folding>
             <element signature="docComment;class#MTGCard#0" expanded="false" />
+            <element signature="method#MTGCard#0;class#MTGCard#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/DatabaseFiller/DatabaseFiller.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="95" max-vertical-offset="816">
-          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/CardProcessing.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="452" max-vertical-offset="1479">
-          <caret line="191" column="0" selection-start-line="191" selection-start-column="0" selection-end-line="191" selection-end-column="0" />
-          <folding>
-            <element signature="docComment;class#CardProcessing#0" expanded="false" />
-            <element signature="method#isInTheBanList#0;class#CardProcessing#0" expanded="false" />
-            <element signature="method#hasBeenPrintedCommon#0;class#CardProcessing#0" expanded="false" />
-            <element signature="method#pauperLegalitiesAdder#0;class#CardProcessing#0" expanded="false" />
-            <element signature="method#hashLegalitiesToObject#0;class#CardProcessing#0" expanded="false" />
-            <element signature="method#colorObjectAdder#0;class#CardProcessing#0" expanded="false" />
-            <element signature="method#cardSetter#0;class#CardProcessing#0" expanded="false" />
-            <element signature="method#artistConverter#0;class#CardProcessing#0" expanded="false" />
-            <element signature="e#9825#9940#0" expanded="false" />
-            <element signature="method#rulingstoString#0;class#CardProcessing#0" expanded="false" />
-            <element signature="method#foreignNamesConverter#0;class#CardProcessing#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mickhardins/Deserializer/Deserializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14964789" vertical-offset="663" max-vertical-offset="1479">
-          <caret line="46" column="16" selection-start-line="46" selection-start-column="16" selection-end-line="46" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.6778169" vertical-offset="788" max-vertical-offset="2261">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="docComment;class#Deserializer#0" expanded="false" />
+            <element signature="e#2097#3164#0" expanded="true" />
+            <element signature="e#3163#3164#0" expanded="true" />
           </folding>
         </state>
       </provider>

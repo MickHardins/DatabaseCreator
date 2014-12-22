@@ -1,19 +1,35 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by Mick on 21/12/2014.
  */
+
+@DatabaseTable(tableName = "Cards")
 public class MTGCard
 {
 
+    @DatabaseField(generatedId = true)
     private Long id;
 
+    @DatabaseField()
     private String layout;
+
+    @DatabaseField()
     private String name;
+
+    @DatabaseField()
     private String names;
+
+    @DatabaseField()
     private String manaCost;
     private float cmc;
+
+    @DatabaseField(foreign = true)
     private MTGColors colors;
+
     private String type;
     private String supertypes;
     private String types;
@@ -21,7 +37,10 @@ public class MTGCard
     private String rarity;
     private String text;
     private String flavor;
+
+    @DatabaseField(foreign = true)
     private MTGArtist artist;
+
     private String number;
     private String power;
     private String toughness;
@@ -47,11 +66,27 @@ public class MTGCard
 
     private String source;
 
-   // @DatabaseField(foreign = true)
+    @DatabaseField(foreign = true)
     private MTGCardLegalities legalities;
 
     private String setCode;
     private String setName;
+
+    @DatabaseField(foreign = true, foreignAutoRefresh = true)
+    private MTGSet MTGset;  //required by ormlite
+
+    public MTGCard()
+    {
+
+    }
+
+    public MTGSet getMTGset() {
+        return MTGset;
+    }
+
+    public void setMTGset(MTGSet MTGset) {
+        this.MTGset = MTGset;
+    }
 
     public String getLayout() {
         return layout;

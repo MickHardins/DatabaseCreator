@@ -11,10 +11,19 @@ public class MTGColors
     @DatabaseField(id = true)
     private int id;
 
+    @DatabaseField()
     private boolean b = false;
+
+    @DatabaseField()
     private boolean u = false;
+
+    @DatabaseField()
     private boolean w = false;
+
+    @DatabaseField()
     private boolean r = false;
+
+    @DatabaseField()
     private boolean g = false;
 
     private String blue;
@@ -29,8 +38,15 @@ public class MTGColors
     public static final int RED_FLAG    = 8;
     public static final int GREEN_FLAG  = 16;
 
+    @DatabaseField(foreign = true)
+    private MTGCard foreigncard;
 
-    /*TODO aggiungere un costruttore che in base a un numero inzializza i campi*/
+
+
+    public MTGColors()
+    {
+
+    }
 
     public static int colorID(DeserializedMTGCard card)
     {

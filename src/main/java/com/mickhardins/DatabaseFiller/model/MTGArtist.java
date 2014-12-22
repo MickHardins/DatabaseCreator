@@ -1,15 +1,27 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
 /**
  * Created by Mick on 21/12/2014.
  */
+@DatabaseTable(tableName = "Artists")
 public class MTGArtist
 {
+    @DatabaseField(generatedId = true)
     private long id;
 
+    @DatabaseField()
     private String name;
 
 
+    //@DatabaseField(foreign = true,foreignAutoRefresh = true)
+    private MTGCard foreigncard;
+
+    public MTGArtist() {
+
+    }
 
     public MTGArtist(String name){
         this.name = name;
