@@ -1,6 +1,8 @@
 package com.mickhardins.DatabaseFiller;
 
 import com.mickhardins.DatabaseFiller.model.MTGArtist;
+import com.mickhardins.DatabaseFiller.model.MTGColors;
+import com.mickhardins.DatabaseFiller.model.MTGSet;
 import com.mickhardins.Deserializer.CardProcessing;
 import com.mickhardins.Deserializer.Deserializer;
 import com.mickhardins.Deserializer.model.DeserializedMTGCard;
@@ -28,6 +30,10 @@ public class DatabaseFiller
         CardProcessing.rulingstoString(dsets);
 
         CardProcessing.artistConverter(dsets);
+        Map<Integer,MTGColors> map = CardProcessing.colorObjectAdder(dsets);
+
+        ArrayList<MTGSet> sets = CardProcessing.fillingPreparator(dsets);
+
         System.out.println("godo");
 
 

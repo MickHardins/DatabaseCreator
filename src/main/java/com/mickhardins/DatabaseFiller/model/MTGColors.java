@@ -35,6 +35,7 @@ public class MTGColors
     public static int colorID(DeserializedMTGCard card)
     {
         int id = 0;
+        if(card.getColors()== null) return id;
         if(card.getColors().contains("Black"))  id = id | BLACK_FLAG;
         if(card.getColors().contains("Blue"))   id = id | BLUE_FLAG;
         if(card.getColors().contains("White"))  id = id | WHITE_FLAG;
@@ -48,11 +49,26 @@ public class MTGColors
     {
         this.id = colorID;
 
-        if((colorID & BLACK_FLAG) == BLACK_FLAG) this.b = true;
-        if((colorID & BLUE_FLAG) == BLUE_FLAG)   this.u = true;
-        if((colorID & WHITE_FLAG) == WHITE_FLAG) this.w = true;
-        if((colorID & RED_FLAG) == RED_FLAG)     this.r = true;
-        if((colorID & GREEN_FLAG) == GREEN_FLAG) this.g = true;
+        if((colorID & BLACK_FLAG) == BLACK_FLAG){
+            this.b = true;
+            this.black="Black";
+        }
+        if((colorID & BLUE_FLAG) == BLUE_FLAG){
+            this.u = true;
+            this.blue = "Blue";
+        }
+        if((colorID & WHITE_FLAG) == WHITE_FLAG){
+            this.w = true;
+            this.white = "White";
+        }
+        if((colorID & RED_FLAG) == RED_FLAG){
+            this.r = true;
+            this.red="Red";
+        }
+        if((colorID & GREEN_FLAG) == GREEN_FLAG){
+            this.g = true;
+            this.green="Green";
+        }
     }
 
     public boolean isB() {

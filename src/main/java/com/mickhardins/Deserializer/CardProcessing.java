@@ -16,6 +16,7 @@ import java.util.Map;
 public class CardProcessing
 {
 
+    //tested
     public static boolean isInTheBanList(DeserializedMTGCard c)
     {
         ArrayList<String> pauperban = new ArrayList<String>(7);
@@ -31,6 +32,8 @@ public class CardProcessing
 
     }
 
+
+    //tested
     public static boolean hasBeenPrintedCommon(ArrayList<DeserializedMTGSet> sets, DeserializedMTGCard c, ArrayList<String> printings)
     {
 
@@ -54,6 +57,7 @@ public class CardProcessing
 
     }
 
+    //tested
     public static void pauperLegalitiesAdder(ArrayList<DeserializedMTGSet> sets)
     {
 
@@ -99,6 +103,7 @@ public class CardProcessing
         }
     }
 
+    //tested
     public static void hashLegalitiesToObject(DeserializedMTGCard c )
     {
 
@@ -161,7 +166,9 @@ public class CardProcessing
 
     }
 
-    private static void colorObjectAdder(ArrayList<DeserializedMTGSet> sets) {
+    //tested
+    public static Map<Integer,MTGColors> colorObjectAdder(ArrayList<DeserializedMTGSet> sets)
+    {
         Map<Integer, MTGColors> colorsMap = new HashMap<>();
 
         for (DeserializedMTGSet set : sets) {
@@ -177,6 +184,7 @@ public class CardProcessing
             }
 
         }
+        return colorsMap;
     }
 
     public static ArrayList<MTGSet> fillingPreparator(ArrayList<DeserializedMTGSet> dsets) {
@@ -193,7 +201,7 @@ public class CardProcessing
 
     public static MTGSet setsTransporter(DeserializedMTGSet dset)
     {
-        MTGCard card = new MTGCard();
+
         MTGSet set = new MTGSet();
         ArrayList<MTGCard> cards = new ArrayList<>();
         set.setName(dset.getName());
@@ -206,6 +214,7 @@ public class CardProcessing
 
         for(DeserializedMTGCard dcard : dset.getCards()){
 
+            MTGCard card = new MTGCard();
             cards.add(cardSetter(card, dcard));
 
         }
@@ -217,16 +226,29 @@ public class CardProcessing
     {
         card.setLayout(dcard.getLayout());
         card.setName(dcard.getName());
-        card.setNames(dcard.getNames().toString());
+
+        if(dcard.getNames() != null){
+            card.setNames(dcard.getNames().toString());
+        }
+
         card.setManaCost(dcard.getManaCost());
         card.setCmc(dcard.getCmc());
 
         card.setColors(dcard.getWork_colors());
 
         card.setType(dcard.getType());
-        card.setSupertypes(dcard.getSupertypes().toString());
-        card.setTypes(dcard.getTypes().toString());
-        card.setSubtypes(dcard.getSubtypes().toString());
+        if(dcard.getSupertypes() != null){
+            card.setSupertypes(dcard.getSupertypes().toString());
+        }
+
+
+        if(dcard.getTypes() != null) {
+            card.setTypes(dcard.getTypes().toString());
+        }
+        if(dcard.getSubtypes() != null){
+            card.setSubtypes(dcard.getSubtypes().toString());
+        }
+
         card.setRarity(dcard.getRarity());
         card.setText(dcard.getText());
         card.setFlavor(dcard.getFlavor());
@@ -238,7 +260,11 @@ public class CardProcessing
         card.setToughness(dcard.getToughness());
         card.setLoyalty(dcard.getLoyalty());
         card.setMultiverseid(dcard.getMultiverseid());
-        card.setVariations(dcard.getVariations().toString());
+
+        if(dcard.getVariations() != null){
+            card.setVariations(dcard.getVariations().toString());
+        }
+
         card.setImageName(dcard.getImageName());
         card.setBorder(dcard.getBorder());
         card.setWatermark(dcard.getWatermark());
@@ -268,6 +294,7 @@ public class CardProcessing
     }
 
 
+    //tested
     public static void artistConverter(ArrayList<DeserializedMTGSet> sets)
     {
 
@@ -298,6 +325,7 @@ public class CardProcessing
 
     }
 
+    //tested
     public static void rulingstoString(ArrayList<DeserializedMTGSet> sets)
     {
 
@@ -326,6 +354,7 @@ public class CardProcessing
         System.out.println("FINITA CONVERSIONE RULINGS");
     }
 
+    //tested
     public static void foreignNamesConverter(ArrayList<DeserializedMTGSet> sets)
     {
 
