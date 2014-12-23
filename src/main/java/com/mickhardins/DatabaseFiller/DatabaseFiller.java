@@ -70,6 +70,7 @@ public class DatabaseFiller
                         card.setMTGset(set);
                         MTGCardDAO.create(card);
                         MTGCardDAO.update(card);
+                        MTGArtistDAO.update(artist);
 
                     }
 

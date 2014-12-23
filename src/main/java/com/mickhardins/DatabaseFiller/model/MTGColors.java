@@ -1,11 +1,13 @@
 package com.mickhardins.DatabaseFiller.model;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import com.mickhardins.Deserializer.model.DeserializedMTGCard;
 
 /**
  * Created by Mick on 19/12/2014.
  */
+@DatabaseTable(tableName = "MTGColors")
 public class MTGColors
 {
     @DatabaseField(id = true)
@@ -32,13 +34,17 @@ public class MTGColors
     private String red;
     private String green;
 
+    @DatabaseField
+    private String summary = "";
+
     public static final int BLACK_FLAG  = 1;
     public static final int BLUE_FLAG   = 2;
     public static final int WHITE_FLAG  = 4;
     public static final int RED_FLAG    = 8;
     public static final int GREEN_FLAG  = 16;
 
-    @DatabaseField(foreign = true)
+
+    //required by ormlite
     private MTGCard foreigncard;
 
 
@@ -68,23 +74,39 @@ public class MTGColors
         if((colorID & BLACK_FLAG) == BLACK_FLAG){
             this.b = true;
             this.black="Black";
+            this.summary = summary + "Black, ";
         }
         if((colorID & BLUE_FLAG) == BLUE_FLAG){
             this.u = true;
             this.blue = "Blue";
+            this.summary = summary + "Blue, ";
         }
         if((colorID & WHITE_FLAG) == WHITE_FLAG){
             this.w = true;
             this.white = "White";
+            this.summary = summary + "White, ";
         }
         if((colorID & RED_FLAG) == RED_FLAG){
             this.r = true;
             this.red="Red";
+            this.summary = summary + "Red, ";
         }
         if((colorID & GREEN_FLAG) == GREEN_FLAG){
             this.g = true;
             this.green="Green";
+            this.summary = summary + "Green, ";
         }
+        if(colorID == 0) {
+            this.summary = "Colorless";
+        }
+
+        if(this.summary.equals("Colorless")){
+            this.summary = "Colorless";
+        }
+        else {
+            this.summary = summary.substring(0, summary.length()-1);
+        }
+
     }
 
     public boolean isB() {

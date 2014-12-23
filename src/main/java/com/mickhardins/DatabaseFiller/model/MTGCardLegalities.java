@@ -15,15 +15,35 @@ public class MTGCardLegalities
 
     @DatabaseField()
     private String standard;
+
+    @DatabaseField
     private String modern;
+
+    @DatabaseField
     private String block;
+
+    @DatabaseField
     private String legacy;
+
+    @DatabaseField
     private String vintage;
+
+    @DatabaseField
     private String freeform;
+
+    @DatabaseField
     private String prismatic;
+
+    @DatabaseField
     private String tribal_wars_legacy;
+
+    @DatabaseField
     private String tribal_wars_standard;
+
+    @DatabaseField
     private String singleton100;
+
+    @DatabaseField
     private String commander;
 
     @DatabaseField()

@@ -16,7 +16,8 @@ public class MTGArtist
     private String name;
 
 
-    //@DatabaseField(foreign = true,foreignAutoRefresh = true)
+
+    //@DatabaseField(foreign = true)
     private MTGCard foreigncard;
 
     public MTGArtist() {

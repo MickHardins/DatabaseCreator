@@ -21,22 +21,32 @@ public class MTGCardForeignNames
     @DatabaseField()
     private String spa;
 
-
+    @DatabaseField
     private String chis;
 
 
+    @DatabaseField
     private String chit;
 
 
+    @DatabaseField
     private String ita;
 
 
+    @DatabaseField
     private String fra;
 
 
+    @DatabaseField
     private String jap;
+
+    @DatabaseField
     private String kor;
+
+    @DatabaseField
     private String por;
+
+    @DatabaseField
     private String ger;
 
     @DatabaseField(foreign = true)

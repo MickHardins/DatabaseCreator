@@ -16,7 +16,7 @@ import java.util.HashMap;
 
 public class DeserializedMTGCard
 {
-    @DatabaseField(generatedId = true)
+
     private Long id;
 
     private String layout;
@@ -55,7 +55,7 @@ public class DeserializedMTGCard
     private String originalType;
     private HashMap<String, String> legalities;
     private String source;
-    @DatabaseField(foreign = true)
+
     private MTGCardLegalities work_legalities;
 
     // Not part of JSON, will be set later

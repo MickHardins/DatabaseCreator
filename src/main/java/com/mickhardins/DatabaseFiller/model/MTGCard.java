@@ -25,51 +25,105 @@ public class MTGCard
 
     @DatabaseField()
     private String manaCost;
+
+    @DatabaseField()
     private float cmc;
 
     @DatabaseField(foreign = true)
     private MTGColors colors;
 
+
+    @DatabaseField()
     private String type;
+
+    @DatabaseField()
     private String supertypes;
+
+    @DatabaseField()
     private String types;
+
+    @DatabaseField()
     private String subtypes;
+
+    @DatabaseField()
     private String rarity;
+
+    @DatabaseField()
     private String text;
+
+    @DatabaseField()
     private String flavor;
 
     @DatabaseField(foreign = true)
     private MTGArtist artist;
 
+    @DatabaseField()
     private String number;
+
+    @DatabaseField()
     private String power;
+
+    @DatabaseField()
     private String toughness;
+
+    @DatabaseField()
     private Integer loyalty;
+
+    @DatabaseField()
     private Integer multiverseid;
+
+    @DatabaseField()
     private String variations;
+
+    @DatabaseField()
     private String imageName;
+
+    @DatabaseField()
     private String border;
+
+    @DatabaseField()
     private String watermark;
+
+    @DatabaseField()
     private boolean timeshifted;
+
+    @DatabaseField()
     private String hand;
+
+    @DatabaseField()
     private String life;
+
+    @DatabaseField()
     private String releaseDate;
+
+    @DatabaseField()
     private boolean reserved;
+
+    @DatabaseField()
     private String rulings;
 
-
-
+    @DatabaseField(foreign  =true)
     private MTGCardForeignNames foreignNames;
+
+    @DatabaseField()
     private String printings;
+
+    //@DatabaseField()
     private String originalText;
+
+    //@DatabaseField()
     private String originalType;
 
+    @DatabaseField()
     private String source;
 
     @DatabaseField(foreign = true)
     private MTGCardLegalities legalities;
 
+    @DatabaseField()
     private String setCode;
+
+    @DatabaseField()
     private String setName;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
