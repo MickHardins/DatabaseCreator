@@ -1,5 +1,6 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -10,9 +11,10 @@ import com.j256.ormlite.table.DatabaseTable;
 public class MTGArtist
 {
     @DatabaseField(generatedId = true)
-    private long id;
+    transient private long id;
 
     @DatabaseField()
+    @SerializedName("a")
     private String name;
 
 

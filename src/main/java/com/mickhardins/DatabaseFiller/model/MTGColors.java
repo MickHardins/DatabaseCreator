@@ -1,5 +1,6 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import com.mickhardins.Deserializer.model.DeserializedMTGCard;
@@ -11,9 +12,10 @@ import com.mickhardins.Deserializer.model.DeserializedMTGCard;
 public class MTGColors
 {
     @DatabaseField(id = true)
-    private int id;
+    transient private int id;
 
     @DatabaseField()
+
     private boolean b = false;
 
     @DatabaseField()
@@ -28,13 +30,23 @@ public class MTGColors
     @DatabaseField()
     private boolean g = false;
 
+    @SerializedName("a1")
     private String blue;
+
+    @SerializedName("b1")
     private String black;
+
+    @SerializedName("c1")
     private String white;
+
+    @SerializedName("d1")
     private String red;
+
+    @SerializedName("e1")
     private String green;
 
     @DatabaseField
+    @SerializedName("f1")
     private String summary = "";
 
     public static final int BLACK_FLAG  = 1;

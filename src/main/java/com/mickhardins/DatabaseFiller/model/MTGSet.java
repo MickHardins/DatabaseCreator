@@ -1,5 +1,6 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
@@ -14,27 +15,34 @@ import java.util.Collection;
 public class MTGSet
 {
     @DatabaseField(generatedId = true)
-    private Long                    id;
+    transient private Long                    id;
 
    @DatabaseField()
+   @SerializedName("a")
     private String					name;
 
     @DatabaseField()
+    @SerializedName("b")
     private String					code;
 
     @DatabaseField()
+    @SerializedName("c")
     private String					releaseDate;
 
     @DatabaseField()
+    @SerializedName("d")
     private String					border;
 
     @DatabaseField()
+    @SerializedName("e")
     private String					type;
 
     @DatabaseField()
+    @SerializedName("f")
     private String					block;
 
     @DatabaseField()
+    @SerializedName("g")
     private String					gathererCode;
 
     @ForeignCollectionField()

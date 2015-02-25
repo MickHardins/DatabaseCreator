@@ -32,7 +32,6 @@ public class CardProcessing
 
     }
 
-
     //tested
     public static boolean hasBeenPrintedCommon(ArrayList<DeserializedMTGSet> sets, DeserializedMTGCard c, ArrayList<String> printings)
     {
@@ -167,8 +166,11 @@ public class CardProcessing
     }
 
     //tested
-    public static Map<Integer,MTGColors> colorObjectAdder(ArrayList<DeserializedMTGSet> sets)
+    public static void colorObjectAdder(ArrayList<DeserializedMTGSet> sets)
     {
+        /*Per ogni carta del set, calcolo i colori,li aggiungo alla mappa, per ogni carta
+        se il colore è presente nella hashmap glielo assegno  */
+
         Map<Integer, MTGColors> colorsMap = new HashMap<>();
 
         for (DeserializedMTGSet set : sets) {
@@ -184,7 +186,7 @@ public class CardProcessing
             }
 
         }
-        return colorsMap;
+
     }
 
     public static ArrayList<MTGSet> fillingPreparator(ArrayList<DeserializedMTGSet> dsets) {

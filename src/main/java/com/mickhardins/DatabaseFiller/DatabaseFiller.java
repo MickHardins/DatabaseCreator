@@ -20,8 +20,10 @@ import java.util.Map;
 import java.util.concurrent.Callable;
 
 /**
- * Created by Mick on 21/12/2014.
+ * Crea un database e riserializza ogni set singolarmente dopo averlo GZippato
  */
+
+
 
 public class DatabaseFiller
 {
@@ -88,33 +90,45 @@ public class DatabaseFiller
 
     public static void main (String[] args) throws IOException,SQLException
     {
+        //Deserializza dal file Allsets
+        ArrayList<DeserializedMTGSet> dsets = Deserializer.deserializeMTGset("C:/Dati/Mick/MTGAPP/AllSetsArray-x-19-02-2015.json");
 
-        ArrayList<DeserializedMTGSet> dsets = Deserializer.deserialize("C:/Dati/Mick/MTGAPP/AllSetsArray-x-formatted.json");
+        //Converte i foreignNames in oggetti
         CardProcessing.foreignNamesConverter(dsets);
+
+        //Converte l'oggetto Rulings in stringa
         CardProcessing.rulingstoString(dsets);
 
+        //Converte gli Artisti in oggetti
         CardProcessing.artistConverter(dsets);
-        Map<Integer,MTGColors> map = CardProcessing.colorObjectAdder(dsets);
+
+
+        CardProcessing.colorObjectAdder(dsets);
 
         ArrayList<MTGSet> sets = CardProcessing.fillingPreparator(dsets);
 
+
+
+        /*Deserializer.serialize(sets);
+        System.out.println("Write successfull!");*/
+
+        String[] arr = Deserializer.deserializeMTGSetCode("C:/Dati/Mick/MTGAPP/SetCodes.json");
+        Deserializer.setCodestoURL(arr);
+        Deserializer.serializeSetCodesURLs(arr);
+
+        System.out.println("finita deserializzazione setcodes");
+
+
+
+
+
+
+
+
+        /* Inserisce gli oggetti nel database SQlite chiamando il metodo databaseFiller
         databaseFiller(sets);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        */
 
         /*ArrayList<MTGCard> cards = (ArrayList<MTGCard>)sets.get(0).getCards();
         MTGCard card =cards.get(10);

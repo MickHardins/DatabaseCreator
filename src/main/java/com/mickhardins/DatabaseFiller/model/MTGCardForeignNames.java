@@ -1,5 +1,6 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -11,42 +12,53 @@ public class MTGCardForeignNames
 {
 
     @DatabaseField(generatedId = true)
-    private Long id;
+     transient private Long id;
+
 
     private String eng;
 
     @DatabaseField()
+    @SerializedName("a")
     private String rus;
 
     @DatabaseField()
+    @SerializedName("b")
     private String spa;
 
     @DatabaseField
+    @SerializedName("c")
     private String chis;
 
 
     @DatabaseField
+    @SerializedName("d")
     private String chit;
 
 
     @DatabaseField
+    @SerializedName("e")
     private String ita;
 
 
     @DatabaseField
+    @SerializedName("f")
     private String fra;
 
 
     @DatabaseField
+    @SerializedName("g")
     private String jap;
 
     @DatabaseField
+    @SerializedName("h")
     private String kor;
 
     @DatabaseField
+    @SerializedName("i")
     private String por;
 
     @DatabaseField
+    @SerializedName("j")
     private String ger;
 
     @DatabaseField(foreign = true)

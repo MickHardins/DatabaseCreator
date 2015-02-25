@@ -9,6 +9,7 @@ import java.io.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.zip.GZIPOutputStream;
 
 
 /**
@@ -17,7 +18,7 @@ import java.util.Arrays;
 public class Deserializer
 {
 
-    public static ArrayList<DeserializedMTGSet> deserialize(String path) throws IOException
+    public static ArrayList<DeserializedMTGSet> deserializeMTGset(String path) throws IOException
     {
 
         //"C:/Dati/Mick/MTGAPP/AllSetsArray-x-formatted.json"
@@ -48,12 +49,114 @@ public class Deserializer
             }
         }
         System.out.println("Finita conversione legalities da hash a oggetto");
+        //aggiunta della pauper legalities
         CardProcessing.pauperLegalitiesAdder(sets);
+
         System.out.println("Finita aggiunta di pauper legalities");
 
         return sets;
     }
 
+    public static void serialize(ArrayList<MTGSet> sets) throws IOException
+    {
+        /* Serializza ogni set escludendo i campi id e GZippa i file
+         */
+
+        for(MTGSet set_x : sets){
+
+
+            String setCode = set_x.getCode();
+            Gson gson = new Gson();
+            String json = gson.toJson(set_x);
+            FileWriter writer;
+            if(set_x.getCode().equals("CON")){
+                writer = new FileWriter("C:/Dati/Mick/MTGAPP/CorrectedSets/_"+setCode+".json");
+            }
+            else {
+                writer = new FileWriter("C:/Dati/Mick/MTGAPP/CorrectedSets/"+setCode+".json");
+            }
+
+            writer.write(json);
+            writer.close();
+            compressSets(set_x);
+        }
+
+
+        /*for(MTGSet set_x : sets) {
+            File f = new File("C:/Dati/Mick/MTGAPP/CorrectedSets/" + set_x.getCode() + ".json");
+            if (!f.exists()) {
+                System.out.println(set_x.getCode());
+            }
+
+        }*/
+    }
+
+    public static void compressSets(MTGSet set) throws IOException
+    {
+        byte[] buffer = new byte[1024];
+
+        String setCode = set.getCode();
+        String sourcepath = "";
+        String destination_path = "";
+        if(set.getCode().equals("CON")){
+
+            sourcepath = "C:/Dati/Mick/MTGAPP/CorrectedSets/_"+setCode+".json";
+            destination_path = "C:/Dati/Mick/MTGAPP/CorrectedSets/_"+setCode+".json.gzip";
+
+        }
+        else {
+
+            sourcepath = "C:/Dati/Mick/MTGAPP/CorrectedSets/"+setCode+".json";
+            destination_path = "C:/Dati/Mick/MTGAPP/CorrectedSets/"+setCode+".json.gzip";
+
+        }
+        FileOutputStream fileOutputStream = new FileOutputStream(destination_path);
+        GZIPOutputStream gzipOutputStream = new GZIPOutputStream(fileOutputStream);
+        FileInputStream fileInputStream = new FileInputStream(sourcepath);
+        int bytes_read;
+        while ((bytes_read = fileInputStream.read(buffer)) > 0) {
+            gzipOutputStream.write(buffer, 0, bytes_read);
+            }
+        fileInputStream.close();
+        gzipOutputStream.finish();
+        gzipOutputStream.close();
+        System.out.println("The file was compressed successfully!");
+
+    }
+
+    public static String[] deserializeMTGSetCode(String path) throws IOException
+    {
+        InputStream inputStream = new FileInputStream(path);
+        Reader reader = new InputStreamReader(inputStream);
+        Gson gson = new Gson();
+        String[] setCodes;
+        setCodes = gson.fromJson(reader,String[].class);
+        System.out.println("Deserializzati sets");
+        return setCodes;
+    }
+
+    public static String[] setCodestoURL(String[] arr)
+    {
+        for (int i = 0; i<arr.length;i++){
+            if(arr[i].equals("CON")){
+                arr[i] = "_CON";
+            }
+            String part1 = "https://sites.google.com/site/mtgrecall/sets/";
+            String part2 = ".json.gzip?attredirects=0&d=1";
+            String result = part1 + arr[i] + part2;
+            arr[i]=result;
+        }
+        return arr;
+    }
+
+    public static void serializeSetCodesURLs(String[] arr)throws IOException
+    {
+        Gson gson = new Gson();
+        String json = gson.toJson(arr);
+        FileWriter writer = new FileWriter("C:/Dati/Mick/MTGAPP/SetURLs.json");
+        writer.write(json);
+        writer.close();
+    }
 
 
 

@@ -1,5 +1,7 @@
 package com.mickhardins.Deserializer.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 
 /**
@@ -8,16 +10,26 @@ import java.util.ArrayList;
 public class DeserializedMTGSet
 {
     //@DatabaseField(generatedId = true)
-    private Long                    id;
+   transient private Long                    id;
 
     //@DatabaseField()
+
     private String					name;
 
+
     private String					code;
+
+
     private String					releaseDate;
+
+
     private String					border;
+
     private String					type;
+
+
     private String					block;
+
     private String					gathererCode;
 
    // @ForeignCollectionField(eager = true)

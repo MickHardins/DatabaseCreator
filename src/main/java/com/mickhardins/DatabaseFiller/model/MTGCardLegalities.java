@@ -1,5 +1,6 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -11,42 +12,54 @@ import com.j256.ormlite.table.DatabaseTable;
 public class MTGCardLegalities
 {
     @DatabaseField(generatedId = true)
-    private Long id;
+     transient private Long id;
 
     @DatabaseField()
+    @SerializedName("a")
     private String standard;
 
     @DatabaseField
+    @SerializedName("b")
     private String modern;
 
     @DatabaseField
+    @SerializedName("c")
     private String block;
 
     @DatabaseField
+    @SerializedName("d")
     private String legacy;
 
     @DatabaseField
+    @SerializedName("e")
     private String vintage;
 
     @DatabaseField
+    @SerializedName("f")
     private String freeform;
 
     @DatabaseField
+    @SerializedName("g")
     private String prismatic;
 
     @DatabaseField
+    @SerializedName("h")
     private String tribal_wars_legacy;
 
     @DatabaseField
+    @SerializedName("i")
     private String tribal_wars_standard;
 
     @DatabaseField
+    @SerializedName("j")
     private String singleton100;
 
     @DatabaseField
+    @SerializedName("k")
     private String commander;
 
     @DatabaseField()
+    @SerializedName("l")
     private String pauper;
 
     public MTGCardLegalities()

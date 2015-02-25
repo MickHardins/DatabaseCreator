@@ -6,6 +6,7 @@ import com.mickhardins.DatabaseFiller.model.MTGCardForeignNames;
 import com.mickhardins.DatabaseFiller.model.MTGCardLegalities;
 import com.mickhardins.DatabaseFiller.model.MTGColors;
 
+import java.beans.Transient;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -16,6 +17,7 @@ import java.util.HashMap;
 
 public class DeserializedMTGCard
 {
+
 
     private Long id;
 

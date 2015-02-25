@@ -1,5 +1,7 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
@@ -12,118 +14,155 @@ public class MTGCard
 {
 
     @DatabaseField(generatedId = true)
-    private Long id;
+    transient private Long id;
 
     @DatabaseField()
+    @SerializedName("a")
     private String layout;
 
     @DatabaseField()
+    @SerializedName("b")
     private String name;
 
     @DatabaseField()
+    @SerializedName("c")
     private String names;
 
     @DatabaseField()
+    @SerializedName("d")
     private String manaCost;
 
     @DatabaseField()
+    @SerializedName("e")
     private float cmc;
 
     @DatabaseField(foreign = true)
+    @SerializedName("f")
     private MTGColors colors;
 
 
     @DatabaseField()
+    @SerializedName("g")
     private String type;
 
     @DatabaseField()
+    @SerializedName("h")
     private String supertypes;
 
     @DatabaseField()
+    @SerializedName("i")
     private String types;
 
     @DatabaseField()
+    @SerializedName("j")
     private String subtypes;
 
     @DatabaseField()
+    @SerializedName("k")
     private String rarity;
 
     @DatabaseField()
+    @SerializedName("l")
     private String text;
 
     @DatabaseField()
+    @SerializedName("m")
     private String flavor;
 
     @DatabaseField(foreign = true)
+    @SerializedName("n")
     private MTGArtist artist;
 
     @DatabaseField()
+    @SerializedName("o")
     private String number;
 
     @DatabaseField()
+    @SerializedName("p")
     private String power;
 
     @DatabaseField()
+    @SerializedName("q")
     private String toughness;
 
     @DatabaseField()
+    @SerializedName("r")
     private Integer loyalty;
 
     @DatabaseField()
+    @SerializedName("s")
     private Integer multiverseid;
 
     @DatabaseField()
+    @SerializedName("t")
     private String variations;
 
     @DatabaseField()
+    @SerializedName("u")
     private String imageName;
 
     @DatabaseField()
+    @SerializedName("v")
     private String border;
 
     @DatabaseField()
+    @SerializedName("w")
     private String watermark;
 
     @DatabaseField()
+    @SerializedName("x")
     private boolean timeshifted;
 
     @DatabaseField()
+    @SerializedName("y")
     private String hand;
 
     @DatabaseField()
+    @SerializedName("z")
     private String life;
 
     @DatabaseField()
+    @SerializedName("a1")
     private String releaseDate;
 
     @DatabaseField()
+    @SerializedName("b1")
     private boolean reserved;
 
     @DatabaseField()
+    @SerializedName("c1")
     private String rulings;
 
     @DatabaseField(foreign  =true)
+    @SerializedName("d1")
     private MTGCardForeignNames foreignNames;
 
     @DatabaseField()
+    @SerializedName("e1")
     private String printings;
 
     //@DatabaseField()
-    private String originalText;
+    @Expose
+    transient private String originalText;
 
     //@DatabaseField()
-    private String originalType;
+    @Expose
+    transient private String originalType;
 
     @DatabaseField()
+    @SerializedName("f1")
     private String source;
 
     @DatabaseField(foreign = true)
+    @SerializedName("g1")
     private MTGCardLegalities legalities;
 
     @DatabaseField()
+    @SerializedName("h1")
     private String setCode;
 
     @DatabaseField()
+    @SerializedName("i1")
     private String setName;
 
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
