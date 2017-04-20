@@ -1,6 +1,7 @@
 package com.mickhardins.Deserializer;
 
 import com.google.gson.Gson;
+import com.mickhardins.DatabaseFiller.DatabaseFiller;
 import com.mickhardins.DatabaseFiller.model.MTGSet;
 import com.mickhardins.Deserializer.model.DeserializedMTGCard;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
@@ -44,7 +45,7 @@ public class Deserializer
 
                 card_x.setSetName(set_x.getName());
                 card_x.setSetCode(set_x.getCode());
-                CardProcessing.hashLegalitiesToObject(card_x);
+                CardProcessing.legalityArrToObject(card_x);
 
             }
         }
@@ -70,10 +71,10 @@ public class Deserializer
             String json = gson.toJson(set_x);
             FileWriter writer;
             if(set_x.getCode().equals("CON")){
-                writer = new FileWriter("C:/Dati/Mick/MTGAPP/CorrectedSets/_"+setCode+".json");
+                writer = new FileWriter(DatabaseFiller.SERIALIZED_SET_DIR + "_"+setCode+".json");
             }
             else {
-                writer = new FileWriter("C:/Dati/Mick/MTGAPP/CorrectedSets/"+setCode+".json");
+                writer = new FileWriter(DatabaseFiller.SERIALIZED_SET_DIR + setCode + ".json");
             }
 
             writer.write(json);
@@ -100,14 +101,14 @@ public class Deserializer
         String destination_path = "";
         if(set.getCode().equals("CON")){
 
-            sourcepath = "C:/Dati/Mick/MTGAPP/CorrectedSets/_"+setCode+".json";
-            destination_path = "C:/Dati/Mick/MTGAPP/CorrectedSets/_"+setCode+".json.gzip";
+            sourcepath = DatabaseFiller.SERIALIZED_SET_DIR + "_" + setCode + ".json";
+            destination_path = DatabaseFiller.SERIALIZED_SET_DIR + "_" + setCode + ".json.gzip";
 
         }
         else {
 
-            sourcepath = "C:/Dati/Mick/MTGAPP/CorrectedSets/"+setCode+".json";
-            destination_path = "C:/Dati/Mick/MTGAPP/CorrectedSets/"+setCode+".json.gzip";
+            sourcepath = DatabaseFiller.SERIALIZED_SET_DIR  + setCode + ".json";
+            destination_path = DatabaseFiller.SERIALIZED_SET_DIR  + setCode + ".json.gzip";
 
         }
         FileOutputStream fileOutputStream = new FileOutputStream(destination_path);
@@ -149,11 +150,11 @@ public class Deserializer
         return arr;
     }
 
-    public static void serializeSetCodesURLs(String[] arr)throws IOException
+    public static void serializeSetCodesURLs(String[] arr, String outPath)throws IOException
     {
         Gson gson = new Gson();
         String json = gson.toJson(arr);
-        FileWriter writer = new FileWriter("C:/Dati/Mick/MTGAPP/SetURLs.json");
+        FileWriter writer = new FileWriter(outPath + "SetURLs.json");
         writer.write(json);
         writer.close();
     }

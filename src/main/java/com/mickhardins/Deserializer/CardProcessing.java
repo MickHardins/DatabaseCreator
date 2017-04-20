@@ -1,10 +1,7 @@
 package com.mickhardins.Deserializer;
 
 import com.mickhardins.DatabaseFiller.model.*;
-import com.mickhardins.Deserializer.model.DeserializedMTGCard;
-import com.mickhardins.Deserializer.model.DeserializedMTGCardForeignName;
-import com.mickhardins.Deserializer.model.DeserializedMTGCardRuling;
-import com.mickhardins.Deserializer.model.DeserializedMTGSet;
+import com.mickhardins.Deserializer.model.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +14,9 @@ public class CardProcessing
 {
 
     //tested
+    /* TODO dal momento che pauper è un formato nato per l'online valutare se aggiornare o meno
+
+     */
     public static boolean isInTheBanList(DeserializedMTGCard c)
     {
         ArrayList<String> pauperban = new ArrayList<String>(7);
@@ -103,11 +103,10 @@ public class CardProcessing
     }
 
     //tested
-    public static void hashLegalitiesToObject(DeserializedMTGCard c )
-    {
+    public static void legalityArrToObject(DeserializedMTGCard c ) {
 
-        HashMap<String,String> map = c.getLegalities();
-        if(map == (null)){
+        ArrayList<DeserializedMTGLegalities> legalityList = c.getLegalities();
+        if(legalityList == (null)){
             return;
         }
 
@@ -116,45 +115,45 @@ public class CardProcessing
         //if (map.entrySet().equals(null)){System.out.print(c.getName() + "porcoddio");}
 
 
-        for(Map.Entry<String, String> entry : map.entrySet()) {
-            /*valuta il nome della chiave e inserisci il valore associato nel giusto campo dell'oggetto MTGCardLegalities*/
-            String chiave = entry.getKey();
-            if(chiave.contains("Block")) {
+        for( DeserializedMTGLegalities legality : legalityList) {
+            /*valuta il nome del formato e inserisci il valore associato nel giusto campo dell'oggetto MTGCardLegalities*/
+            String formato = legality.getFormat();
+            if(formato.contains("Block")) {
 
-                updated_legalities.setBlock(entry.getValue());
+                updated_legalities.setBlock(legality.getLegality());
                 continue;
 
             }
-            switch(chiave) {
+            switch(formato) {
                 case "Standard":
-                    updated_legalities.setStandard(entry.getValue());
+                    updated_legalities.setStandard(legality.getLegality());
                     break;
                 case "Modern":
-                    updated_legalities.setModern(entry.getValue());
+                    updated_legalities.setModern(legality.getLegality());
                     break;
                 case "Legacy":
-                    updated_legalities.setLegacy(entry.getValue());
+                    updated_legalities.setLegacy(legality.getLegality());
                     break;
                 case "Vintage":
-                    updated_legalities.setVintage(entry.getValue());
+                    updated_legalities.setVintage(legality.getLegality());
                     break;
                 case "Freeform":
-                    updated_legalities.setFreeform(entry.getValue());
+                    updated_legalities.setFreeform(legality.getLegality());
                     break;
                 case "Prismatic":
-                    updated_legalities.setPrismatic(entry.getValue());
+                    updated_legalities.setPrismatic(legality.getLegality());
                     break;
                 case "Tribal Wars Legacy":
-                    updated_legalities.setTribal_wars_legacy(entry.getValue());
+                    updated_legalities.setTribal_wars_legacy(legality.getLegality());
                     break;
                 case "Tribal Wars Standard":
-                    updated_legalities.setTribal_wars_standard(entry.getValue());
+                    updated_legalities.setTribal_wars_standard(legality.getLegality());
                     break;
                 case "Singleton 100":
-                    updated_legalities.setSingleton100(entry.getValue());
+                    updated_legalities.setSingleton100(legality.getLegality());
                     break;
                 case "Commander":
-                    updated_legalities.setCommander(entry.getValue());
+                    updated_legalities.setCommander(legality.getLegality());
                     break;
 
             }

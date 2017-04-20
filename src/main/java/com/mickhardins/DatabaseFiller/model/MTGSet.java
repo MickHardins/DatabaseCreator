@@ -14,36 +14,36 @@ import java.util.Collection;
 @DatabaseTable(tableName = "MTGSets")
 public class MTGSet
 {
-    @DatabaseField(generatedId = true)
-    transient private Long                    id;
 
-   @DatabaseField()
-   @SerializedName("a")
-    private String					name;
+    transient private long id;
+
+    @DatabaseField()
+    @SerializedName("a")
+    private String name;
 
     @DatabaseField()
     @SerializedName("b")
-    private String					code;
+    private String code;
 
     @DatabaseField()
     @SerializedName("c")
-    private String					releaseDate;
+    private String releaseDate;
 
     @DatabaseField()
     @SerializedName("d")
-    private String					border;
+    private String border;
 
     @DatabaseField()
     @SerializedName("e")
-    private String					type;
+    private String type;
 
     @DatabaseField()
     @SerializedName("f")
-    private String					block;
+    private String block;
 
     @DatabaseField()
     @SerializedName("g")
-    private String					gathererCode;
+    private String gathererCode;
 
     @ForeignCollectionField()
     private Collection<MTGCard> cards;

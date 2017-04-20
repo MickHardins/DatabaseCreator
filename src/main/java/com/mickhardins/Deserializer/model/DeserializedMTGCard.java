@@ -19,7 +19,7 @@ public class DeserializedMTGCard
 {
 
 
-    private Long id;
+    private String id;
 
     private String layout;
     private String name;
@@ -55,7 +55,8 @@ public class DeserializedMTGCard
     private ArrayList<String> printings;
     private String originalText;
     private String originalType;
-    private HashMap<String, String> legalities;
+    //private HashMap<String, String> legalities;
+    private ArrayList<DeserializedMTGLegalities> legalities;
     private String source;
 
     private MTGCardLegalities work_legalities;
@@ -99,11 +100,11 @@ public class DeserializedMTGCard
         this.work_artist = work_artist;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -247,6 +248,10 @@ public class DeserializedMTGCard
         return loyalty;
     }
 
+    public void setLegalities(ArrayList<DeserializedMTGLegalities> legalities) {
+        this.legalities = legalities;
+    }
+
     public void setLoyalty(Integer loyalty) {
         this.loyalty = loyalty;
     }
@@ -371,13 +376,7 @@ public class DeserializedMTGCard
         this.originalType = originalType;
     }
 
-    public HashMap<String, String> getHashlegalities() {
-        return legalities;
-    }
 
-    public void setHashlegalities(HashMap<String, String> hashlegalities) {
-        this.legalities = hashlegalities;
-    }
 
     public String getSource() {
         return source;
@@ -411,12 +410,8 @@ public class DeserializedMTGCard
         this.work_legalities = work_legalities;
     }
 
-    public HashMap<String, String> getLegalities() {
+    public ArrayList<DeserializedMTGLegalities> getLegalities() {
         return legalities;
-    }
-
-    public void setLegalities(HashMap<String, String> legalities) {
-        this.legalities = legalities;
     }
 
     public MTGColors getWork_colors() {

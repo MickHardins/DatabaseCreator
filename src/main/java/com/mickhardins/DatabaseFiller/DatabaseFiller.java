@@ -9,14 +9,12 @@ import com.j256.ormlite.table.TableUtils;
 import com.mickhardins.DatabaseFiller.model.*;
 import com.mickhardins.Deserializer.CardProcessing;
 import com.mickhardins.Deserializer.Deserializer;
-import com.mickhardins.Deserializer.model.DeserializedMTGCard;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.Callable;
 
 /**
@@ -25,8 +23,12 @@ import java.util.concurrent.Callable;
 
 
 
-public class DatabaseFiller
-{
+public class DatabaseFiller {
+
+    private static final String WORKING_DIR = System.getProperty("user.dir") + File.separator;
+    public static final String INPUT_JSON_DIR = WORKING_DIR + "input_json" + File.separator;
+    public static final String SERIALIZED_SET_DIR = WORKING_DIR + "serialized_sets" + File.separator;
+
 
     public static void databaseFiller( final ArrayList<MTGSet> sets) throws SQLException
     {
@@ -86,12 +88,30 @@ public class DatabaseFiller
         connection.close();
     }
 
+    /**
+     * Creates a new folder, if not already present
+     * @param path the path where the folder will be created
+     */
+    private static void createFolder(String path) {
+        File directory = new File(path);
+        if( !directory.exists())
+            directory.mkdirs();
+    }
+
+    private static void createDirectories() {
+        createFolder(INPUT_JSON_DIR);
+        createFolder(SERIALIZED_SET_DIR);
+    }
 
 
-    public static void main (String[] args) throws IOException,SQLException
-    {
+
+    public static void main (String[] args) throws IOException,SQLException {
+
+        createDirectories();
+
+
         //Deserializza dal file Allsets
-        ArrayList<DeserializedMTGSet> dsets = Deserializer.deserializeMTGset("C:/Dati/Mick/MTGAPP/AllSetsArray-x-19-02-2015.json");
+        ArrayList<DeserializedMTGSet> dsets = Deserializer.deserializeMTGset(INPUT_JSON_DIR + "AllSetsArray-x.json");
 
         //Converte i foreignNames in oggetti
         CardProcessing.foreignNamesConverter(dsets);
@@ -109,12 +129,12 @@ public class DatabaseFiller
 
 
 
-        /*Deserializer.serialize(sets);
-        System.out.println("Write successfull!");*/
+        Deserializer.serialize(sets);
+        System.out.println("Write successfull!");
 
-        String[] arr = Deserializer.deserializeMTGSetCode("C:/Dati/Mick/MTGAPP/SetCodes.json");
+        String[] arr = Deserializer.deserializeMTGSetCode(INPUT_JSON_DIR + "SetCodes.json");
         Deserializer.setCodestoURL(arr);
-        Deserializer.serializeSetCodesURLs(arr);
+        Deserializer.serializeSetCodesURLs(arr, SERIALIZED_SET_DIR);
 
         System.out.println("finita deserializzazione setcodes");
 

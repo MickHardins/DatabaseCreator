@@ -10,27 +10,27 @@ import java.util.ArrayList;
 public class DeserializedMTGSet
 {
     //@DatabaseField(generatedId = true)
-   transient private Long                    id;
+   transient private String id;
 
     //@DatabaseField()
 
-    private String					name;
+    private String name;
 
 
-    private String					code;
+    private String code;
 
 
-    private String					releaseDate;
+    private String releaseDate;
 
 
-    private String					border;
+    private String border;
 
-    private String					type;
+    private String type;
 
 
-    private String					block;
+    private String block;
 
-    private String					gathererCode;
+    private String gathererCode;
 
    // @ForeignCollectionField(eager = true)
     private ArrayList<DeserializedMTGCard> cards;
@@ -38,11 +38,11 @@ public class DeserializedMTGSet
     public DeserializedMTGSet() {
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
