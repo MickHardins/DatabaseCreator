@@ -3,8 +3,7 @@ package com.mickhardins.Deserializer.model;
 /**
  * Created by Mick on 19/12/2014.
  */
-public class DeserializedMTGCardRuling
-{
+public class DeserializedMTGCardRuling {
     private String date;
     private String text;
 

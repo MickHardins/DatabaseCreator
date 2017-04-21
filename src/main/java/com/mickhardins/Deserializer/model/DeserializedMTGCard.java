@@ -1,26 +1,19 @@
 package com.mickhardins.Deserializer.model;
 
-import com.j256.ormlite.field.DatabaseField;
 import com.mickhardins.DatabaseFiller.model.MTGArtist;
 import com.mickhardins.DatabaseFiller.model.MTGCardForeignNames;
 import com.mickhardins.DatabaseFiller.model.MTGCardLegalities;
 import com.mickhardins.DatabaseFiller.model.MTGColors;
 
-import java.beans.Transient;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by Mick on 19/12/2014.
  */
-
-
-public class DeserializedMTGCard
-{
+public class DeserializedMTGCard {
 
 
     private String id;
-
     private String layout;
     private String name;
     private ArrayList<String> names;
@@ -55,25 +48,19 @@ public class DeserializedMTGCard
     private ArrayList<String> printings;
     private String originalText;
     private String originalType;
-    //private HashMap<String, String> legalities;
     private ArrayList<DeserializedMTGLegalities> legalities;
     private String source;
-
     private MTGCardLegalities work_legalities;
 
     // Not part of JSON, will be set later
     private String setCode;
     private String setName;
-
     private MTGArtist work_artist;
-
     private String work_rulings;
     private MTGCardForeignNames work_foreignNames;
 
-
-
-
     public DeserializedMTGCard() {
+
     }
 
     public String getWork_rulings() {
@@ -375,8 +362,6 @@ public class DeserializedMTGCard
     public void setOriginalType(String originalType) {
         this.originalType = originalType;
     }
-
-
 
     public String getSource() {
         return source;

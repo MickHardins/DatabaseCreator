@@ -199,6 +199,16 @@ public class CardProcessing
         return result;
     }
 
+    public static void addSetCodeAndNameToCards(DeserializedMTGSet MTGSet) {
+
+        ArrayList<DeserializedMTGCard> cards = MTGSet.getCards();
+
+        for (DeserializedMTGCard card : cards) {
+            card.setSetCode(MTGSet.getCode());
+            card.setSetName(MTGSet.getName());
+        }
+    }
+
 
     public static MTGSet setsTransporter(DeserializedMTGSet dset)
     {
@@ -253,7 +263,7 @@ public class CardProcessing
         card.setRarity(dcard.getRarity());
         card.setText(dcard.getText());
         card.setFlavor(dcard.getFlavor());
-        /*Creare metodo per aggiungere artiti*/
+        /*Creare metodo per aggiungere artisti*/
         card.setArtist(dcard.getWork_artist());
 
         card.setNumber(dcard.getNumber());

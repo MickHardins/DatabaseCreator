@@ -3,8 +3,7 @@ package com.mickhardins.Deserializer.model;
 /**
  * Created by Mick on 19/12/2014.
  */
-public class DeserializedMTGCardForeignName
-{
+public class DeserializedMTGCardForeignName {
     private String name;
     private String language;
 

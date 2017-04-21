@@ -23,7 +23,7 @@ import java.util.concurrent.Callable;
 
 
 
-public class DatabaseFiller {
+public class ApplicationController {
 
     private static final String WORKING_DIR = System.getProperty("user.dir") + File.separator;
     public static final String INPUT_JSON_DIR = WORKING_DIR + "input_json" + File.separator;
@@ -129,11 +129,11 @@ public class DatabaseFiller {
 
 
 
-        Deserializer.serialize(sets);
+        Deserializer.serializeAndCompress(sets);
         System.out.println("Write successfull!");
 
-        String[] arr = Deserializer.deserializeMTGSetCode(INPUT_JSON_DIR + "SetCodes.json");
-        Deserializer.setCodestoURL(arr);
+        String[] arr = Deserializer.deserializeMTGSetCodes(INPUT_JSON_DIR + "SetCodes.json");
+        Deserializer.setCodesToURL(arr);
         Deserializer.serializeSetCodesURLs(arr, SERIALIZED_SET_DIR);
 
         System.out.println("finita deserializzazione setcodes");

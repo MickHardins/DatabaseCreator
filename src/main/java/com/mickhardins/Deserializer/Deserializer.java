@@ -1,9 +1,10 @@
 package com.mickhardins.Deserializer;
 
 import com.google.gson.Gson;
-import com.mickhardins.DatabaseFiller.DatabaseFiller;
+import com.mickhardins.DatabaseFiller.ApplicationController;
 import com.mickhardins.DatabaseFiller.model.MTGSet;
 import com.mickhardins.Deserializer.model.DeserializedMTGCard;
+import com.mickhardins.Deserializer.model.DeserializedMTGLegalities;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
 
 import java.io.*;
@@ -16,144 +17,146 @@ import java.util.zip.GZIPOutputStream;
 /**
  * Created by Mick on 19/12/2014.
  */
-public class Deserializer
-{
+public class Deserializer {
 
-    public static ArrayList<DeserializedMTGSet> deserializeMTGset(String path) throws IOException
-    {
+    public Deserializer() {
 
-        //"C:/Dati/Mick/MTGAPP/AllSetsArray-x-formatted.json"
+    }
+
+    /**
+     *
+     * @param path path del file AllSetsArray-x scaricabile da mtgJson.com
+     * @return  an arrayList of @DeserializedMTGSet
+     * @throws IOException
+     */
+    public static ArrayList<DeserializedMTGSet> deserializeMTGset(String path) throws IOException {
 
         InputStream inputStream = new FileInputStream(path);
         Reader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
-
-        DeserializedMTGSet[] arr = gson.fromJson(reader,DeserializedMTGSet[].class);
+        DeserializedMTGSet[] mtgSets = gson.fromJson(reader,DeserializedMTGSet[].class);
 
         //converto l'array in arraylist, forse inutilmente//
-        ArrayList<DeserializedMTGSet> sets = new ArrayList<DeserializedMTGSet>(Arrays.asList(arr));
-
-        // Scorri ogni set //
-        for(DeserializedMTGSet set_x : sets) {
-
-            /*ottieni tutte le carte del set*/
-
-            ArrayList<DeserializedMTGCard> cards = set_x.getCards();
-
-            //Per ogni carta del set aggiorna i campi setCode,setName, work_legalities
-            for( DeserializedMTGCard card_x : cards) {
-
-                card_x.setSetName(set_x.getName());
-                card_x.setSetCode(set_x.getCode());
-                CardProcessing.legalityArrToObject(card_x);
-
-            }
-        }
-        System.out.println("Finita conversione legalities da hash a oggetto");
-        //aggiunta della pauper legalities
-        CardProcessing.pauperLegalitiesAdder(sets);
-
-        System.out.println("Finita aggiunta di pauper legalities");
-
+        ArrayList<DeserializedMTGSet> sets = new ArrayList<DeserializedMTGSet>(Arrays.asList(mtgSets));
+        System.out.println("Deserializzati MTGSets");
         return sets;
     }
 
-    public static void serialize(ArrayList<MTGSet> sets) throws IOException
-    {
-        /* Serializza ogni set escludendo i campi id e GZippa i file
-         */
+    /**
+     * Serializza ogni set escludendo i campi id e GZippa i file
+     * @param sets
+     * @throws IOException
+     */
+    public static void serializeAndCompress(ArrayList<MTGSet> sets) throws IOException {
 
-        for(MTGSet set_x : sets){
-
+        for (MTGSet set_x : sets) {
 
             String setCode = set_x.getCode();
             Gson gson = new Gson();
             String json = gson.toJson(set_x);
             FileWriter writer;
-            if(set_x.getCode().equals("CON")){
-                writer = new FileWriter(DatabaseFiller.SERIALIZED_SET_DIR + "_"+setCode+".json");
+
+            if (set_x.getCode().equals("CON")) {
+                writer = new FileWriter(ApplicationController.SERIALIZED_SET_DIR + "_"+setCode+".json");
             }
             else {
-                writer = new FileWriter(DatabaseFiller.SERIALIZED_SET_DIR + setCode + ".json");
+                writer = new FileWriter(ApplicationController.SERIALIZED_SET_DIR + setCode + ".json");
             }
 
             writer.write(json);
             writer.close();
-            compressSets(set_x);
         }
-
-
-        /*for(MTGSet set_x : sets) {
-            File f = new File("C:/Dati/Mick/MTGAPP/CorrectedSets/" + set_x.getCode() + ".json");
-            if (!f.exists()) {
-                System.out.println(set_x.getCode());
-            }
-
-        }*/
-    }
-
-    public static void compressSets(MTGSet set) throws IOException
-    {
-        byte[] buffer = new byte[1024];
-
-        String setCode = set.getCode();
-        String sourcepath = "";
-        String destination_path = "";
-        if(set.getCode().equals("CON")){
-
-            sourcepath = DatabaseFiller.SERIALIZED_SET_DIR + "_" + setCode + ".json";
-            destination_path = DatabaseFiller.SERIALIZED_SET_DIR + "_" + setCode + ".json.gzip";
-
-        }
-        else {
-
-            sourcepath = DatabaseFiller.SERIALIZED_SET_DIR  + setCode + ".json";
-            destination_path = DatabaseFiller.SERIALIZED_SET_DIR  + setCode + ".json.gzip";
-
-        }
-        FileOutputStream fileOutputStream = new FileOutputStream(destination_path);
-        GZIPOutputStream gzipOutputStream = new GZIPOutputStream(fileOutputStream);
-        FileInputStream fileInputStream = new FileInputStream(sourcepath);
-        int bytes_read;
-        while ((bytes_read = fileInputStream.read(buffer)) > 0) {
-            gzipOutputStream.write(buffer, 0, bytes_read);
-            }
-        fileInputStream.close();
-        gzipOutputStream.finish();
-        gzipOutputStream.close();
-        System.out.println("The file was compressed successfully!");
 
     }
 
-    public static String[] deserializeMTGSetCode(String path) throws IOException
-    {
+    /**
+     * Compress a list of Json,
+     * @param sets a List of MTGSets,
+     * @throws IOException
+     */
+    public static void compressSets(ArrayList<MTGSet> sets) throws IOException {
+        //todo leggere solo la lista di filepresenti nellaserialized_dir e fare un check per escludere setURls.json
+        for (MTGSet set : sets) {
+
+            byte[] buffer = new byte[1024];
+            String setCode = set.getCode();
+            String sourcepath = "";
+            String destination_path = "";
+
+            if (set.getCode().equals("CON")) {
+
+                sourcepath = ApplicationController.SERIALIZED_SET_DIR + "_" + setCode + ".json";
+                destination_path = ApplicationController.SERIALIZED_SET_DIR + "_" + setCode + ".json.gzip";
+
+            }
+            else {
+
+                sourcepath = ApplicationController.SERIALIZED_SET_DIR  + setCode + ".json";
+                destination_path = ApplicationController.SERIALIZED_SET_DIR  + setCode + ".json.gzip";
+
+            }
+            FileOutputStream fileOutputStream = new FileOutputStream(destination_path);
+            GZIPOutputStream gzipOutputStream = new GZIPOutputStream(fileOutputStream);
+            FileInputStream fileInputStream = new FileInputStream(sourcepath);
+            int bytes_read;
+            while ((bytes_read = fileInputStream.read(buffer)) > 0) {
+                gzipOutputStream.write(buffer, 0, bytes_read);
+            }
+            fileInputStream.close();
+            gzipOutputStream.finish();
+            gzipOutputStream.close();
+            System.out.println(set.getCode() + " successfully compressed!");
+        }
+
+
+    }
+
+    /**
+     * Deserializza la lista dei set di mtgjson.com
+     * @param path path del json da deserializzare
+     * @return array di set codes
+     * @throws IOException
+     */
+    public static String[] deserializeMTGSetCodes(String path) throws IOException {
         InputStream inputStream = new FileInputStream(path);
         Reader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
         String[] setCodes;
         setCodes = gson.fromJson(reader,String[].class);
-        System.out.println("Deserializzati sets");
+        System.out.println("Deserializzati set codes");
         return setCodes;
     }
 
-    public static String[] setCodestoURL(String[] arr)
-    {
-        for (int i = 0; i<arr.length;i++){
-            if(arr[i].equals("CON")){
-                arr[i] = "_CON";
+    /**
+     * A paertire dai setCodes genera un array contenente gli Url dei set
+     * @param setCodes
+     * @return
+     */
+    public static String[] setCodesToURL(String[] setCodes) {
+        String[] setUrls = new String[setCodes.length];
+        for (int i = 0; i < setCodes.length; i++) {
+
+            if (setCodes[i].equals("CON")) {
+                setCodes[i] = "_CON";
             }
+
             String part1 = "https://sites.google.com/site/mtgrecall/sets/";
             String part2 = ".json.gzip?attredirects=0&d=1";
-            String result = part1 + arr[i] + part2;
-            arr[i]=result;
+            String url = part1 + setCodes[i] + part2;
+            setUrls[i] = url;
         }
-        return arr;
+        return setUrls;
     }
 
-    public static void serializeSetCodesURLs(String[] arr, String outPath)throws IOException
-    {
+    /**
+     * Serializza in formato json l'array contenente la lista di url dei set di mtgjson
+     * @param setUrls
+     * @param outPath
+     * @throws IOException
+     */
+    public static void serializeSetCodesURLs(String[] setUrls, String outPath)throws IOException {
         Gson gson = new Gson();
-        String json = gson.toJson(arr);
+        String json = gson.toJson(setUrls);
         FileWriter writer = new FileWriter(outPath + "SetURLs.json");
         writer.write(json);
         writer.close();

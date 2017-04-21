@@ -1,38 +1,21 @@
 package com.mickhardins.Deserializer.model;
 
-import com.google.gson.annotations.Expose;
 
 import java.util.ArrayList;
 
 /**
  * Created by Mick on 19/12/2014.
  */
-public class DeserializedMTGSet
-{
-    //@DatabaseField(generatedId = true)
-   transient private String id;
+public class DeserializedMTGSet {
 
-    //@DatabaseField()
-
+    private String id;
     private String name;
-
-
     private String code;
-
-
     private String releaseDate;
-
-
     private String border;
-
     private String type;
-
-
     private String block;
-
     private String gathererCode;
-
-   // @ForeignCollectionField(eager = true)
     private ArrayList<DeserializedMTGCard> cards;
 
     public DeserializedMTGSet() {

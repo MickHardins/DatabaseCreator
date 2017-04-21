@@ -4,8 +4,6 @@ package com.mickhardins.Deserializer.model;
  * Created by mick on 20/04/17.
  */
 public class DeserializedMTGLegalities {
-
-
     private String format;
     private String legality;
 
@@ -18,7 +16,6 @@ public class DeserializedMTGLegalities {
         this.legality = legality;
 
     }
-
 
     public String getFormat() {
         return format;
