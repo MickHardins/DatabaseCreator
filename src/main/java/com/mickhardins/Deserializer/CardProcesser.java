@@ -2,7 +2,6 @@ package com.mickhardins.Deserializer;
 
 import com.mickhardins.DatabaseFiller.model.*;
 import com.mickhardins.Deserializer.model.*;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,13 +9,17 @@ import java.util.Map;
 /**
  * Created by Mick on 19/12/2014.
  */
-public class CardProcessing {
+public class CardProcesser {
+
+    public CardProcesser() {
+
+    }
 
     //tested
     /* TODO dal momento che pauper è un formato nato per l'online valutare se aggiornare o meno
 
      */
-    public static boolean isInTheBanList(DeserializedMTGCard c) {
+    public  boolean isInTheBanList(DeserializedMTGCard c) {
         ArrayList<String> pauperban = new ArrayList<String>(7);
         pauperban.add("Cloudpost");
         pauperban.add("Cranial Plating");
@@ -31,7 +34,7 @@ public class CardProcessing {
     }
 
     //tested
-    public static boolean hasBeenPrintedCommon(ArrayList<DeserializedMTGSet> sets, DeserializedMTGCard c, ArrayList<String> printings) {
+    public  boolean hasBeenPrintedCommon(ArrayList<DeserializedMTGSet> sets, DeserializedMTGCard c, ArrayList<String> printings) {
 
         boolean result = false;
         for(DeserializedMTGSet set_x : sets){
@@ -54,8 +57,7 @@ public class CardProcessing {
     }
 
     //tested
-    public static void pauperLegalitiesAdder(ArrayList<DeserializedMTGSet> sets)
-    {
+    public  void pauperLegalitiesAdder(ArrayList<DeserializedMTGSet> sets) {
 
         for (DeserializedMTGSet set_x : sets) {
 
@@ -100,7 +102,7 @@ public class CardProcessing {
     }
 
     //tested
-    public static void legalityArrToObject(DeserializedMTGCard c ) {
+    public void legalityArrToObject(DeserializedMTGCard c ) {
 
         ArrayList<DeserializedMTGLegalities> legalityList = c.getLegalities();
         if(legalityList == (null)){
@@ -162,8 +164,7 @@ public class CardProcessing {
     }
 
     //tested
-    public static void colorObjectAdder(ArrayList<DeserializedMTGSet> sets)
-    {
+    public void colorObjectAdder(ArrayList<DeserializedMTGSet> sets) {
         /*Per ogni carta del set, calcolo i colori,li aggiungo alla mappa, per ogni carta
         se il colore è presente nella hashmap glielo assegno  */
 
@@ -185,9 +186,9 @@ public class CardProcessing {
 
     }
 
-    public static ArrayList<MTGSet> transportAllSets(ArrayList<DeserializedMTGSet> dsets) {
+    public ArrayList<MTGSet> transportAllSets(ArrayList<DeserializedMTGSet> dsets) {
 
-        ArrayList<MTGSet> result = new ArrayList<>(100);
+        ArrayList<MTGSet> result = new ArrayList<>(200);
 
         for(DeserializedMTGSet dset : dsets) {
 
@@ -196,19 +197,24 @@ public class CardProcessing {
         return result;
     }
 
-    public static void addSetCodeAndNameToCards(DeserializedMTGSet MTGSet) {
 
-        ArrayList<DeserializedMTGCard> cards = MTGSet.getCards();
 
-        for (DeserializedMTGCard card : cards) {
-            card.setSetCode(MTGSet.getCode());
-            card.setSetName(MTGSet.getName());
+    public void addSetCodeAndNameToCards(ArrayList<DeserializedMTGSet> dSets) {
+
+        for (DeserializedMTGSet dset : dSets) {
+
+            ArrayList<DeserializedMTGCard> cards = dset.getCards();
+
+            for (DeserializedMTGCard card : cards) {
+
+                card.setSetCode(dset.getCode());
+                card.setSetName(dset.getName());
+            }
         }
     }
 
 
-    public static MTGSet setsTransporter(DeserializedMTGSet dset)
-    {
+    private MTGSet setsTransporter(DeserializedMTGSet dset) {
 
         MTGSet set = new MTGSet();
         ArrayList<MTGCard> cards = new ArrayList<>();
@@ -220,7 +226,7 @@ public class CardProcessing {
         set.setType(dset.getType());
         set.setReleaseDate(dset.getReleaseDate());
 
-        for(DeserializedMTGCard dcard : dset.getCards()){
+        for (DeserializedMTGCard dcard : dset.getCards()) {
 
             MTGCard card = new MTGCard();
             cards.add(cardSetter(card, dcard));
@@ -230,12 +236,11 @@ public class CardProcessing {
         return set;
     }
 
-    private static MTGCard cardSetter(MTGCard card, DeserializedMTGCard dcard)
-    {
+    private MTGCard cardSetter(MTGCard card, DeserializedMTGCard dcard) {
         card.setLayout(dcard.getLayout());
         card.setName(dcard.getName());
 
-        if(dcard.getNames() != null){
+        if (dcard.getNames() != null) {
             card.setNames(dcard.getNames().toString());
         }
 
@@ -245,15 +250,15 @@ public class CardProcessing {
         card.setColors(dcard.getWork_colors());
 
         card.setType(dcard.getType());
-        if(dcard.getSupertypes() != null){
+        if (dcard.getSupertypes() != null) {
             card.setSupertypes(dcard.getSupertypes().toString());
         }
 
 
-        if(dcard.getTypes() != null) {
+        if (dcard.getTypes() != null) {
             card.setTypes(dcard.getTypes().toString());
         }
-        if(dcard.getSubtypes() != null){
+        if (dcard.getSubtypes() != null) {
             card.setSubtypes(dcard.getSubtypes().toString());
         }
 
@@ -269,7 +274,7 @@ public class CardProcessing {
         card.setLoyalty(dcard.getLoyalty());
         card.setMultiverseid(dcard.getMultiverseid());
 
-        if(dcard.getVariations() != null){
+        if (dcard.getVariations() != null) {
             card.setVariations(dcard.getVariations().toString());
         }
 
@@ -300,7 +305,7 @@ public class CardProcessing {
 
 
     //tested
-    public static void artistConverter(ArrayList<DeserializedMTGSet> sets) {
+    public void artistConverter(ArrayList<DeserializedMTGSet> sets) {
 
         Map<String,MTGArtist> artistsetmap = new HashMap<>();
 
@@ -327,7 +332,7 @@ public class CardProcessing {
     }
 
     //tested
-    public static void rulingstoString(ArrayList<DeserializedMTGSet> sets) {
+    public void rulingstoString(ArrayList<DeserializedMTGSet> sets) {
 
         String result  = "";
 
@@ -335,13 +340,13 @@ public class CardProcessing {
 
             ArrayList<DeserializedMTGCard> cards = set.getCards();
 
-            for(DeserializedMTGCard card : cards) {
+            for (DeserializedMTGCard card : cards) {
 
                 if (card.getRulings() == null) continue;
 
                 ArrayList<DeserializedMTGCardRuling> rulings = card.getRulings();
 
-                for(DeserializedMTGCardRuling rule : rulings) {
+                for (DeserializedMTGCardRuling rule : rulings) {
 
                     result = result + rule.toString();
                 }
@@ -355,14 +360,14 @@ public class CardProcessing {
     }
 
     //tested
-    public static void foreignNamesConverter(ArrayList<DeserializedMTGSet> sets) {
+    public void foreignNamesConverter(ArrayList<DeserializedMTGSet> sets) {
 
 
         for (DeserializedMTGSet set : sets) {
 
             ArrayList<DeserializedMTGCard> cards = set.getCards();
 
-            for(DeserializedMTGCard card : cards) {
+            for (DeserializedMTGCard card : cards) {
 
                 if (card.getForeignNames()== null) continue;
 

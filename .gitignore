@@ -1,7 +1,7 @@
 #Application specific files
 
 input_json/
-serialized_sets/
+output_files/
 target/
 
 
