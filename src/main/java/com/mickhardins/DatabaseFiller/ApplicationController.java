@@ -125,7 +125,7 @@ public class ApplicationController {
 
         CardProcessing.colorObjectAdder(dsets);
 
-        ArrayList<MTGSet> sets = CardProcessing.fillingPreparator(dsets);
+        ArrayList<MTGSet> sets = CardProcessing.transportAllSets(dsets);
 
 
 

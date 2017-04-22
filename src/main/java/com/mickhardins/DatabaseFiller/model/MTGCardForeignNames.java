@@ -14,7 +14,6 @@ public class MTGCardForeignNames
     @DatabaseField(generatedId = true)
      transient private Long id;
 
-
     private String eng;
 
     @DatabaseField()
@@ -43,7 +42,6 @@ public class MTGCardForeignNames
     @DatabaseField
     @SerializedName("f")
     private String fra;
-
 
     @DatabaseField
     @SerializedName("g")

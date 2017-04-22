@@ -3,6 +3,7 @@ package com.mickhardins.Deserializer;
 import com.google.gson.Gson;
 import com.mickhardins.DatabaseFiller.ApplicationController;
 import com.mickhardins.DatabaseFiller.model.MTGSet;
+import com.mickhardins.DatabaseFiller.model.UpdateObject;
 import com.mickhardins.Deserializer.model.DeserializedMTGCard;
 import com.mickhardins.Deserializer.model.DeserializedMTGLegalities;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
@@ -149,7 +150,7 @@ public class Deserializer {
     }
 
     /**
-     * Serializza in formato json l'array contenente la lista di url dei set di mtgjson
+     * Serializza in formato json l'array contenente la lista di urls dei set di mtgjson
      * @param setUrls
      * @param outPath
      * @throws IOException
@@ -160,6 +161,62 @@ public class Deserializer {
         FileWriter writer = new FileWriter(outPath + "SetURLs.json");
         writer.write(json);
         writer.close();
+    }
+
+    public static void serializeUpdateObject(UpdateObject updateObject)throws IOException{
+
+        Gson gson = new Gson();
+        String json = gson.toJson(updateObject);
+        FileWriter writer = new FileWriter("C:/Dati/Mick/MTGAPP/CorrectedSets/UpdateObject.json");
+        writer.write(json);
+        writer.close();
+        int version = updateObject.getVersion();
+        String versionString = Integer.toString(version);
+        FileWriter writer2 = new FileWriter("C:/Dati/Mick/MTGAPP/CorrectedSets/DatabaseVersionNumber.txt");
+        writer2.write(versionString);
+        writer2.close();
+
+    }
+
+    public static UpdateObject createUpdateObject(int version){
+        UpdateObject updateObject = new UpdateObject(version);
+
+        //updateObject.setVersion(4);
+
+        /*settare a true se sono stati updatati tutti i set*/
+        updateObject.setAllchanged(true);
+
+        if(updateObject.isAllchanged()){
+
+            return updateObject;
+        }
+        else{
+            ArrayList<String> setCodeArrayList = new ArrayList<>();
+            /*inserire i codici*/
+            setCodeArrayList.add("KTK");
+            setCodeArrayList.add("SOM");
+            setCodeArrayList.add("pCEL");
+
+
+
+            /*---------------*/
+
+            String[] setCodeArray = new String[setCodeArrayList.size()];
+            setCodeArray = setCodeArrayList.toArray(setCodeArray);
+
+            updateObject.setUpdatedSets(setCodeArray);
+
+            String[] setCodeCOPY = setCodeArray.clone();
+
+
+            String[] updatedSetUrls = Deserializer.setCodesToURL(setCodeCOPY); //fa side effect cristodio
+
+            updateObject.setUpdatedSetsUrls(updatedSetUrls);
+
+
+            return updateObject;
+
+        }
     }
 
 

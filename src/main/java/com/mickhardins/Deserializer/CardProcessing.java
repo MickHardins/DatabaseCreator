@@ -10,15 +10,13 @@ import java.util.Map;
 /**
  * Created by Mick on 19/12/2014.
  */
-public class CardProcessing
-{
+public class CardProcessing {
 
     //tested
     /* TODO dal momento che pauper è un formato nato per l'online valutare se aggiornare o meno
 
      */
-    public static boolean isInTheBanList(DeserializedMTGCard c)
-    {
+    public static boolean isInTheBanList(DeserializedMTGCard c) {
         ArrayList<String> pauperban = new ArrayList<String>(7);
         pauperban.add("Cloudpost");
         pauperban.add("Cranial Plating");
@@ -33,8 +31,7 @@ public class CardProcessing
     }
 
     //tested
-    public static boolean hasBeenPrintedCommon(ArrayList<DeserializedMTGSet> sets, DeserializedMTGCard c, ArrayList<String> printings)
-    {
+    public static boolean hasBeenPrintedCommon(ArrayList<DeserializedMTGSet> sets, DeserializedMTGCard c, ArrayList<String> printings) {
 
         boolean result = false;
         for(DeserializedMTGSet set_x : sets){
@@ -188,7 +185,7 @@ public class CardProcessing
 
     }
 
-    public static ArrayList<MTGSet> fillingPreparator(ArrayList<DeserializedMTGSet> dsets) {
+    public static ArrayList<MTGSet> transportAllSets(ArrayList<DeserializedMTGSet> dsets) {
 
         ArrayList<MTGSet> result = new ArrayList<>(100);
 
@@ -299,26 +296,23 @@ public class CardProcessing
 
 
         return card;
-
-
-
     }
 
 
     //tested
-    public static void artistConverter(ArrayList<DeserializedMTGSet> sets)
-    {
+    public static void artistConverter(ArrayList<DeserializedMTGSet> sets) {
 
         Map<String,MTGArtist> artistsetmap = new HashMap<>();
 
-        for(DeserializedMTGSet set : sets) {
+        for (DeserializedMTGSet set : sets) {
 
             ArrayList<DeserializedMTGCard> cards = set.getCards();
 
-            for(DeserializedMTGCard card : cards) {
-                if(card.getArtist()==null) continue;
+            for (DeserializedMTGCard card : cards) {
 
-                if (!artistsetmap.containsKey(card.getArtist())){
+                if (card.getArtist()==null) continue;
+
+                if (!artistsetmap.containsKey(card.getArtist())) {
 
                     artistsetmap.put(card.getArtist(),new MTGArtist(card.getArtist()));
                     //System.out.println(card.getName()+ " aggiunto " + card.getArtist()+ " alla hashmap artisti "+ card.getSetCode());
@@ -326,19 +320,14 @@ public class CardProcessing
                 }
 
                 card.setWork_artist(artistsetmap.get(card.getArtist()));
-                //System.out.println(card.getName() + " è stata settata con l'oggetto artist " + artistsetmap.get(card.getArtist())+ "del set " + card.getSetCode());
             }
         }
 
         System.out.println(artistsetmap.size() + " artisti aggiunti alla MAP");
-
-
-
     }
 
     //tested
-    public static void rulingstoString(ArrayList<DeserializedMTGSet> sets)
-    {
+    public static void rulingstoString(ArrayList<DeserializedMTGSet> sets) {
 
         String result  = "";
 
@@ -366,8 +355,7 @@ public class CardProcessing
     }
 
     //tested
-    public static void foreignNamesConverter(ArrayList<DeserializedMTGSet> sets)
-    {
+    public static void foreignNamesConverter(ArrayList<DeserializedMTGSet> sets) {
 
 
         for (DeserializedMTGSet set : sets) {
