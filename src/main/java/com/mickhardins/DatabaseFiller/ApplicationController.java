@@ -94,59 +94,34 @@ public class ApplicationController {
 
 
 
-    private static void createDirectories() {
-        Utils.createFolder(INPUT_JSON_DIR);
-        Utils.createFolder(OUTPUT_DIR);
-        Utils.createFolder(COMPRESSED_SET_DIR);
-        Utils.createFolder(SERIALIZED_SET_DIR);
-    }
 
-    public static UpdateObject createUpdateObject(int version){
-        UpdateObject updateObject = new UpdateObject(version);
 
-        //updateObject.setVersion(4);
+    public static UpdateObject createUpdateObject(ChangelogAnalyzer changelogAnalyzer) throws IOException {
 
-        /*settare a true se sono stati updatati tutti i set*/
-        updateObject.setAllchanged(true);
-
-        if(updateObject.isAllchanged()){
-
-            return updateObject;
+        if (changelogAnalyzer.isNothingChanged()) {
+            System.exit(0);
         }
-        else{
-            ArrayList<String> setCodeArrayList = new ArrayList<>();
-            /*inserire i codici*/
-            setCodeArrayList.add("KTK");
-            setCodeArrayList.add("SOM");
-            setCodeArrayList.add("pCEL");
 
+        UpdateObject updateObject = UpdateObject.createUpdateObject();
 
-
-            /*---------------*/
-
-            String[] setCodeArray = new String[setCodeArrayList.size()];
-            setCodeArray = setCodeArrayList.toArray(setCodeArray);
-
-            updateObject.setUpdatedSets(setCodeArray);
-
-            String[] setCodeCOPY = setCodeArray.clone();
-
-
-            String[] updatedSetUrls = Deserializer.setCodesToURL(setCodeCOPY); //fa side effect cristodio
-
-            updateObject.setUpdatedSetsUrls(updatedSetUrls);
-
-
-            return updateObject;
-
+        if (changelogAnalyzer.isAllSetsChanged()) {
+            updateObject.setAllchanged(true);
         }
+        else {
+            updateObject.setUpdatedSets((String[])changelogAnalyzer.getChangedSetsCode().toArray());
+            updateObject.setUpdatedSetsUrls((String[])changelogAnalyzer.getChagedSetUrls().toArray());
+        }
+
+        updateObject.setVersion(Utils.readDatabaseVersion());
+        return updateObject;
+
     }
 
 
 
     public static void main (String[] args) throws IOException,SQLException {
 
-        createDirectories();
+        Utils.init();
         Deserializer deserializer = new Deserializer();
         CardProcesser cardProcesser = new CardProcesser();
 
@@ -185,12 +160,12 @@ public class ApplicationController {
 
         MTGJSONChangelog changelog = deserializer.deserializeChangelog(INPUT_JSON_DIR + "changelog.json");
         ChangelogAnalyzer changelogAnalyzer = new ChangelogAnalyzer(changelog);
+        UpdateObject updateObject = createUpdateObject(changelogAnalyzer);
 
-        if(changelogAnalyzer.isNothingChanged()) {
-            System.exit(0);
-        }
+        deserializer.serializeUpdateObject(updateObject);
 
-        
+
+
 
 
 

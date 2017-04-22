@@ -3,7 +3,10 @@ package com.mickhardins.DatabaseFiller;
 import com.mickhardins.DatabaseFiller.model.MTGSet;
 
 import java.io.*;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.zip.GZIPOutputStream;
 
 /**
@@ -16,10 +19,25 @@ public class Utils {
      * Creates a new folder, if not already present
      * @param path the path where the folder will be created
      */
-    protected static void createFolder(String path) {
+    private static void createFolder(String path) {
         File directory = new File(path);
         if( !directory.exists())
             directory.mkdirs();
+    }
+
+    private static void createDirectories() {
+        Utils.createFolder(ApplicationController.INPUT_JSON_DIR);
+        Utils.createFolder(ApplicationController.OUTPUT_DIR);
+        Utils.createFolder(ApplicationController.COMPRESSED_SET_DIR);
+        Utils.createFolder(ApplicationController.SERIALIZED_SET_DIR);
+    }
+
+    static void init() throws IOException {
+        createDirectories();
+        File databaseVersion = new File(ApplicationController.OUTPUT_DIR + "DatabaseVersionNumber.txt");
+        if (!databaseVersion.exists() && !databaseVersion.isDirectory()) {
+            saveDatabaseVersion(0);
+        }
     }
 
     private static File[] getSampleFileList(String folderPath, String fileExtension) {
@@ -81,7 +99,7 @@ public class Utils {
 
     }
 
-    public static void compressSets(String path) throws IOException {
+    static void compressSets(String path) throws IOException {
 
         File[] jsonFiles = getSampleFileList(path, ".json");
         byte[] buffer = new byte[1024];
@@ -130,6 +148,17 @@ public class Utils {
         writer2.write(versionString);
         writer2.close();
 
+    }
+
+    public static int readDatabaseVersion() throws IOException {
+
+        Path filePath = Paths.get(ApplicationController.OUTPUT_DIR + "DatabaseVersionNumber.txt");
+        Scanner scanner = new Scanner(filePath);
+        int version = -1;
+        while (scanner.hasNextInt()) {
+            version = scanner.nextInt();
+        }
+        return version;
     }
 
 

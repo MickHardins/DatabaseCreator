@@ -18,13 +18,17 @@ public class UpdateObject {
     @SerializedName("d")
     private String[] updatedSetsUrls;
 
-    public UpdateObject(){
+    private UpdateObject(){
         this.allchanged=false;
 
     }
 
-    public UpdateObject(int version){
+    private UpdateObject(int version){
         this.version = version;
+    }
+
+    public static UpdateObject createUpdateObject() {
+        return new UpdateObject();
     }
 
     public String[] getUpdatedSetsUrls() {
