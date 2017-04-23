@@ -1,7 +1,9 @@
 package com.mickhardins.DatabaseFiller.model;
 
+import com.mickhardins.DatabaseFiller.Utils;
 import com.mickhardins.Deserializer.model.MTGJSONChangelog;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -11,8 +13,7 @@ import java.util.List;
 public class ChangelogAnalyzer {
 
     private MTGJSONChangelog changelog;
-    private List<String> changedSetsCode;
-    private List<String> chagedSetUrls;
+    private List<String> changedSetCodes;
     private boolean allSetsChanged;
     private boolean nothingChanged;
 
@@ -22,6 +23,7 @@ public class ChangelogAnalyzer {
         this.changelog = changelog;
         this.allSetsChanged = false;
         this.nothingChanged = true;
+        changedSetCodes = new ArrayList<>();
         elaborateChanges();
     }
 
@@ -33,20 +35,12 @@ public class ChangelogAnalyzer {
         this.changelog = changelog;
     }
 
-    public List<String> getChangedSetsCode() {
-        return changedSetsCode;
+    public List<String> getChangedSetCodes() {
+        return changedSetCodes;
     }
 
-    public void setChangedSetsCode(List<String> changedSetsCode) {
-        this.changedSetsCode = changedSetsCode;
-    }
-
-    public List<String> getChagedSetUrls() {
-        return chagedSetUrls;
-    }
-
-    public void setChagedSetUrls(List<String> chagedSetUrls) {
-        this.chagedSetUrls = chagedSetUrls;
+    public void setChangedSetCodes(List<String> changedSetCodes) {
+        this.changedSetCodes = changedSetCodes;
     }
 
     public boolean isAllSetsChanged() {
@@ -83,8 +77,24 @@ public class ChangelogAnalyzer {
         }
 
         this.nothingChanged = false;
-        List<String> changedSet = Arrays.asList(changelog.getUpdatedSetFiles());
-        List<String> newSetFiles = Arrays.asList(changelog.getNewSetFiles());
+        String[] updatedSetCodes = changelog.getUpdatedSetFiles();
+        String[] newSetCodes = changelog.getNewSetFiles();
+        List<String> changedSet;
+        List<String> newSetFiles;
+
+        if (updatedSetCodes == null) {
+             changedSet = new ArrayList<>();
+        }
+        else {
+            changedSet = Arrays.asList(changelog.getUpdatedSetFiles());
+        }
+
+        if (newSetCodes == null) {
+            newSetFiles = new ArrayList<>();
+        }
+        else {
+            newSetFiles = Arrays.asList(changelog.getNewSetFiles());
+        }
 
         if (changedSet.contains("ALL-x")) {
             this.allSetsChanged = true;
@@ -94,17 +104,19 @@ public class ChangelogAnalyzer {
         for (String setCode : changedSet) {
 
             if (endsWithX(setCode)) {
-                changedSetsCode.add(setCode);
+                changedSetCodes.add(setCode);
             }
         }
 
         for (String setCode : newSetFiles) {
 
             if (endsWithX(setCode)) {
-                changedSetsCode.add(setCode);
+                changedSetCodes.add(setCode);
             }
         }
     }
+
+
 
 
 

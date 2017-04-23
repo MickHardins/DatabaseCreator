@@ -16,13 +16,12 @@ import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Callable;
 
 /**
  * Crea un database e riserializza ogni set singolarmente dopo averlo GZippato
  */
-
-
 
 public class ApplicationController {
 
@@ -31,9 +30,6 @@ public class ApplicationController {
     public static final String OUTPUT_DIR = WORKING_DIR + "output_files" + File.separator;
     public static final String SERIALIZED_SET_DIR = OUTPUT_DIR + "corrected_sets" + File.separator;
     public static final String COMPRESSED_SET_DIR = OUTPUT_DIR + "zipped_sets" + File.separator;
-
-
-
 
     public static void databaseFiller( final ArrayList<MTGSet> sets) throws SQLException {
         final ConnectionSource connection = new JdbcConnectionSource("jdbc:sqlite:mydatabase.db");
@@ -93,12 +89,10 @@ public class ApplicationController {
     }
 
 
-
-
-
     public static UpdateObject createUpdateObject(ChangelogAnalyzer changelogAnalyzer) throws IOException {
 
         if (changelogAnalyzer.isNothingChanged()) {
+            System.out.println("LOG:\tNessun cambiamento ai file dei set. Termino...");
             System.exit(0);
         }
 
@@ -108,11 +102,13 @@ public class ApplicationController {
             updateObject.setAllchanged(true);
         }
         else {
-            updateObject.setUpdatedSets((String[])changelogAnalyzer.getChangedSetsCode().toArray());
-            updateObject.setUpdatedSetsUrls((String[])changelogAnalyzer.getChagedSetUrls().toArray());
+            List<String> changedSetCodes = changelogAnalyzer.getChangedSetCodes();
+            List<String> changedSetUrls = Utils.generateSetCodesUrls(changedSetCodes);
+            updateObject.setUpdatedSets(Utils.fromListToArray(changedSetCodes));
+            updateObject.setUpdatedSetsUrls(Utils.fromListToArray(changedSetUrls));
         }
 
-        updateObject.setVersion(Utils.readDatabaseVersion());
+        updateObject.setVersion(Utils.readDatabaseVersion() + 1);
         return updateObject;
 
     }
@@ -147,20 +143,23 @@ public class ApplicationController {
 
         deserializer.serializeMTGSets(sets);
         System.out.println("LOG:\tSerializzati tutti i set");
-        Utils.compressSets(ApplicationController.COMPRESSED_SET_DIR);
+        Utils.compressSets(SERIALIZED_SET_DIR);
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
 
         String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_JSON_DIR + "SetCodes.json");
         String[] setCodesUrls = Utils.generateSetCodesUrls(setCodes);
         deserializer.serializeSetCodesURLs(setCodes, OUTPUT_DIR);
-        System.out.println("LOG:\t finita deserializzazione setcodes");
+        System.out.println("LOG:\tDeserializzazione setCodes completata");
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
 
         MTGJSONChangelog changelog = deserializer.deserializeChangelog(INPUT_JSON_DIR + "changelog.json");
         ChangelogAnalyzer changelogAnalyzer = new ChangelogAnalyzer(changelog);
         UpdateObject updateObject = createUpdateObject(changelogAnalyzer);
+
+        int databaseVersion = Utils.readDatabaseVersion();
+        Utils.saveDatabaseVersion(databaseVersion + 1);
 
         deserializer.serializeUpdateObject(updateObject);
 

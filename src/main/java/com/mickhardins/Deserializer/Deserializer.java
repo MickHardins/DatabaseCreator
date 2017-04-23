@@ -4,17 +4,13 @@ import com.google.gson.Gson;
 import com.mickhardins.DatabaseFiller.ApplicationController;
 import com.mickhardins.DatabaseFiller.model.MTGSet;
 import com.mickhardins.DatabaseFiller.model.UpdateObject;
-import com.mickhardins.Deserializer.model.DeserializedMTGCard;
-import com.mickhardins.Deserializer.model.DeserializedMTGLegalities;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
 import com.mickhardins.Deserializer.model.MTGJSONChangelog;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
+
 
 import java.io.*;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.zip.GZIPOutputStream;
 
 
 /**
@@ -41,7 +37,7 @@ public class Deserializer {
 
         //converto l'array in arraylist, forse inutilmente//
         ArrayList<DeserializedMTGSet> sets = new ArrayList<DeserializedMTGSet>(Arrays.asList(mtgSets));
-        System.out.println("Deserializzati MTGSets");
+        System.out.println("LOG:\tDeserializzati tutti i sets");
         return sets;
     }
 
@@ -71,9 +67,6 @@ public class Deserializer {
         }
 
     }
-
-
-
 
     /**
      * Deserializza la lista dei set di mtgjson.com
@@ -107,13 +100,19 @@ public class Deserializer {
         writer.close();
     }
 
-    public void serializeUpdateObject(UpdateObject updateObject)throws IOException{
+    public void serializeUpdateObject(UpdateObject updateObject){
 
         Gson gson = new Gson();
         String json = gson.toJson(updateObject);
-        FileWriter writer = new FileWriter(ApplicationController.OUTPUT_DIR + "UpdateObject.json");
-        writer.write(json);
-        writer.close();
+        try  {
+            FileWriter writer = new FileWriter(ApplicationController.OUTPUT_DIR + "UpdateObject.json");
+            writer.write(json);
+            writer.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("LOG:\tSerializzato updateObject");
     }
 
 

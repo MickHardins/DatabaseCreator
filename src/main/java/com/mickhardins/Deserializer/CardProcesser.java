@@ -328,7 +328,7 @@ public class CardProcesser {
             }
         }
 
-        System.out.println(artistsetmap.size() + " artisti aggiunti alla MAP");
+        System.out.println("LOG:\t" + artistsetmap.size() + " artisti salvati nell'HashMap");
     }
 
     //tested
@@ -356,7 +356,7 @@ public class CardProcesser {
 
             }
         }
-        System.out.println("FINITA CONVERSIONE RULINGS");
+        System.out.println("LOG:\tCompletata conversione rulings");
     }
 
     //tested
@@ -413,7 +413,7 @@ public class CardProcesser {
                 card.setWork_foreignNames(work_name);
             }
         }
-        System.out.println("FINITA CONVERSIONE FOREIGN NAMES");
+        System.out.println("LOG:\tCompletata conversione foreign names");
     }
 
 }

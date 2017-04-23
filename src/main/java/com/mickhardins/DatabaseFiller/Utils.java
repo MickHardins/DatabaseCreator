@@ -6,6 +6,8 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 import java.util.zip.GZIPOutputStream;
 
@@ -117,8 +119,8 @@ public class Utils {
             fileInputStream.close();
             gzipOutputStream.finish();
             gzipOutputStream.close();
-            System.out.println("LOG\t" + setCode + " successfully compressed!");
         }
+        System.out.println("LOG:\tCompletata compressione dei file json");
     }
 
     /**
@@ -126,14 +128,30 @@ public class Utils {
      * @param setCodes
      * @return
      */
+    public static List<String> generateSetCodesUrls(List<String> setCodes) {
+        ArrayList<String> setUrls = new ArrayList<>(setCodes.size());
+        for (String setCode : setCodes) {
+
+            if (setCode.equals("CON")) {
+                setCode = "_CON";
+            }
+
+            String part1 = "https://sites.google.com/site/mtgrecall/sets/";
+            String part2 = ".json.gzip?attredirects=0&d=1";
+            String url = part1 + setCode + part2;
+            setUrls.add(url);
+        }
+        return setUrls;
+    }
+
     public static String[] generateSetCodesUrls(String[] setCodes) {
+
         String[] setUrls = new String[setCodes.length];
         for (int i = 0; i < setCodes.length; i++) {
 
             if (setCodes[i].equals("CON")) {
                 setCodes[i] = "_CON";
             }
-
             String part1 = "https://sites.google.com/site/mtgrecall/sets/";
             String part2 = ".json.gzip?attredirects=0&d=1";
             String url = part1 + setCodes[i] + part2;
@@ -142,11 +160,20 @@ public class Utils {
         return setUrls;
     }
 
+    public static String[] fromListToArray(List<String> list) {
+        String[] result = new String[list.size()];
+        result = list.toArray(result);
+        return result;
+
+    }
+
+
     public static void saveDatabaseVersion(int version) throws IOException {
         String versionString = Integer.toString(version);
         FileWriter writer2 = new FileWriter(ApplicationController.OUTPUT_DIR + "DatabaseVersionNumber.txt");
         writer2.write(versionString);
         writer2.close();
+        System.out.println("LOG:\tVersione del database aggiornata");
 
     }
 
