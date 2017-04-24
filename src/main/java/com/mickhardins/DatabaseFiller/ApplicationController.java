@@ -118,13 +118,14 @@ public class ApplicationController {
     public static void main (String[] args) throws IOException,SQLException {
 
         Utils.init();
+        Utils.downloadInputFilesFromMtgjson(INPUT_JSON_DIR);
         Deserializer deserializer = new Deserializer();
         CardProcesser cardProcesser = new CardProcesser();
 
 
         //Deserializza i files necessari
         ArrayList<DeserializedMTGSet> dSets
-                = deserializer.deserializeMTGset(INPUT_JSON_DIR + "AllSetsArray-x.json");
+                = deserializer.deserializeMTGset(INPUT_JSON_DIR + Utils.SETS_JSON_FILENAME);
 
         //Converte i foreignNames in oggetti
         cardProcesser.foreignNamesConverter(dSets);
@@ -147,14 +148,14 @@ public class ApplicationController {
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
 
-        String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_JSON_DIR + "SetCodes.json");
+        String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_JSON_DIR + Utils.SETCODES_FILENAME);
         String[] setCodesUrls = Utils.generateSetCodesUrls(setCodes);
         deserializer.serializeSetCodesURLs(setCodes, OUTPUT_DIR);
         System.out.println("LOG:\tDeserializzazione setCodes completata");
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
 
-        MTGJSONChangelog changelog = deserializer.deserializeChangelog(INPUT_JSON_DIR + "changelog.json");
+        MTGJSONChangelog changelog = deserializer.deserializeChangelog(INPUT_JSON_DIR + Utils.CHANGELOG_JSON_FILENAME);
         ChangelogAnalyzer changelogAnalyzer = new ChangelogAnalyzer(changelog);
         UpdateObject updateObject = createUpdateObject(changelogAnalyzer);
 

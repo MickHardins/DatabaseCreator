@@ -3,10 +3,12 @@ package com.mickhardins.DatabaseFiller;
 import com.mickhardins.DatabaseFiller.model.MTGSet;
 
 import java.io.*;
+import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.zip.GZIPOutputStream;
@@ -15,6 +17,12 @@ import java.util.zip.GZIPOutputStream;
  * Created by mick on 22/04/17.
  */
 public class Utils {
+
+    static String MTG_JSON_DOMAIN = "http://mtgjson.com/json/";
+    static String SETS_JSON_FILENAME = "AllSetsArray-x.json";
+    static String SETCODES_FILENAME = "SetCodes.json";
+    static String CHANGELOG_JSON_FILENAME = "changelog.json";
+
 
 
     /**
@@ -186,6 +194,34 @@ public class Utils {
             version = scanner.nextInt();
         }
         return version;
+    }
+
+    private static List<String> getInputFilesNames() {
+        ArrayList<String> result = new ArrayList<String>(3);
+        result.add(SETS_JSON_FILENAME);
+        result.add(SETCODES_FILENAME);
+        result.add(CHANGELOG_JSON_FILENAME);
+        return result;
+    }
+
+    public static void downloadInputFilesFromMtgjson(String destPath) {
+
+        List<String> fileNames = getInputFilesNames();
+        try {
+            System.out.println("LOG:\tDownload dei file necessari in corso......");
+            for (String fileName : fileNames) {
+                URL fileUrl = new URL(MTG_JSON_DOMAIN + fileName);
+                InputStream in = fileUrl.openStream();
+                Files.copy(in, Paths.get(destPath + fileName), StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("LOG:\tDownload del file " + fileName + " completato");
+            }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("LOG:\tErrore, termino...");
+            System.exit(-1);
+        }
+
     }
 
 
