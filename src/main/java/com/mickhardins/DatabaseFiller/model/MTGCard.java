@@ -13,8 +13,8 @@ import com.j256.ormlite.table.DatabaseTable;
 public class MTGCard
 {
 
-    @DatabaseField(generatedId = true)
-    transient private Long id;
+    @SerializedName("a2")
+    transient private String id;
 
     @DatabaseField()
     @SerializedName("a")

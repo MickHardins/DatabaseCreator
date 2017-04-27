@@ -6,23 +6,25 @@ import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Created by Mick on 19/12/2014.
+ *
+ * field marked as transient will not be serialized by Gson
  */
 
 @DatabaseTable(tableName = "Legalities")
 public class MTGCardLegalities
 {
     @DatabaseField(generatedId = true)
-     transient private Long id;
+    transient private Long id; //transient is for Gson field exclusion
 
-    @DatabaseField()
+
     @SerializedName("a")
     private String standard;
 
-    @DatabaseField
+
     @SerializedName("b")
     private String modern;
 
-    @DatabaseField
+
     @SerializedName("c")
     private String block;
 
@@ -36,23 +38,23 @@ public class MTGCardLegalities
 
     @DatabaseField
     @SerializedName("f")
-    private String freeform;
+    transient private String freeform;
 
     @DatabaseField
     @SerializedName("g")
-    private String prismatic;
+    transient private String prismatic;
 
     @DatabaseField
     @SerializedName("h")
-    private String tribal_wars_legacy;
+    transient private String tribal_wars_legacy;
 
     @DatabaseField
     @SerializedName("i")
-    private String tribal_wars_standard;
+    transient private String tribal_wars_standard;
 
     @DatabaseField
     @SerializedName("j")
-    private String singleton100;
+    transient private String singleton100;
 
     @DatabaseField
     @SerializedName("k")
@@ -60,7 +62,7 @@ public class MTGCardLegalities
 
     @DatabaseField()
     @SerializedName("l")
-    private String pauper;
+    transient private String pauper;
 
     public MTGCardLegalities()
     {

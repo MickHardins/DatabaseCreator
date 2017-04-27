@@ -61,13 +61,11 @@ public class MTGColors
 
 
 
-    public MTGColors()
-    {
+    public MTGColors() {
 
     }
 
-    public static int colorID(DeserializedMTGCard card)
-    {
+    public static int colorID(DeserializedMTGCard card) {
         int id = 0;
         if(card.getColors()== null) return id;
         if(card.getColors().contains("Black"))  id = id | BLACK_FLAG;

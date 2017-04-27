@@ -4,6 +4,11 @@ import com.google.gson.annotations.SerializedName;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
+import java.io.ByteArrayOutputStream;
+import java.io.ObjectOutputStream;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+
 /**
  * Created by Mick on 21/12/2014.
  */
@@ -11,7 +16,7 @@ import com.j256.ormlite.table.DatabaseTable;
 public class MTGArtist
 {
     @DatabaseField(generatedId = true)
-    transient private long id;
+    private String id;
 
     @DatabaseField()
     @SerializedName("a")
@@ -31,12 +36,8 @@ public class MTGArtist
 
     }
 
-    public long getId() {
+    public String getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -63,5 +64,23 @@ public class MTGArtist
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    public void calculateID() {
+        try {
+
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ObjectOutputStream oos = new ObjectOutputStream(baos);
+            oos.writeObject(this);
+            oos.close();
+
+            MessageDigest m = MessageDigest.getInstance("SHA1");
+            m.update(baos.toByteArray());
+
+            id =  new BigInteger(1, m.digest()).toString(16);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

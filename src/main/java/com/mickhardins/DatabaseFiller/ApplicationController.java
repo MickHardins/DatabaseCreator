@@ -118,7 +118,7 @@ public class ApplicationController {
     public static void main (String[] args) throws IOException,SQLException {
 
         Utils.init();
-        Utils.downloadInputFilesFromMtgjson(INPUT_JSON_DIR);
+        //Utils.downloadInputFilesFromMtgjson(INPUT_JSON_DIR);
         Deserializer deserializer = new Deserializer();
         CardProcesser cardProcesser = new CardProcesser();
 
@@ -150,7 +150,7 @@ public class ApplicationController {
 
         String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_JSON_DIR + Utils.SETCODES_FILENAME);
         String[] setCodesUrls = Utils.generateSetCodesUrls(setCodes);
-        deserializer.serializeSetCodesURLs(setCodes, OUTPUT_DIR);
+        deserializer.serializeSetCodesURLs(setCodesUrls, OUTPUT_DIR);
         System.out.println("LOG:\tDeserializzazione setCodes completata");
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
