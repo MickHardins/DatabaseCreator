@@ -66,21 +66,5 @@ public class MTGArtist
         return name.hashCode();
     }
 
-    public void calculateID() {
-        try {
 
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ObjectOutputStream oos = new ObjectOutputStream(baos);
-            oos.writeObject(this);
-            oos.close();
-
-            MessageDigest m = MessageDigest.getInstance("SHA1");
-            m.update(baos.toByteArray());
-
-            id =  new BigInteger(1, m.digest()).toString(16);
-        }
-        catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
 }
