@@ -6,6 +6,7 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 
@@ -13,8 +14,7 @@ import java.security.MessageDigest;
  * Created by Mick on 21/12/2014.
  */
 @DatabaseTable(tableName = "Artists")
-public class MTGArtist
-{
+public class MTGArtist implements Serializable{
 
     private String id;
 
@@ -22,10 +22,6 @@ public class MTGArtist
     @SerializedName("a")
     private String name;
 
-
-
-    //@DatabaseField(foreign = true)
-    private MTGCard foreigncard;
 
     public MTGArtist() {
 
