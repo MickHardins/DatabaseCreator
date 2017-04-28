@@ -419,7 +419,10 @@ public class CardProcesser {
 
                 if (!artistsetmap.containsKey(card.getArtist())) {
 
-                    artistsetmap.put(card.getArtist(),new MTGArtist(card.getArtist()));
+                    MTGArtist artist = new MTGArtist(card.getArtist());
+                    artist.calculateID();
+
+                    artistsetmap.put(card.getArtist(), artist);
                     //System.out.println(card.getName()+ " aggiunto " + card.getArtist()+ " alla hashmap artisti "+ card.getSetCode());
                     //System.out.println("nell'if");
                 }
