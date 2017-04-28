@@ -63,14 +63,14 @@ public class ApplicationController {
                         MTGArtist artist = card.getArtist();
                         MTGCardForeignNames names = card.getForeignNames();
                         MTGColors  colors = card.getColors();
-                        MTGCardLegalities legalities = card.getLegalities();
+                        //MTGCardLegalities legalities = card.getLegalities();
 
 
 
                         MTGArtistDAO.createIfNotExists(artist);
                         MTGCardForeignNamesDAO.create(names);
                         MTGColorDao.createIfNotExists(colors);
-                        MTGCardLegalitiesDAO.create(legalities);
+                        //MTGCardLegalitiesDAO.create(legalities);
                         card.setMTGset(set);
                         MTGCardDAO.create(card);
                         MTGCardDAO.update(card);
@@ -118,7 +118,7 @@ public class ApplicationController {
     public static void main (String[] args) throws IOException,SQLException {
 
         Utils.init();
-        Utils.downloadInputFilesFromMtgjson(INPUT_JSON_DIR);
+        //Utils.downloadInputFilesFromMtgjson(INPUT_JSON_DIR);
         Deserializer deserializer = new Deserializer();
         CardProcesser cardProcesser = new CardProcesser();
 

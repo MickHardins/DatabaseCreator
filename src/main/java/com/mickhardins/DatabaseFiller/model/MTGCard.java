@@ -153,9 +153,6 @@ public class MTGCard
     @SerializedName("f1")
     private String source;
 
-    @DatabaseField(foreign = true)
-    @SerializedName("g1")
-    private MTGCardLegalities legalities;
 
     @DatabaseField()
     @SerializedName("h1")
@@ -165,11 +162,24 @@ public class MTGCard
     @SerializedName("i1")
     private String setName;
 
+    /**
+     * Card legalities values
+     * Banned     = 0;
+     * Legal      = 1;
+     * Restricted = 2;
+     * Not legal  = 3;
+     */
+    private int vintageLeg;
+    private int legacyLeg;
+    private int commanderLeg;
+    private int modernLeg;
+    private int standardLeg;
+
+
     @DatabaseField(foreign = true, foreignAutoRefresh = true)
     private MTGSet MTGset;  //required by ormlite
 
-    public MTGCard()
-    {
+    public MTGCard() {
 
     }
 
@@ -453,14 +463,6 @@ public class MTGCard
         this.source = source;
     }
 
-    public MTGCardLegalities getLegalities() {
-        return legalities;
-    }
-
-    public void setLegalities(MTGCardLegalities legalities) {
-        this.legalities = legalities;
-    }
-
     public String getSetCode() {
         return setCode;
     }
@@ -477,6 +479,45 @@ public class MTGCard
         this.setName = setName;
     }
 
+    public int getVintageLeg() {
+        return vintageLeg;
+    }
+
+    public void setVintageLeg(int vintageLeg) {
+        this.vintageLeg = vintageLeg;
+    }
+
+    public int getLegacyLeg() {
+        return legacyLeg;
+    }
+
+    public void setLegacyLeg(int legacyLeg) {
+        this.legacyLeg = legacyLeg;
+    }
+
+    public int getCommanderLeg() {
+        return commanderLeg;
+    }
+
+    public void setCommanderLeg(int commanderLeg) {
+        this.commanderLeg = commanderLeg;
+    }
+
+    public int getModernLeg() {
+        return modernLeg;
+    }
+
+    public void setModernLeg(int modernLeg) {
+        this.modernLeg = modernLeg;
+    }
+
+    public int getStandardLeg() {
+        return standardLeg;
+    }
+
+    public void setStandardLeg(int standardLeg) {
+        this.standardLeg = standardLeg;
+    }
 }
 
 

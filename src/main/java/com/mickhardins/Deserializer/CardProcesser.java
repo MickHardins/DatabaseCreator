@@ -163,6 +163,105 @@ public class CardProcesser {
 
     }
 
+    public MTGCard setCardLegalitiesFields(MTGCard card, DeserializedMTGCard dCard) {
+        //todo valutare se inserire il valore 3 perle carte non legali (non bannate non ristrette ma nn legali) oppure un null value
+        MTGCardLegalities legalities = dCard.getWork_legalities();
+        if (legalities == null) {
+            return card;
+        }
+        String vintageLeg = legalities.getVintage();
+        String commanderLeg = legalities.getCommander();
+        String modernLeg = legalities.getModern();
+        String legacyLeg = legalities.getLegacy();
+        String standardLeg = legalities.getStandard();
+
+        //~~~~~~~~~~~ Vintage ~~~~~~~~~~~
+        if (vintageLeg != null) {
+            if (vintageLeg.equalsIgnoreCase("Legal")) {
+                card.setVintageLeg(1);
+            }
+            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+                card.setVintageLeg(0);
+            }
+            else {
+                card.setVintageLeg(2);
+            }
+        }
+        else {
+            card.setVintageLeg(3);
+        }
+
+        //~~~~~~~~~~~ Commander ~~~~~~~~~~~
+        if (commanderLeg !=null) {
+            if (commanderLeg.equalsIgnoreCase("Legal")) {
+                card.setCommanderLeg(1);
+            }
+            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+                card.setCommanderLeg(0);
+            }
+            else {
+                card.setCommanderLeg(2);
+            }
+        }
+        else {
+            card.setCommanderLeg(3);
+        }
+
+
+        //~~~~~~~~~~~ Standard ~~~~~~~~~~~
+        if (standardLeg != null) {
+            if (standardLeg.equalsIgnoreCase("Legal")) {
+                card.setStandardLeg(1);
+            }
+            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+                card.setStandardLeg(0);
+            }
+            else {
+                card.setStandardLeg(2);
+            }
+        }
+        else {
+            card.setStandardLeg(3);
+        }
+
+        //~~~~~~~~~~~ Modern ~~~~~~~~~~~
+        if (modernLeg != null) {
+            if (modernLeg.equalsIgnoreCase("Legal")) {
+                card.setModernLeg(1);
+            }
+            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+                card.setModernLeg(0);
+            }
+            else {
+                card.setModernLeg(2);
+            }
+        }
+        else {
+            card.setModernLeg(3);
+        }
+
+
+
+        //~~~~~~~~~~~ Legacy~~~~~~~~~~~
+        if (legacyLeg != null) {
+            if (legacyLeg.equalsIgnoreCase("Legal")) {
+                card.setLegacyLeg(1);
+            }
+            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+                card.setLegacyLeg(0);
+            }
+            else {
+                card.setLegacyLeg(2);
+            }
+        }
+        else {
+            card.setLegacyLeg(3);
+        }
+
+
+        return card;
+    }
+
     //tested
     public void colorObjectAdder(ArrayList<DeserializedMTGSet> sets) {
         /*Per ogni carta del set, calcolo i colori,li aggiungo alla mappa, per ogni carta
@@ -198,7 +297,6 @@ public class CardProcesser {
     }
 
 
-
     public void addSetCodeAndNameToCards(ArrayList<DeserializedMTGSet> dSets) {
 
         for (DeserializedMTGSet dset : dSets) {
@@ -228,7 +326,9 @@ public class CardProcesser {
 
         for (DeserializedMTGCard dcard : dset.getCards()) {
 
+            legalityArrToObject(dcard);
             MTGCard card = new MTGCard();
+            card = setCardLegalitiesFields(card, dcard);
             cards.add(cardSetter(card, dcard));
 
         }
@@ -295,7 +395,7 @@ public class CardProcesser {
         card.setOriginalText(dcard.getOriginalText());
         card.setOriginalType(dcard.getOriginalType());
         card.setSource(dcard.getSource());
-        card.setLegalities(dcard.getWork_legalities());
+
         card.setSetCode(dcard.getSetCode());
         card.setSetName(dcard.getSetName());
 
