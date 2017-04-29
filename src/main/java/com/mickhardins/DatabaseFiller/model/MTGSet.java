@@ -12,10 +12,8 @@ import java.util.Collection;
  * Created by Mick on 21/12/2014.
  */
 @DatabaseTable(tableName = "MTGSets")
-public class MTGSet
-{
+public class MTGSet {
 
-    transient private long id;
 
     @DatabaseField()
     @SerializedName("a")
@@ -44,6 +42,15 @@ public class MTGSet
     @DatabaseField()
     @SerializedName("g")
     private String gathererCode;
+
+    @SerializedName("h")
+    private String  magicCardsInfoCode;
+
+    @SerializedName("i")
+    private String mkmName;
+
+    @SerializedName("j")
+    private int mkmId;
 
     @ForeignCollectionField()
     private Collection<MTGCard> cards;
@@ -110,5 +117,29 @@ public class MTGSet
 
     public void setCards(ArrayList<MTGCard> cards) {
         this.cards = cards;
+    }
+
+    public String getMagicCardsInfoCode() {
+        return magicCardsInfoCode;
+    }
+
+    public void setMagicCardsInfoCode(String magicCardsInfoCode) {
+        this.magicCardsInfoCode = magicCardsInfoCode;
+    }
+
+    public String getMkmName() {
+        return mkmName;
+    }
+
+    public void setMkmName(String mkmName) {
+        this.mkmName = mkmName;
+    }
+
+    public int getMkmId() {
+        return mkmId;
+    }
+
+    public void setMkmId(int mkmId) {
+        this.mkmId = mkmId;
     }
 }

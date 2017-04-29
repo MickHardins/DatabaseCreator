@@ -1,6 +1,8 @@
 package com.mickhardins.Deserializer.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 /**
@@ -16,6 +18,10 @@ public class DeserializedMTGSet {
     private String type;
     private String block;
     private String gathererCode;
+
+    private String  magicCardsInfoCode;
+    private String mkm_name;
+    private int mkm_id;
     private ArrayList<DeserializedMTGCard> cards;
 
     public DeserializedMTGSet() {
@@ -107,5 +113,29 @@ public class DeserializedMTGSet {
     public void setGathererCode(String gathererCode)
     {
         this.gathererCode = gathererCode;
+    }
+
+    public String getMagicCardsInfoCode() {
+        return magicCardsInfoCode;
+    }
+
+    public void setMagicCardsInfoCode(String magicCardsInfoCode) {
+        this.magicCardsInfoCode = magicCardsInfoCode;
+    }
+
+    public String getMkm_name() {
+        return mkm_name;
+    }
+
+    public void setMkm_name(String mkm_name) {
+        this.mkm_name = mkm_name;
+    }
+
+    public int getMkm_id() {
+        return mkm_id;
+    }
+
+    public void setMkm_id(int mkm_id) {
+        this.mkm_id = mkm_id;
     }
 }

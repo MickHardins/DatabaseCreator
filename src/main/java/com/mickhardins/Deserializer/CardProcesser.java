@@ -323,6 +323,9 @@ public class CardProcesser {
         set.setGathererCode(dset.getGathererCode());
         set.setType(dset.getType());
         set.setReleaseDate(dset.getReleaseDate());
+        set.setMkmId(dset.getMkm_id());
+        set.setMkmName(dset.getMkm_name());
+        set.setMagicCardsInfoCode(dset.getMagicCardsInfoCode());
 
         for (DeserializedMTGCard dcard : dset.getCards()) {
 
