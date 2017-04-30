@@ -10,8 +10,7 @@ import com.j256.ormlite.table.DatabaseTable;
  */
 
 @DatabaseTable(tableName = "Cards")
-public class MTGCard
-{
+public class MTGCard {
 
     @DatabaseField(generatedId = true)
     transient private Long id;
@@ -176,20 +175,10 @@ public class MTGCard
     private int standardLeg;
 
 
-    @DatabaseField(foreign = true, foreignAutoRefresh = true)
-    private MTGSet MTGset;  //required by ormlite
-
     public MTGCard() {
 
     }
 
-    public MTGSet getMTGset() {
-        return MTGset;
-    }
-
-    public void setMTGset(MTGSet MTGset) {
-        this.MTGset = MTGset;
-    }
 
     public String getLayout() {
         return layout;
