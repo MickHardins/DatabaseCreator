@@ -11,27 +11,22 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Cards")
 public class MTGCard {
+    
+    private String id;
 
-    @DatabaseField(generatedId = true)
-    transient private Long id;
-
-    @DatabaseField()
     @SerializedName("a")
     private String layout;
 
-    @DatabaseField()
     @SerializedName("b")
     private String name;
 
-    @DatabaseField()
     @SerializedName("c")
     private String names;
 
-    @DatabaseField()
     @SerializedName("d")
     private String manaCost;
 
-    @DatabaseField()
+    
     @SerializedName("e")
     private float cmc;
 
@@ -39,31 +34,31 @@ public class MTGCard {
     @SerializedName("f")
     private MTGColors colors;
 
-    @DatabaseField()
+    
     @SerializedName("g")
     private String type;
 
-    @DatabaseField()
+    
     @SerializedName("h")
     private String supertypes;
 
-    @DatabaseField()
+    
     @SerializedName("i")
     private String types;
 
-    @DatabaseField()
+    
     @SerializedName("j")
     private String subtypes;
 
-    @DatabaseField()
+    
     @SerializedName("k")
     private String rarity;
 
-    @DatabaseField()
+    
     @SerializedName("l")
     private String text;
 
-    @DatabaseField()
+    
     @SerializedName("m")
     private String flavor;
 
@@ -71,92 +66,92 @@ public class MTGCard {
     @SerializedName("n")
     private MTGArtist artist;
 
-    @DatabaseField()
+    
     @SerializedName("o")
     private String number;
 
-    @DatabaseField()
+    
     @SerializedName("p")
     private String power;
 
-    @DatabaseField()
+    
     @SerializedName("q")
     private String toughness;
 
-    @DatabaseField()
+    
     @SerializedName("r")
     private Integer loyalty;
 
-    @DatabaseField()
+    
     @SerializedName("s")
     private Integer multiverseid;
 
-    @DatabaseField()
+    
     @SerializedName("t")
     private String variations;
 
-    @DatabaseField()
+    
     @SerializedName("u")
     private String imageName;
 
-    @DatabaseField()
+    
     @SerializedName("v")
     private String border;
 
-    @DatabaseField()
+    
     @SerializedName("w")
     private String watermark;
 
-    @DatabaseField()
+    
     @SerializedName("x")
     private boolean timeshifted;
 
-    @DatabaseField()
+    
     @SerializedName("y")
     private String hand;
 
-    @DatabaseField()
+    
     @SerializedName("z")
     private String life;
 
-    @DatabaseField()
+    
     @SerializedName("a1")
     private String releaseDate;
 
-    @DatabaseField()
+    
     @SerializedName("b1")
     private boolean reserved;
 
-    @DatabaseField()
+    
     @SerializedName("c1")
     private String rulings;
 
     @DatabaseField(foreign  =true)
     @SerializedName("d1")
-    private MTGCardForeignNames foreignNames;
+    transient private MTGCardForeignNames foreignNames;
 
-    @DatabaseField()
+    
     @SerializedName("e1")
     private String printings;
 
-    //@DatabaseField()
+    //
     @Expose
     transient private String originalText;
 
-    //@DatabaseField()
+    //
     @Expose
     transient private String originalType;
 
-    @DatabaseField()
+    
     @SerializedName("f1")
     private String source;
 
 
-    @DatabaseField()
+    
     @SerializedName("h1")
     private String setCode;
 
-    @DatabaseField()
+    
     @SerializedName("i1")
     private String setName;
 
@@ -505,6 +500,14 @@ public class MTGCard {
 
     public void setStandardLeg(int standardLeg) {
         this.standardLeg = standardLeg;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }
 
