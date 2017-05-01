@@ -39,7 +39,6 @@ public class MTGCard {
     @SerializedName("f")
     private MTGColors colors;
 
-
     @DatabaseField()
     @SerializedName("g")
     private String type;

@@ -71,7 +71,7 @@ public class ApplicationController {
                         MTGCardForeignNamesDAO.create(names);
                         MTGColorDao.createIfNotExists(colors);
                         //MTGCardLegalitiesDAO.create(legalities);
-                        card.setMTGset(set);
+                        //card.setMTGset(set);
                         MTGCardDAO.create(card);
                         MTGCardDAO.update(card);
                         MTGArtistDAO.update(artist);
@@ -87,7 +87,6 @@ public class ApplicationController {
         });
         connection.close();
     }
-
 
     public static UpdateObject createUpdateObject(ChangelogAnalyzer changelogAnalyzer) throws IOException {
 
@@ -112,8 +111,6 @@ public class ApplicationController {
         return updateObject;
 
     }
-
-
 
     public static void main (String[] args) throws IOException,SQLException {
 
@@ -163,14 +160,5 @@ public class ApplicationController {
         Utils.saveDatabaseVersion(databaseVersion + 1);
 
         deserializer.serializeUpdateObject(updateObject);
-
-
-
-
-
-
-
-
-
     }
 }
