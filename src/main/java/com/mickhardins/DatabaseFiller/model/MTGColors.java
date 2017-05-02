@@ -11,8 +11,8 @@ import com.mickhardins.Deserializer.model.DeserializedMTGCard;
 @DatabaseTable(tableName = "MTGColors")
 public class MTGColors
 {
-    @DatabaseField(id = true)
-    transient private int id;
+
+    private int id;
 
     @DatabaseField()
 
@@ -66,8 +66,7 @@ public class MTGColors
 
     }
 
-    public static int colorID(DeserializedMTGCard card)
-    {
+    public static int colorID(DeserializedMTGCard card) {
         int id = 0;
         if(card.getColors()== null) return id;
         if(card.getColors().contains("Black"))  id = id | BLACK_FLAG;
@@ -79,8 +78,7 @@ public class MTGColors
         return id;
     }
 
-    public MTGColors(int colorID)
-    {
+    public MTGColors(int colorID) {
         this.id = colorID;
 
         if((colorID & BLACK_FLAG) == BLACK_FLAG){
