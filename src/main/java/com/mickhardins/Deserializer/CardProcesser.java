@@ -340,6 +340,7 @@ public class CardProcesser {
     }
 
     private MTGCard cardSetter(MTGCard card, DeserializedMTGCard dcard) {
+        card.setId(dcard.getId());
         card.setLayout(dcard.getLayout());
         card.setName(dcard.getName());
 
