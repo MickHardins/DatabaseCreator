@@ -11,35 +11,26 @@ import java.util.Collection;
 /**
  * Created by Mick on 21/12/2014.
  */
-@DatabaseTable(tableName = "MTGSets")
 public class MTGSet {
 
-
-    @DatabaseField()
     @SerializedName("a")
     private String name;
 
-    @DatabaseField()
     @SerializedName("b")
     private String code;
 
-    @DatabaseField()
     @SerializedName("c")
     private String releaseDate;
 
-    @DatabaseField()
     @SerializedName("d")
     private String border;
 
-    @DatabaseField()
     @SerializedName("e")
     private String type;
 
-    @DatabaseField()
     @SerializedName("f")
     private String block;
 
-    @DatabaseField()
     @SerializedName("g")
     private String gathererCode;
 
@@ -52,7 +43,6 @@ public class MTGSet {
     @SerializedName("j")
     private int mkmId;
 
-    @ForeignCollectionField()
     private Collection<MTGCard> cards;
 
     public String getName() {

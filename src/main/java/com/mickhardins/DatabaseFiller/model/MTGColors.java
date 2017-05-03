@@ -9,25 +9,18 @@ import com.mickhardins.Deserializer.model.DeserializedMTGCard;
  * Created by Mick on 19/12/2014.
  */
 @DatabaseTable(tableName = "MTGColors")
-public class MTGColors
-{
+public class MTGColors {
 
     private int id;
 
-    @DatabaseField()
-
     private boolean b = false;
 
-    @DatabaseField()
     private boolean u = false;
 
-    @DatabaseField()
     private boolean w = false;
 
-    @DatabaseField()
     private boolean r = false;
 
-    @DatabaseField()
     private boolean g = false;
 
     @SerializedName("a1")
@@ -45,7 +38,6 @@ public class MTGColors
     @SerializedName("e1")
     private String green;
 
-    @DatabaseField
     @SerializedName("f1")
     private String summary = "";
 
@@ -55,14 +47,7 @@ public class MTGColors
     public static final int RED_FLAG    = 8;
     public static final int GREEN_FLAG  = 16;
 
-
-    //required by ormlite
-    private MTGCard foreigncard;
-
-
-
-    public MTGColors()
-    {
+    public MTGColors() {
 
     }
 
