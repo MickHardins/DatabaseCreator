@@ -1,5 +1,7 @@
 package com.mickhardins.Deserializer;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
 import com.mickhardins.DatabaseFiller.model.*;
 import com.mickhardins.Deserializer.model.*;
 import java.util.ArrayList;
@@ -345,7 +347,10 @@ public class CardProcesser {
         card.setName(dcard.getName());
 
         if (dcard.getNames() != null) {
-            card.setNames(dcard.getNames().toString());
+            ArrayList names = dcard.getNames();
+            String JSONnames = convertArraylistToJSONString(names);
+
+            card.setNames(JSONnames);
         }
 
         card.setManaCost(dcard.getManaCost());
@@ -395,7 +400,11 @@ public class CardProcesser {
 
         card.setForeignNames(dcard.getWork_foreignNames());
 
-        card.setPrintings(dcard.getPrintings().toString());
+        ArrayList<String> printings = dcard.getPrintings();
+        String jsonPrintings = convertArraylistToJSONString(printings);
+
+        card.setPrintings(jsonPrintings);
+
         card.setOriginalText(dcard.getOriginalText());
         card.setOriginalType(dcard.getOriginalType());
         card.setSource(dcard.getSource());
@@ -405,6 +414,14 @@ public class CardProcesser {
 
 
         return card;
+    }
+
+    private String convertArraylistToJSONString(ArrayList<String> input){
+        String[] outArr = new String[input.size()];
+        outArr = input.toArray(outArr);
+        Gson gson = new Gson();
+        String jsonArray = gson.toJson(outArr);
+        return jsonArray;
     }
 
 
