@@ -333,6 +333,10 @@ public class CardProcesser {
 
             legalityArrToObject(dcard);
             MTGCard card = new MTGCard();
+            if (dcard.getBorder() == null) {
+                String output = set.getBorder().substring(0, 1).toUpperCase() + set.getBorder().substring(1);
+                dcard.setBorder(output);
+            }
             card = setCardLegalitiesFields(card, dcard);
             cards.add(cardSetter(card, dcard));
 
