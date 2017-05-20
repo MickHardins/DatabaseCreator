@@ -155,6 +155,9 @@ public class MTGCard {
     @SerializedName("i1")
     private String setName;
 
+    @SerializedName("o2")
+    private String mciNumber;
+
     /**
      * Card legalities values
      * Banned     = 0;
@@ -173,6 +176,13 @@ public class MTGCard {
 
     }
 
+    public String getMciNumber() {
+        return mciNumber;
+    }
+
+    public void setMciNumber(String mciNumber) {
+        this.mciNumber = mciNumber;
+    }
 
     public String getLayout() {
         return layout;

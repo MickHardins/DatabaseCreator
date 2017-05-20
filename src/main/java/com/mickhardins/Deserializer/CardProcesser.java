@@ -1,6 +1,8 @@
 package com.mickhardins.Deserializer;
 
 import com.google.gson.Gson;
+import com.mickhardins.DatabaseFiller.ApplicationController;
+import com.mickhardins.DatabaseFiller.Utils;
 import com.mickhardins.DatabaseFiller.model.*;
 import com.mickhardins.Deserializer.model.*;
 import java.util.ArrayList;
@@ -424,6 +426,49 @@ public class CardProcesser {
         return set;
     }
 
+    /**
+     * Questa funzione aggiunge i numeri di magiccards.info a partire dai file .txt nella cartella
+     * input_files/cnumber_txt_files
+     * usiamo l'hashmap generata a partire dalla lettura dei file: occorre tenere conto delle carte con lo stesso
+     * nome ma numero diverso
+     *
+     * @param dSets
+     * @throws Exception
+     */
+    public void addMciCardNumbers(ArrayList<DeserializedMTGSet> dSets) throws Exception {
+        for (DeserializedMTGSet dset : dSets) {
+            String setCode = dset.getCode();
+            HashMap<String, String> hashMap = Utils.generateCardNumbersHashmap(setCode);
+            if (hashMap == null) {
+                continue;
+            }
+            else {
+                ArrayList<DeserializedMTGCard> dCards = dset.getCards();
+                HashMap<String, String> processedCards = new HashMap<>(dset.getCards().size());
+
+                for (DeserializedMTGCard dCard : dCards) {
+                    if (dCard.getMciNumber() == null) {
+
+                        String cardName = dCard.getName();
+
+                        if (!processedCards.containsKey(cardName)) {
+                            String mciNumber = hashMap.get(cardName);
+                            processedCards.put(cardName, mciNumber);
+                            dCard.setMciNumber(mciNumber);
+                        }
+                        else if (processedCards.containsKey(cardName)) {
+                            String mciNumber = Integer.toString(Integer.valueOf(processedCards.get(cardName)) + 1);
+                            processedCards.put(cardName, mciNumber); //aggiorno il numero
+                            dCard.setMciNumber(mciNumber);
+                        }
+                    }
+                }
+                dset.getCode();
+            }
+        }
+    }
+
+
     private MTGCard cardSetter(MTGCard card, DeserializedMTGCard dcard) {
         card.setId(dcard.getId());
         card.setLayout(dcard.getLayout());
@@ -461,6 +506,7 @@ public class CardProcesser {
         card.setArtist(dcard.getWork_artist());
 
         card.setNumber(dcard.getNumber());
+        card.setMciNumber(dcard.getMciNumber());
         card.setPower(dcard.getPower());
         card.setToughness(dcard.getToughness());
         card.setLoyalty(dcard.getLoyalty());

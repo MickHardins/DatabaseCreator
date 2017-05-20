@@ -7,13 +7,11 @@ import com.mickhardins.DatabaseFiller.model.UpdateObject;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
 import com.mickhardins.Deserializer.model.MTGJSONChangelog;
 import com.mickhardins.Deserializer.model.MTGSetMapped;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 
 
 /**
@@ -123,7 +121,7 @@ public class Deserializer {
         mappedSetsArr = mappedSets.toArray(mappedSetsArr);
         Gson gson = new Gson();
         String mappedSetJson = gson.toJson(mappedSetsArr);
-        FileWriter writer = new FileWriter(ApplicationController.INPUT_JSON_DIR + "SetMapping.json");
+        FileWriter writer = new FileWriter(ApplicationController.INPUT_FILES_DIR + "SetMapping.json");
         writer.write(mappedSetJson);
         writer.close();
     }

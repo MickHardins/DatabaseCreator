@@ -28,10 +28,11 @@ import java.util.concurrent.Callable;
 public class ApplicationController {
 
     private static final String WORKING_DIR = System.getProperty("user.dir") + File.separator;
-    public static final String INPUT_JSON_DIR = WORKING_DIR + "input_json" + File.separator;
+    public static final String INPUT_FILES_DIR = WORKING_DIR + "input_files" + File.separator;
     public static final String OUTPUT_DIR = WORKING_DIR + "output_files" + File.separator;
     public static final String SERIALIZED_SET_DIR = OUTPUT_DIR + "corrected_sets" + File.separator;
     public static final String COMPRESSED_SET_DIR = OUTPUT_DIR + "zipped_sets" + File.separator;
+    public static final String MISSING_COLLECTORS_NUMBER_FOLDER = INPUT_FILES_DIR + "cnumber_txt_files" + File.separator;
 
     public static void databaseFiller( final ArrayList<MTGSet> sets) throws SQLException {
         final ConnectionSource connection = new JdbcConnectionSource("jdbc:sqlite:mydatabase.db");
@@ -114,20 +115,21 @@ public class ApplicationController {
 
     }
 
-    public static void main (String[] args) throws IOException,SQLException {
+    public static void main (String[] args) throws IOException,SQLException, Exception {
 
         Utils.init();
-        //Utils.downloadInputFilesFromMtgjson(INPUT_JSON_DIR);
+        //Utils.downloadInputFilesFromMtgjson(INPUT_FILES_DIR);
         Deserializer deserializer = new Deserializer();
         CardProcesser cardProcesser = new CardProcesser();
 
 
         //Deserializza i files necessari
         ArrayList<DeserializedMTGSet> dSets
-                = deserializer.deserializeMTGset(INPUT_JSON_DIR + Utils.SETS_JSON_FILENAME);
+                = deserializer.deserializeMTGset(INPUT_FILES_DIR + Utils.SETS_JSON_FILENAME);
+
 
         //ottengo i set con le correzioni manuali
-        MTGSetMapped[] mappedSetsArr = deserializer.deserializeMTGsetMapped(INPUT_JSON_DIR + Utils.MAPPED_SETS_JSON_FILENAME);
+        MTGSetMapped[] mappedSetsArr = deserializer.deserializeMTGsetMapped(INPUT_FILES_DIR + Utils.MAPPED_SETS_JSON_FILENAME);
         HashMap<String, MTGSetMapped> hashMap = cardProcesser.createSetCodeMappedSetHashMap(mappedSetsArr);
 
         //fa side effect su dset e hashmap
@@ -137,7 +139,7 @@ public class ApplicationController {
 
         deserializer.serializeMTGSetMapped(mappedSetsList);
 
-
+        cardProcesser.addMciCardNumbers(dSets);
 
         //Converte i foreignNames in oggetti
         cardProcesser.foreignNamesConverter(dSets);
@@ -160,14 +162,14 @@ public class ApplicationController {
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
 
-        String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_JSON_DIR + Utils.SETCODES_FILENAME);
+        String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_FILES_DIR + Utils.SETCODES_FILENAME);
         String[] setCodesUrls = Utils.generateSetCodesUrls(setCodes);
         deserializer.serializeSetCodesURLs(setCodes, OUTPUT_DIR);
         System.out.println("LOG:\tDeserializzazione setCodes completata");
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
 
-        MTGJSONChangelog changelog = deserializer.deserializeChangelog(INPUT_JSON_DIR + Utils.CHANGELOG_JSON_FILENAME);
+        MTGJSONChangelog changelog = deserializer.deserializeChangelog(INPUT_FILES_DIR + Utils.CHANGELOG_JSON_FILENAME);
         ChangelogAnalyzer changelogAnalyzer = new ChangelogAnalyzer(changelog);
         UpdateObject updateObject = createUpdateObject(changelogAnalyzer);
 

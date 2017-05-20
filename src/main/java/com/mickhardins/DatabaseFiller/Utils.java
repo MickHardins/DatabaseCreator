@@ -34,12 +34,17 @@ public class Utils {
      */
     private static void createFolder(String path) {
         File directory = new File(path);
-        if( !directory.exists())
+        if(!directory.exists())
             directory.mkdirs();
     }
 
+    public static boolean exists(String filepath) {
+        File file = new File(filepath);
+        return file.exists();
+    }
+
     private static void createDirectories() {
-        Utils.createFolder(ApplicationController.INPUT_JSON_DIR);
+        Utils.createFolder(ApplicationController.INPUT_FILES_DIR);
         Utils.createFolder(ApplicationController.OUTPUT_DIR);
         Utils.createFolder(ApplicationController.COMPRESSED_SET_DIR);
         Utils.createFolder(ApplicationController.SERIALIZED_SET_DIR);
@@ -234,6 +239,35 @@ public class Utils {
         }
         return result;
     }
+
+    /**
+     * Ritorna un'hashmap con associazione nomecarta - mcinumber
+     * ATTENZIONE!! Le terre conterranno solo il primo numero, in caso di + versioni occorre
+     * tenere traccia del numero attuale nella funzione di correzione
+     * @param setCode
+     * @return
+     * @throws Exception
+     */
+    public static HashMap<String,String> generateCardNumbersHashmap(String setCode) throws Exception {
+        HashMap<String, String> hashMap = null;
+        if (Utils.exists(ApplicationController.MISSING_COLLECTORS_NUMBER_FOLDER + setCode + ".txt")) {
+            hashMap = new HashMap<>();
+            File txtFile = new File(ApplicationController.MISSING_COLLECTORS_NUMBER_FOLDER + setCode + ".txt");
+            BufferedReader br = new BufferedReader(new FileReader(txtFile));
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] splitted = line.split("\\t");
+                String cardNumber = splitted[0];
+                String cardName = splitted[1];
+                if (hashMap.containsKey(cardName)) {
+                    continue;
+                }
+                hashMap.put(cardName, cardNumber);
+            }
+        }
+        return hashMap;
+    }
+
 
 
 }

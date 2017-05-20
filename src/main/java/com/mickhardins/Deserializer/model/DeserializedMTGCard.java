@@ -51,6 +51,7 @@ public class DeserializedMTGCard {
     private ArrayList<DeserializedMTGLegalities> legalities;
     private String source;
     private MTGCardLegalities work_legalities;
+    private String mciNumber;
 
     // Not part of JSON, will be set later
     private String setCode;
@@ -59,8 +60,17 @@ public class DeserializedMTGCard {
     private String work_rulings;
     private MTGCardForeignNames work_foreignNames;
 
+
     public DeserializedMTGCard() {
 
+    }
+
+    public String getMciNumber() {
+        return mciNumber;
+    }
+
+    public void setMciNumber(String mciNumber) {
+        this.mciNumber = mciNumber;
     }
 
     public String getWork_rulings() {
