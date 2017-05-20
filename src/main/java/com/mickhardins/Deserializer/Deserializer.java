@@ -6,11 +6,14 @@ import com.mickhardins.DatabaseFiller.model.MTGSet;
 import com.mickhardins.DatabaseFiller.model.UpdateObject;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
 import com.mickhardins.Deserializer.model.MTGJSONChangelog;
+import com.mickhardins.Deserializer.model.MTGSetMapped;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 
 /**
@@ -113,6 +116,33 @@ public class Deserializer {
             e.printStackTrace();
         }
         System.out.println("LOG:\tSerializzato updateObject");
+    }
+
+    public void serializeMTGSetMapped(ArrayList<MTGSetMapped> mappedSets) throws IOException {
+        MTGSetMapped[] mappedSetsArr = new MTGSetMapped[mappedSets.size()];
+        mappedSetsArr = mappedSets.toArray(mappedSetsArr);
+        Gson gson = new Gson();
+        String mappedSetJson = gson.toJson(mappedSetsArr);
+        FileWriter writer = new FileWriter(ApplicationController.INPUT_JSON_DIR + "SetMapping.json");
+        writer.write(mappedSetJson);
+        writer.close();
+    }
+
+    /**
+     * Deserializza il json con le correzioni per i set e ritorna un array di MTGsetMapped con le correzioni
+     * @param path
+     * @return
+     * @throws IOException
+     */
+    public MTGSetMapped[] deserializeMTGsetMapped(String path) throws IOException {
+        InputStream inputStream = new FileInputStream(path);
+        Reader reader = new InputStreamReader(inputStream);
+        Gson gson = new Gson();
+        MTGSetMapped[] mappedSets;
+        mappedSets = gson.fromJson(reader, MTGSetMapped[].class);
+        System.out.println("LOG:\tDeserializzati Mapped sets");
+        return mappedSets;
+
     }
 
 

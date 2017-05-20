@@ -1,10 +1,10 @@
 package com.mickhardins.Deserializer;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonArray;
 import com.mickhardins.DatabaseFiller.model.*;
 import com.mickhardins.Deserializer.model.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +16,85 @@ public class CardProcesser {
     public CardProcesser() {
 
     }
+
+    /**
+     * Clona i set deserializzati e ritorna un arraylist di MTGsetMapped da trasformare in json per aggiungere info a mano
+     * @param dSets
+     * @return
+     */
+    public ArrayList<MTGSetMapped> createMappedSets(ArrayList<DeserializedMTGSet> dSets) {
+        ArrayList<MTGSetMapped> mappedSets = new ArrayList<>(dSets.size());
+        for(DeserializedMTGSet dset : dSets) {
+            MTGSetMapped mappedSet = new MTGSetMapped();
+            mappedSet.setCode(dset.getCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getCode());
+            mappedSet.setGathererCode(dset.getGathererCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getGathererCode());
+            mappedSet.setId(dset.getId() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getId());
+            mappedSet.setMagicCardsInfoCode(dset.getMagicCardsInfoCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getMagicCardsInfoCode());
+            mappedSet.setMkmId(dset.getMkm_id() == 0 ? 0 : dset.getMkm_id()); //todo check null values behaviour
+            mappedSet.setMkmName(dset.getMkm_name() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getMkm_name());
+            mappedSet.setTcgCode(dset.getTcgCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getTcgCode());
+            mappedSet.setName(dset.getName() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getName());
+            mappedSets.add(mappedSet);
+        }
+        return mappedSets;
+    }
+
+    public HashMap<String, MTGSetMapped> createSetCodeMappedSetHashMap(MTGSetMapped[] mappedSets) {
+        HashMap<String,MTGSetMapped> result = new HashMap<>();
+        for (MTGSetMapped set : mappedSets) {
+            result.put(set.getCode(), set);
+        }
+        return result;
+    }
+
+    /**
+     * Corregge una lista di Deserialized mtgsets a partire da un'hashmap di MTGsetMapped
+     * L'hash map viene costruita dopo aver deserializzato il file corretto a mano con i dati dei set
+     * @param dsets
+     * @param mappedHashMap
+     */
+    public void correctDeserializedMtgSets(ArrayList<DeserializedMTGSet> dsets, HashMap<String, MTGSetMapped> mappedHashMap) {
+        for (DeserializedMTGSet dset : dsets) {
+            MTGSetMapped mappedSet = mappedHashMap.get(dset.getCode());
+            if (dset.getMagicCardsInfoCode() == null && !mappedSet.getMagicCardsInfoCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                dset.setMagicCardsInfoCode(mappedSet.getMagicCardsInfoCode());
+            }
+            else if (dset.getMagicCardsInfoCode() != null && mappedSet.getMagicCardsInfoCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                mappedSet.setMagicCardsInfoCode(dset.getMagicCardsInfoCode());
+                //mappedHashMap.put(mappedSet.getCode(), mappedSet);
+            }
+            if (dset.getMkm_id() == 0 && mappedSet.getMkmId() != 0) {
+                dset.setMkm_id(mappedSet.getMkmId());
+            }
+            else if (dset.getMkm_id() != 0 && mappedSet.getMkmId() == 0) {
+                mappedSet.setMkmId(dset.getMkm_id());
+            }
+            if (dset.getMkm_name() == null && !mappedSet.getMkmName().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                dset.setMkm_name(mappedSet.getMkmName());
+            }
+            else if (dset.getMkm_name() != null && mappedSet.getMkmName().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                mappedSet.setMkmName(dset.getMkm_name());
+            }
+            if (dset.getTcgCode() == null && !mappedSet.getTcgCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                dset.setTcgCode(mappedSet.getTcgCode());
+            }
+            else if (dset.getTcgCode() != null && mappedSet.getTcgCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                mappedSet.setTcgCode(dset.getTcgCode());
+            }
+            if (dset.getGathererCode() == null && !mappedSet.getGathererCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                dset.setGathererCode(mappedSet.getGathererCode());
+            }
+            else if (dset.getGathererCode() != null && mappedSet.getGathererCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
+                mappedSet.setGathererCode(dset.getGathererCode());
+            }
+            mappedHashMap.put(mappedSet.getCode(), mappedSet);
+
+        }
+
+    }
+
+
+
 
     //tested
     /* TODO dal momento che pauper è un formato nato per l'online valutare se aggiornare o meno
@@ -313,7 +392,6 @@ public class CardProcesser {
         }
     }
 
-
     private MTGSet setsTransporter(DeserializedMTGSet dset) {
 
         MTGSet set = new MTGSet();
@@ -328,6 +406,7 @@ public class CardProcesser {
         set.setMkmId(dset.getMkm_id());
         set.setMkmName(dset.getMkm_name());
         set.setMagicCardsInfoCode(dset.getMagicCardsInfoCode());
+        set.setTcgCode(dset.getTcgCode());
 
         for (DeserializedMTGCard dcard : dset.getCards()) {
 
@@ -427,7 +506,6 @@ public class CardProcesser {
         String jsonArray = gson.toJson(outArr);
         return jsonArray;
     }
-
 
     //tested
     public void artistConverter(ArrayList<DeserializedMTGSet> sets) {

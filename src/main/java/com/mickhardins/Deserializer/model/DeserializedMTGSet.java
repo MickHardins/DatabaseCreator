@@ -18,13 +18,21 @@ public class DeserializedMTGSet {
     private String type;
     private String block;
     private String gathererCode;
-
+    private String tcgCode;
     private String  magicCardsInfoCode;
     private String mkm_name;
     private int mkm_id;
     private ArrayList<DeserializedMTGCard> cards;
 
     public DeserializedMTGSet() {
+    }
+
+    public String getTcgCode() {
+        return tcgCode;
+    }
+
+    public void setTcgCode(String tcgCode) {
+        this.tcgCode = tcgCode;
     }
 
     public String getId() {

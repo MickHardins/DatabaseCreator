@@ -1,6 +1,7 @@
 package com.mickhardins.DatabaseFiller;
 
 import com.mickhardins.DatabaseFiller.model.MTGSet;
+import com.mickhardins.Deserializer.model.MTGSetMapped;
 
 import java.io.*;
 import java.net.URL;
@@ -9,6 +10,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.zip.GZIPOutputStream;
@@ -22,6 +24,7 @@ public class Utils {
     static String SETS_JSON_FILENAME = "AllSetsArray-x.json";
     static String SETCODES_FILENAME = "SetCodes.json";
     static String CHANGELOG_JSON_FILENAME = "changelog.json";
+    static String MAPPED_SETS_JSON_FILENAME = "SetMapping.json";
 
 
 
@@ -222,6 +225,14 @@ public class Utils {
             System.exit(-1);
         }
 
+    }
+
+    public static List<MTGSetMapped> fromHashmapToList(HashMap<String, MTGSetMapped> hashMap) {
+        ArrayList<MTGSetMapped> result = new ArrayList<>(hashMap.size());
+        for (String key : hashMap.keySet()) {
+            result.add(hashMap.get(key));
+        }
+        return result;
     }
 
 

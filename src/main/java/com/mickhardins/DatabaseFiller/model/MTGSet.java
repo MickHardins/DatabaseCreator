@@ -1,9 +1,6 @@
 package com.mickhardins.DatabaseFiller.model;
 
 import com.google.gson.annotations.SerializedName;
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.field.ForeignCollectionField;
-import com.j256.ormlite.table.DatabaseTable;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -39,6 +36,8 @@ public class MTGSet {
 
     @SerializedName("i")
     private String mkmName;
+
+    private String tcgCode;
 
     @SerializedName("j")
     private int mkmId;
@@ -131,5 +130,13 @@ public class MTGSet {
 
     public void setMkmId(int mkmId) {
         this.mkmId = mkmId;
+    }
+
+    public String getTcgCode() {
+        return tcgCode;
+    }
+
+    public void setTcgCode(String tcgCode) {
+        this.tcgCode = tcgCode;
     }
 }

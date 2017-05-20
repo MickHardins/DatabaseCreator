@@ -11,11 +11,13 @@ import com.mickhardins.Deserializer.CardProcesser;
 import com.mickhardins.Deserializer.Deserializer;
 import com.mickhardins.Deserializer.model.DeserializedMTGSet;
 import com.mickhardins.Deserializer.model.MTGJSONChangelog;
+import com.mickhardins.Deserializer.model.MTGSetMapped;
 
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -123,6 +125,19 @@ public class ApplicationController {
         //Deserializza i files necessari
         ArrayList<DeserializedMTGSet> dSets
                 = deserializer.deserializeMTGset(INPUT_JSON_DIR + Utils.SETS_JSON_FILENAME);
+
+        //ottengo i set con le correzioni manuali
+        MTGSetMapped[] mappedSetsArr = deserializer.deserializeMTGsetMapped(INPUT_JSON_DIR + Utils.MAPPED_SETS_JSON_FILENAME);
+        HashMap<String, MTGSetMapped> hashMap = cardProcesser.createSetCodeMappedSetHashMap(mappedSetsArr);
+
+        //fa side effect su dset e hashmap
+        cardProcesser.correctDeserializedMtgSets(dSets, hashMap);
+
+        ArrayList<MTGSetMapped> mappedSetsList = (ArrayList<MTGSetMapped>)Utils.fromHashmapToList(hashMap);
+
+        deserializer.serializeMTGSetMapped(mappedSetsList);
+
+
 
         //Converte i foreignNames in oggetti
         cardProcesser.foreignNamesConverter(dSets);
