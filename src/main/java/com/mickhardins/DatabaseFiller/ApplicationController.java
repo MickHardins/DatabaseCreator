@@ -117,6 +117,8 @@ public class ApplicationController {
 
     public static void main (String[] args) throws IOException,SQLException, Exception {
 
+
+
         Utils.init();
         //Utils.downloadInputFilesFromMtgjson(INPUT_FILES_DIR);
         Deserializer deserializer = new Deserializer();

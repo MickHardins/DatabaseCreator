@@ -52,6 +52,7 @@ public class DeserializedMTGCard {
     private String source;
     private MTGCardLegalities work_legalities;
     private String mciNumber;
+    private String magicCardsInfoCode;
 
     // Not part of JSON, will be set later
     private String setCode;
@@ -63,6 +64,14 @@ public class DeserializedMTGCard {
 
     public DeserializedMTGCard() {
 
+    }
+
+    public String getMagicCardsInfoCode() {
+        return magicCardsInfoCode;
+    }
+
+    public void setMagicCardsInfoCode(String magicCardsInfoCode) {
+        this.magicCardsInfoCode = magicCardsInfoCode;
     }
 
     public String getMciNumber() {

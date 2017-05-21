@@ -279,7 +279,7 @@ public class CardProcesser {
             if (commanderLeg.equalsIgnoreCase("Legal")) {
                 card.setCommanderLeg(1);
             }
-            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+            else if (commanderLeg.equalsIgnoreCase("Banned")) {
                 card.setCommanderLeg(0);
             }
             else {
@@ -296,7 +296,7 @@ public class CardProcesser {
             if (standardLeg.equalsIgnoreCase("Legal")) {
                 card.setStandardLeg(1);
             }
-            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+            else if (standardLeg.equalsIgnoreCase("Banned")) {
                 card.setStandardLeg(0);
             }
             else {
@@ -312,7 +312,7 @@ public class CardProcesser {
             if (modernLeg.equalsIgnoreCase("Legal")) {
                 card.setModernLeg(1);
             }
-            else if (vintageLeg.equalsIgnoreCase("Banned")) {
+            else if (modernLeg.equalsIgnoreCase("Banned")) {
                 card.setModernLeg(0);
             }
             else {
@@ -390,6 +390,7 @@ public class CardProcesser {
 
                 card.setSetCode(dset.getCode());
                 card.setSetName(dset.getName());
+                card.setMagicCardsInfoCode(dset.getMagicCardsInfoCode());
             }
         }
     }
@@ -540,6 +541,7 @@ public class CardProcesser {
 
         card.setSetCode(dcard.getSetCode());
         card.setSetName(dcard.getSetName());
+        card.setMagicCardsInfoCode(dcard.getMagicCardsInfoCode());
 
 
         return card;
