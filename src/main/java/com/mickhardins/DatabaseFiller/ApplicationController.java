@@ -142,6 +142,7 @@ public class ApplicationController {
         deserializer.serializeMTGSetMapped(mappedSetsList);
 
         cardProcesser.addMciCardNumbers(dSets);
+        cardProcesser.correctMciNumbers(dSets);
 
         //Converte i foreignNames in oggetti
         cardProcesser.foreignNamesConverter(dSets);

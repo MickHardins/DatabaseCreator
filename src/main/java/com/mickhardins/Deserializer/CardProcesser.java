@@ -458,13 +458,44 @@ public class CardProcesser {
                             dCard.setMciNumber(mciNumber);
                         }
                         else if (processedCards.containsKey(cardName)) {
-                            String mciNumber = Integer.toString(Integer.valueOf(processedCards.get(cardName)) + 1);
+                            System.out.println(cardName + dset.getCode());
+                            String number_s = processedCards.get(cardName);
+                            if (number_s == null) {
+                                //la carta non ha un numero nemmeno nei file .txt
+                                continue;
+                            }
+                            int number = Integer.valueOf(number_s) + 1;
+
+                            String mciNumber = Integer.toString(number);
                             processedCards.put(cardName, mciNumber); //aggiorno il numero
                             dCard.setMciNumber(mciNumber);
                         }
                     }
                 }
                 dset.getCode();
+            }
+        }
+    }
+
+
+    /**
+     * Corregge i numeri mci di alcune carte perchè sono del formato mciSetCode/en/number
+     * @param dSets
+     */
+    public void correctMciNumbers(ArrayList<DeserializedMTGSet> dSets) {
+        for (DeserializedMTGSet set : dSets) {
+            String mciSetCode = set.getMagicCardsInfoCode();
+            String pattern = mciSetCode + "/en/";
+
+            for (DeserializedMTGCard card : set.getCards()) {
+                String mciNumber = card.getMciNumber(); //todo potrebbe essere null
+                if (mciNumber == null) {
+                    continue;
+                }
+                if (mciNumber.contains(pattern)) {
+                    String mciNumberCorrect = mciNumber.replace(pattern, "");
+                    card.setMciNumber(mciNumberCorrect);
+                }
             }
         }
     }
