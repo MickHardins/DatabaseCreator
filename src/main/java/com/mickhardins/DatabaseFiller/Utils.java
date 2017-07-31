@@ -25,6 +25,9 @@ public class Utils {
     static String SETCODES_FILENAME = "SetCodes.json";
     static String CHANGELOG_JSON_FILENAME = "changelog.json";
     static String MAPPED_SETS_JSON_FILENAME = "SetMapping.json";
+    static String FILE_DOWNLOAD_URL_PART1 = "https://github.com/MickHardins/mickhardins.github.io/raw/master/files/zipped_sets/";
+    static String FILE_DOWNLOAD_URL_PART2 = ".json.gzip";
+
 
 
 
@@ -152,8 +155,8 @@ public class Utils {
                 setCode = "_CON";
             }
 
-            String part1 = "https://sites.google.com/site/mtgrecall/sets/";
-            String part2 = ".json.gzip?attredirects=0&d=1";
+            String part1 = FILE_DOWNLOAD_URL_PART1;
+            String part2 = FILE_DOWNLOAD_URL_PART2;
             String url = part1 + setCode + part2;
             setUrls.add(url);
         }
@@ -168,8 +171,8 @@ public class Utils {
             if (setCodes[i].equals("CON")) {
                 setCodes[i] = "_CON";
             }
-            String part1 = "https://sites.google.com/site/mtgrecall/sets/";
-            String part2 = ".json.gzip?attredirects=0&d=1";
+            String part1 = FILE_DOWNLOAD_URL_PART1;
+            String part2 = FILE_DOWNLOAD_URL_PART2;
             String url = part1 + setCodes[i] + part2;
             setUrls[i] = url;
         }

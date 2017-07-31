@@ -93,7 +93,7 @@ public class ApplicationController {
 
     public static UpdateObject createUpdateObject(ChangelogAnalyzer changelogAnalyzer) throws IOException {
 
-        if (changelogAnalyzer.isNothingChanged()) {
+        if (!changelogAnalyzer.isNothingChanged()) {
             System.out.println("LOG:\tNessun cambiamento ai file dei set. Termino...");
             System.exit(0);
         }
@@ -105,6 +105,16 @@ public class ApplicationController {
         }
         else {
             List<String> changedSetCodes = changelogAnalyzer.getChangedSetCodes();
+            //correzione per i suffissi "-x
+            changedSetCodes.add("AKH-x");
+            for (String setCode : changedSetCodes) {
+                if (setCode.endsWith("-x")) {
+                    String setCodeCorrected = setCode.replace("-x","");
+                    int setCodeIndex = changedSetCodes.indexOf(setCode);
+                    changedSetCodes.remove(setCodeIndex);
+                    changedSetCodes.add(setCodeIndex,setCodeCorrected);
+                }
+            }
             List<String> changedSetUrls = Utils.generateSetCodesUrls(changedSetCodes);
             updateObject.setUpdatedSets(Utils.fromListToArray(changedSetCodes));
             updateObject.setUpdatedSetsUrls(Utils.fromListToArray(changedSetUrls));
@@ -115,7 +125,7 @@ public class ApplicationController {
 
     }
 
-    public static void main (String[] args) throws IOException,SQLException, Exception {
+    public static void main(String[] args) throws IOException, SQLException, Exception {
 
 
 
@@ -131,8 +141,8 @@ public class ApplicationController {
 
 
         //ottengo i set con le correzioni manuali
-        MTGSetMapped[] mappedSetsArr = deserializer.deserializeMTGsetMapped(INPUT_FILES_DIR + Utils.MAPPED_SETS_JSON_FILENAME);
-        HashMap<String, MTGSetMapped> hashMap = cardProcesser.createSetCodeMappedSetHashMap(mappedSetsArr);
+        List<MTGSetMapped> mappedSetsArr = deserializer.deserializeMTGsetMapped(INPUT_FILES_DIR + Utils.MAPPED_SETS_JSON_FILENAME);
+        HashMap<String, MTGSetMapped> hashMap = cardProcesser.createSetCodeMappedSetHashMap(mappedSetsArr, dSets);
 
         //fa side effect su dset e hashmap
         cardProcesser.correctDeserializedMtgSets(dSets, hashMap);
@@ -167,7 +177,7 @@ public class ApplicationController {
 
         String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_FILES_DIR + Utils.SETCODES_FILENAME);
         String[] setCodesUrls = Utils.generateSetCodesUrls(setCodes);
-        deserializer.serializeSetCodesURLs(setCodes, OUTPUT_DIR);
+        deserializer.serializeSetCodesURLs(setCodesUrls, OUTPUT_DIR);
         System.out.println("LOG:\tDeserializzazione setCodes completata");
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~

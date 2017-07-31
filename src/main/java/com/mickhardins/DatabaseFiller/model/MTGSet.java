@@ -37,6 +37,7 @@ public class MTGSet {
     @SerializedName("i")
     private String mkmName;
 
+    @SerializedName("k")
     private String tcgCode;
 
     @SerializedName("j")

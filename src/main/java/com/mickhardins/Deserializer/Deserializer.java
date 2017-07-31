@@ -12,6 +12,7 @@ import com.mickhardins.Deserializer.model.MTGSetMapped;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -132,14 +133,15 @@ public class Deserializer {
      * @return
      * @throws IOException
      */
-    public MTGSetMapped[] deserializeMTGsetMapped(String path) throws IOException {
+    public List<MTGSetMapped> deserializeMTGsetMapped(String path) throws IOException {
         InputStream inputStream = new FileInputStream(path);
         Reader reader = new InputStreamReader(inputStream);
         Gson gson = new Gson();
         MTGSetMapped[] mappedSets;
         mappedSets = gson.fromJson(reader, MTGSetMapped[].class);
+        List<MTGSetMapped> mappedList = Arrays.asList(mappedSets);
         System.out.println("LOG:\tDeserializzati Mapped sets");
-        return mappedSets;
+        return mappedList;
 
     }
 

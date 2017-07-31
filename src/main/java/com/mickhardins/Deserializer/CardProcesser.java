@@ -5,10 +5,8 @@ import com.mickhardins.DatabaseFiller.ApplicationController;
 import com.mickhardins.DatabaseFiller.Utils;
 import com.mickhardins.DatabaseFiller.model.*;
 import com.mickhardins.Deserializer.model.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+
+import java.util.*;
 
 /**
  * Created by Mick on 19/12/2014.
@@ -41,10 +39,43 @@ public class CardProcesser {
         return mappedSets;
     }
 
-    public HashMap<String, MTGSetMapped> createSetCodeMappedSetHashMap(MTGSetMapped[] mappedSets) {
+    /**
+     * Create a new Mapped sets
+     * @param dset set that will be duplicated
+     * @return
+     */
+    public MTGSetMapped createMappedSet(DeserializedMTGSet dset) {
+        MTGSetMapped mappedSet = new MTGSetMapped();
+        mappedSet.setCode(dset.getCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getCode());
+        mappedSet.setGathererCode(dset.getGathererCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getGathererCode());
+        mappedSet.setId(dset.getId() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getId());
+        mappedSet.setMagicCardsInfoCode(dset.getMagicCardsInfoCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getMagicCardsInfoCode());
+        mappedSet.setMkmId(dset.getMkm_id() == 0 ? 0 : dset.getMkm_id()); //todo check null values behaviour
+        mappedSet.setMkmName(dset.getMkm_name() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getMkm_name());
+        mappedSet.setTcgCode(dset.getTcgCode() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getTcgCode());
+        mappedSet.setName(dset.getName() == null ? MTGSetMapped.VALUE_NOT_AVAILABLE : dset.getName());
+        return mappedSet;
+    }
+
+    /**
+     * Crea un'hashmap con associazione setCode - MappedSet
+     * Prima crea l'hashmap poi controlla che ogni dset sia stato mappato.
+     * Se ci sono dset non mappati si costruisce un nuovo oggetto mapped set e sis inserisce
+     * @param mappedSets
+     * @param dsets
+     * @return
+     */
+    public HashMap<String, MTGSetMapped> createSetCodeMappedSetHashMap(List<MTGSetMapped> mappedSets, List<DeserializedMTGSet> dsets) {
         HashMap<String,MTGSetMapped> result = new HashMap<>();
         for (MTGSetMapped set : mappedSets) {
             result.put(set.getCode(), set);
+        }
+        for (DeserializedMTGSet dset : dsets) {
+            if (result.get(dset.getCode()) == null) {
+                MTGSetMapped setToMap = createMappedSet(dset);
+                result.put(setToMap.getCode(),setToMap);
+                System.out.println("LOG:\tADDED SET " + setToMap.getCode() + " TO MAPPED SETS");
+            }
         }
         return result;
     }
@@ -58,6 +89,11 @@ public class CardProcesser {
     public void correctDeserializedMtgSets(ArrayList<DeserializedMTGSet> dsets, HashMap<String, MTGSetMapped> mappedHashMap) {
         for (DeserializedMTGSet dset : dsets) {
             MTGSetMapped mappedSet = mappedHashMap.get(dset.getCode());
+            if(mappedSet == null) {
+                System.out.println("DEBUG:\t" + dset.getCode());
+                continue;
+            }
+
             if (dset.getMagicCardsInfoCode() == null && !mappedSet.getMagicCardsInfoCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
                 dset.setMagicCardsInfoCode(mappedSet.getMagicCardsInfoCode());
             }
@@ -65,24 +101,28 @@ public class CardProcesser {
                 mappedSet.setMagicCardsInfoCode(dset.getMagicCardsInfoCode());
                 //mappedHashMap.put(mappedSet.getCode(), mappedSet);
             }
+
             if (dset.getMkm_id() == 0 && mappedSet.getMkmId() != 0) {
                 dset.setMkm_id(mappedSet.getMkmId());
             }
             else if (dset.getMkm_id() != 0 && mappedSet.getMkmId() == 0) {
                 mappedSet.setMkmId(dset.getMkm_id());
             }
+
             if (dset.getMkm_name() == null && !mappedSet.getMkmName().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
                 dset.setMkm_name(mappedSet.getMkmName());
             }
             else if (dset.getMkm_name() != null && mappedSet.getMkmName().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
                 mappedSet.setMkmName(dset.getMkm_name());
             }
+
             if (dset.getTcgCode() == null && !mappedSet.getTcgCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
                 dset.setTcgCode(mappedSet.getTcgCode());
             }
             else if (dset.getTcgCode() != null && mappedSet.getTcgCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
                 mappedSet.setTcgCode(dset.getTcgCode());
             }
+
             if (dset.getGathererCode() == null && !mappedSet.getGathererCode().equals(MTGSetMapped.VALUE_NOT_AVAILABLE)) {
                 dset.setGathererCode(mappedSet.getGathererCode());
             }
