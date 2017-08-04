@@ -106,7 +106,7 @@ public class ApplicationController {
         else {
             List<String> changedSetCodes = changelogAnalyzer.getChangedSetCodes();
             //correzione per i suffissi "-x
-            changedSetCodes.add("AKH-x");
+            //changedSetCodes.add("AKH-x");
             for (String setCode : changedSetCodes) {
                 if (setCode.endsWith("-x")) {
                     String setCodeCorrected = setCode.replace("-x","");
@@ -124,6 +124,47 @@ public class ApplicationController {
         return updateObject;
 
     }
+
+    /**
+     * Versione da usare nel testing e sviluppo
+     * @param changelogAnalyzer
+     * @return
+     * @throws IOException
+     */
+    public static UpdateObject createUpdateObjectTesting(ChangelogAnalyzer changelogAnalyzer) throws IOException {
+
+        if (!changelogAnalyzer.isNothingChanged()) {
+            System.out.println("LOG:\tNessun cambiamento ai file dei set. Termino...");
+            System.exit(0);
+        }
+
+        UpdateObject updateObject = UpdateObject.createUpdateObject();
+
+        if (changelogAnalyzer.isAllSetsChanged()) {
+            updateObject.setAllchanged(true);
+        }
+        else {
+            List<String> changedSetCodes = changelogAnalyzer.getChangedSetCodes();
+            //correzione per i suffissi "-x
+            //changedSetCodes.add("AKH-x");
+            for (String setCode : changedSetCodes) {
+                if (setCode.endsWith("-x")) {
+                    String setCodeCorrected = setCode.replace("-x","");
+                    int setCodeIndex = changedSetCodes.indexOf(setCode);
+                    changedSetCodes.remove(setCodeIndex);
+                    changedSetCodes.add(setCodeIndex,setCodeCorrected);
+                }
+            }
+            List<String> changedSetUrls = Utils.generateSetCodesUrlsTesting(changedSetCodes);
+            updateObject.setUpdatedSets(Utils.fromListToArray(changedSetCodes));
+            updateObject.setUpdatedSetsUrls(Utils.fromListToArray(changedSetUrls));
+        }
+
+        updateObject.setVersion(Utils.readDatabaseVersion() + 1);
+        return updateObject;
+
+    }
+
 
     public static void main(String[] args) throws IOException, SQLException, Exception {
 
@@ -177,7 +218,12 @@ public class ApplicationController {
 
         String[] setCodes = deserializer.deserializeMTGSetCodes(INPUT_FILES_DIR + Utils.SETCODES_FILENAME);
         String[] setCodesUrls = Utils.generateSetCodesUrls(setCodes);
+        String[] setCodesUrlsTesting = Utils.generateSetCodesUrlsTesting(setCodes);
+
         deserializer.serializeSetCodesURLs(setCodesUrls, OUTPUT_DIR);
+        deserializer.serializeSetCodesURLsTesting(setCodesUrlsTesting, OUTPUT_DIR);
+
+
         System.out.println("LOG:\tDeserializzazione setCodes completata");
 
         // ~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~~~~~~~~-~~~~~~~~~~~-~~~~~~~~~
@@ -185,10 +231,16 @@ public class ApplicationController {
         MTGJSONChangelog changelog = deserializer.deserializeChangelog(INPUT_FILES_DIR + Utils.CHANGELOG_JSON_FILENAME);
         ChangelogAnalyzer changelogAnalyzer = new ChangelogAnalyzer(changelog);
         UpdateObject updateObject = createUpdateObject(changelogAnalyzer);
+        UpdateObject updateObjectTesting = createUpdateObjectTesting(changelogAnalyzer);
+
 
         int databaseVersion = Utils.readDatabaseVersion();
         Utils.saveDatabaseVersion(databaseVersion + 1);
+        Utils.saveDatabaseVersionTesting(databaseVersion + 1);
+
 
         deserializer.serializeUpdateObject(updateObject);
+        deserializer.serializeUpdateObjectTesting(updateObjectTesting);
+
     }
 }

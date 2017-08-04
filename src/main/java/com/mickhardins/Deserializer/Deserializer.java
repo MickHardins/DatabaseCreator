@@ -102,6 +102,20 @@ public class Deserializer {
         writer.close();
     }
 
+    /**
+     * Versione per generare gli url dei set da usare nello sviluppo
+     * @param setUrls
+     * @param outPath
+     * @throws IOException
+     */
+    public void serializeSetCodesURLsTesting(String[] setUrls, String outPath)throws IOException {
+        Gson gson = new Gson();
+        String json = gson.toJson(setUrls);
+        FileWriter writer = new FileWriter(outPath + "SetURLsTesting.json");
+        writer.write(json);
+        writer.close();
+    }
+
     public void serializeUpdateObject(UpdateObject updateObject){
 
         Gson gson = new Gson();
@@ -115,6 +129,25 @@ public class Deserializer {
             e.printStackTrace();
         }
         System.out.println("LOG:\tSerializzato updateObject");
+    }
+
+    /**
+     * Versione di test dell'update object
+     * @param updateObject
+     */
+    public void serializeUpdateObjectTesting(UpdateObject updateObject){
+
+        Gson gson = new Gson();
+        String json = gson.toJson(updateObject);
+        try  {
+            FileWriter writer = new FileWriter(ApplicationController.OUTPUT_DIR + "UpdateObjectTesting.json");
+            writer.write(json);
+            writer.close();
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("LOG:\tSerializzato updateObject testing");
     }
 
     public void serializeMTGSetMapped(ArrayList<MTGSetMapped> mappedSets) throws IOException {

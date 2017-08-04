@@ -28,6 +28,12 @@ public class Utils {
     static String FILE_DOWNLOAD_URL_PART1 = "https://github.com/MickHardins/mickhardins.github.io/raw/master/files/zipped_sets/";
     static String FILE_DOWNLOAD_URL_PART2 = ".json.gzip";
 
+    /**
+     * Url dei file mirror che usiamo per testare
+     */
+    static String FILE_DOWNLOAD_TEST_URL_PART1 = "https://github.com/MickHardins/mickhardins.github.io/raw/master/files_testing/zipped_sets/";
+    static String FILE_DOWNLOAD_TEST_URL_PART2 = ".json.gzip";
+
 
 
 
@@ -163,6 +169,27 @@ public class Utils {
         return setUrls;
     }
 
+    /**
+     * Genera la lista di url per i file dei set da usare nei test
+     * @param setCodes
+     * @return
+     */
+    public static List<String> generateSetCodesUrlsTesting(List<String> setCodes) {
+        ArrayList<String> setUrls = new ArrayList<>(setCodes.size());
+        for (String setCode : setCodes) {
+
+            if (setCode.equals("CON")) {
+                setCode = "_CON";
+            }
+
+            String part1 = FILE_DOWNLOAD_TEST_URL_PART1;
+            String part2 = FILE_DOWNLOAD_TEST_URL_PART2;
+            String url = part1 + setCode + part2;
+            setUrls.add(url);
+        }
+        return setUrls;
+    }
+
     public static String[] generateSetCodesUrls(String[] setCodes) {
 
         String[] setUrls = new String[setCodes.length];
@@ -173,6 +200,26 @@ public class Utils {
             }
             String part1 = FILE_DOWNLOAD_URL_PART1;
             String part2 = FILE_DOWNLOAD_URL_PART2;
+            String url = part1 + setCodes[i] + part2;
+            setUrls[i] = url;
+        }
+        return setUrls;
+    }
+    /**
+     * Genera la lista di url per i file dei set da usare nei test
+     * @param setCodes
+     * @return
+     */
+    public static String[] generateSetCodesUrlsTesting(String[] setCodes) {
+
+        String[] setUrls = new String[setCodes.length];
+        for (int i = 0; i < setCodes.length; i++) {
+
+            if (setCodes[i].equals("CON")) {
+                setCodes[i] = "_CON";
+            }
+            String part1 = FILE_DOWNLOAD_TEST_URL_PART1;
+            String part2 = FILE_DOWNLOAD_TEST_URL_PART2;
             String url = part1 + setCodes[i] + part2;
             setUrls[i] = url;
         }
@@ -190,6 +237,20 @@ public class Utils {
     public static void saveDatabaseVersion(int version) throws IOException {
         String versionString = Integer.toString(version);
         FileWriter writer2 = new FileWriter(ApplicationController.OUTPUT_DIR + "DatabaseVersionNumber.txt");
+        writer2.write(versionString);
+        writer2.close();
+        System.out.println("LOG:\tVersione del database aggiornata");
+
+    }
+
+    /**
+     * Crea il file database version da usare nei test di sviluppo
+     * @param version
+     * @throws IOException
+     */
+    public static void saveDatabaseVersionTesting(int version) throws IOException {
+        String versionString = Integer.toString(version);
+        FileWriter writer2 = new FileWriter(ApplicationController.OUTPUT_DIR + "DatabaseVersionNumberTesting.txt");
         writer2.write(versionString);
         writer2.close();
         System.out.println("LOG:\tVersione del database aggiornata");
