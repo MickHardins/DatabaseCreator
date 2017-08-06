@@ -130,6 +130,11 @@ public class MTGCard {
     @SerializedName("d1")
     transient private MTGCardForeignNames foreignNames;
 
+
+
+    @SerializedName("k1")
+    private String italianName;
+
     
     @SerializedName("e1")
     private String printings;
@@ -177,6 +182,14 @@ public class MTGCard {
 
     public MTGCard() {
 
+    }
+
+    public String getItalianName() {
+        return italianName;
+    }
+
+    public void setItalianName(String italianName) {
+        this.italianName = italianName;
     }
 
     public String getMagicCardsInfoCode() {

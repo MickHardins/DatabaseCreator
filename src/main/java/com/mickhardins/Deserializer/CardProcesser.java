@@ -17,6 +17,8 @@ public class CardProcesser {
 
     }
 
+    private final String FOREIGN_NAMES_KEY_ITA = "Italian";
+
     /**
      * Clona i set deserializzati e ritorna un arraylist di MTGsetMapped da trasformare in json per aggiungere info a mano
      * @param dSets
@@ -541,10 +543,35 @@ public class CardProcesser {
     }
 
 
+    /**
+     * Legge i foreign names e setta quelli che ci interessano nella MtgCard che verrà serializzata
+     * @param dCard
+     * @param targetCard
+     */
+    private void setForeignNames(DeserializedMTGCard dCard, MTGCard targetCard) {
+        ArrayList<DeserializedMTGCardForeignName> foreignNames = dCard.getForeignNames();
+        if(foreignNames != null) {
+
+            for (DeserializedMTGCardForeignName foreignName : foreignNames) {
+                if (foreignName.getLanguage().equalsIgnoreCase(FOREIGN_NAMES_KEY_ITA)) {
+                    targetCard.setItalianName(foreignName.getName());
+                }
+                //todo aggiungere altri foreign names a scelta
+            }
+
+        }
+
+
+    }
+
     private MTGCard cardSetter(MTGCard card, DeserializedMTGCard dcard) {
         card.setId(dcard.getId());
         card.setLayout(dcard.getLayout());
         card.setName(dcard.getName());
+        setForeignNames(dcard, card); //side effect
+
+
+
 
         if (dcard.getNames() != null) {
             ArrayList names = dcard.getNames();
