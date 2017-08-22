@@ -105,6 +105,7 @@ public class ApplicationController {
         }
         else {
             List<String> changedSetCodes = changelogAnalyzer.getChangedSetCodes();
+            //changedSetCodes.add("C17"); //TODO a volte mtgjson non inserisce i nuovi set aggiunti, e bisogna farlo manualmente
             //correzione per i suffissi "-x
             //changedSetCodes.add("AKH-x");
             for (String setCode : changedSetCodes) {
@@ -112,7 +113,7 @@ public class ApplicationController {
                     String setCodeCorrected = setCode.replace("-x","");
                     int setCodeIndex = changedSetCodes.indexOf(setCode);
                     changedSetCodes.remove(setCodeIndex);
-                    changedSetCodes.add(setCodeIndex,setCodeCorrected);
+                    changedSetCodes.add(setCodeIndex, setCodeCorrected);
                 }
             }
             List<String> changedSetUrls = Utils.generateSetCodesUrls(changedSetCodes);
